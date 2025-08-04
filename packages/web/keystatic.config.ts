@@ -1,7 +1,7 @@
 import { config, fields, collection } from "@keystatic/core";
 import { wrapper } from '@keystatic/core/content-components';
 
-const galleryImage = fields.object
+// const galleryImage = fields.object
 
 export default config({
   storage: {
@@ -19,8 +19,9 @@ export default config({
           label: "Content",
           options: {
             image: {
+              // Use the @assets path alias
+              publicPath: '@assets/images/posts/',
               directory: "src/assets/images/pages",
-              publicPath: "../../assets/images/pages/",
             },
           },
           components: {
@@ -49,12 +50,12 @@ export default config({
                       asset: fields.image({
                         label: 'Image',
                         description: "Either upload an image here, or reference an existing image below",
-                        directory: 'public/images/hero',
-                        publicPath: '/images/hero',
+                        directory: 'src/assets/images/hero',
+                        publicPath: '@assets/images/hero',
                       }),
                       assetPathRef: fields.pathReference({
                         label: "Existing image",
-                        pattern: 'public/**/*',
+                        pattern: 'src/assets/**/*',
                       }),
                       alt: fields.text({ label: 'Alt', description: 'Image alt text.' }),
                       mediaFit: fields.select({

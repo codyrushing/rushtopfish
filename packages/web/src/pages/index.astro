@@ -1,8 +1,28 @@
 ---
+import Markdoc, { type Node } from "@markdoc/markdoc";
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { createReader } from '@keystatic/core/reader';
+import { DocumentRenderer } from '@keystatic/core/renderer';
+import keystaticConfig from 'keystatic.config';
+import { getEntry } from 'astro:content';
+import PageSection from 'src/components/PageSection.astro';
+import { render } from "astro:content";
+import React from "react";
 
-const posts = await getCollection('posts');
+export const reader = createReader(process.cwd(), keystaticConfig);
+
+const page = await getEntry('pages', "index");
+const components = { pageSection: PageSection };
+
+console.log(page);
+// @ts-ignore
+
+function MarkdocContent({ content }) {
+  const ast = Markdoc.parse(content);
+  const rendered = Markdoc.transform(ast, { /* config */ });
+  return Markdoc.renderers.react(rendered, React, { components });
+}
 ---
 
 <Layout title="Keystatic & Astro's Content Collections">
@@ -15,15 +35,7 @@ const posts = await getCollection('posts');
       <a href="/keystatic">Click here to visit the Admin UI</a>, or the link
       below to view a post in the collection.
     </p>
-    <h2>Posts</h2>
-    <ul>
-      {
-        posts.map(post => (
-          <li>
-            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
+    <!-- { pageContent && <DocumentRenderer componentBlocks={{pageSection: PageSection}} document={pageContent} /> } -->
+    { page?.body && <div><MarkdocContent content={page.body} /></div> }
   </div>
 </Layout>
