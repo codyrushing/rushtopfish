@@ -1,41 +1,12 @@
 ---
-import Markdoc, { type Node } from "@markdoc/markdoc";
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { createReader } from '@keystatic/core/reader';
-import { DocumentRenderer } from '@keystatic/core/renderer';
-import keystaticConfig from 'keystatic.config';
-import { getEntry } from 'astro:content';
-import PageSection from 'src/components/PageSection.astro';
-import { render } from "astro:content";
-import React from "react";
+export const prerender = false;
 
-export const reader = createReader(process.cwd(), keystaticConfig);
+const { slug } = Astro.params;
 
-const page = await getEntry('pages', "index");
-const components = { pageSection: PageSection };
-
-console.log(page);
-// @ts-ignore
-
-function MarkdocContent({ content }) {
-  const ast = Markdoc.parse(content);
-  const rendered = Markdoc.transform(ast, { /* config */ });
-  return Markdoc.renderers.react(rendered, React, { components });
-}
 ---
 
-<Layout title="Keystatic & Astro's Content Collections">
-  <div>
-    <h1>Keystatic ⚡️ + Astro 🚀</h1>
-    <p>
-      This homepage shows how to load data from Astro's content collections.
-    </p>
-    <p>
-      <a href="/keystatic">Click here to visit the Admin UI</a>, or the link
-      below to view a post in the collection.
-    </p>
-    <!-- { pageContent && <DocumentRenderer componentBlocks={{pageSection: PageSection}} document={pageContent} /> } -->
-    { page?.body && <div><MarkdocContent content={page.body} /></div> }
-  </div>
+<Layout title={slug ?? 'Unknown page'}>
+    hello
 </Layout>

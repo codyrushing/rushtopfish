@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+.heading-type, h1, h2, h3, h4, h5, h6 {
+  font-family: "Asap", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.body-type, body {
+  font-family: "Signika Negative", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  @apply text-gray-700;
+  @apply bg-stone-200;
+}

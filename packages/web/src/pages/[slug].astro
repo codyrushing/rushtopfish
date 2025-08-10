@@ -1,24 +1,17 @@
 ---
-import { createReader } from "@keystatic/core/reader";
-import keystaticConfig from "../../keystatic.config";
 import Layout from "../layouts/Layout.astro";
 
-export const reader = createReader(process.cwd(), keystaticConfig);
 
-const page = await reader.collections.pages.read("index");
-
-console.log('got page');
-console.log(page);
+const { slug } = Astro.params;
 
 // Generate static pages
-export async function getStaticPaths() {
-  const posts = await reader.collections.pages.all();
-  return posts.map(post => ({ params: { slug: post.slug } }));
-}
+// export async function getStaticPaths() {
+//   const posts = await reader.collections.pages.all();
+//   return posts.map(post => ({ params: { slug: post.slug } }));
+// }
 
 
 ---
-<!-- https://jankraus.net/2025/02/25/a-simple-guide-to-using-astro-with-keystatic/ -->
 <Layout title="Placeholder">
   <div class="page">
 
