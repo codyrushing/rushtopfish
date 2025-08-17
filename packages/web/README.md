@@ -1,39 +1,9 @@
-# Keystatic in Astro
+This is a website built with [DecapCMS](https://decapcms.org/) and Astro.
 
-This template shows how you can use Keystatic in an Astro site.
+## Getting started
+* `bun run dev` - run the site locally at [http://localhost:4321]
+  * To use the admin panel to author content, you will also want to run `bun run admin`, which makes the admin editor accessible on [http://localhost:4321/admin]
 
-To setup:
-
-```bash
-npm install
-```
-
-To run:
-
-```
-npm run dev
-```
-
-Admin UI: [http://127.0.0.1:4321/keystatic](http://127.0.0.1:4321/keystatic)
-
-Homepage: [http://localhost:4321](http://localhost:4321)
-
-## Building static
-* https://jankraus.net/2025/02/25/a-simple-guide-to-using-astro-with-keystatic/
-
-## Strategy
-* Create a `pages` collection in `keystatic.config.ts`
-* `src/pages/[slug].astro` is the base Astro page to render each page.
-  * Use the Keystatic Reader API to "call" Keystatic for data
-* Use `<DocumentRenderer>` in `[slug].astro` to render richtext content. This is also where you register any custom content components.
-```
-<DocumentRenderer
-  document={page.data.content}
-  componentBlocks={{
-    callout: Callout, // <===== custom content components
-    imageGallery: ImageGallery,
-  }}
-/>
-```
-
-## Site
+## Configuration
+* `/public/admin/config.yml` houses the main configuration including the schemas of all editable types
+* To extend the admin interface with new editor components or widgets (the building blocks of the editor interface), those can be registered via the `CMS` JS global in `src/pages/admin.html`. [Instructions on that here](https://decapcms.org/docs/custom-widgets/)

@@ -1,14 +1,98 @@
-collections:
-  - name: "page" # Used in routes, e.g., /admin/collections/blog
-    label: "Pages" # Used in the UI
-    folder: "src/content/page" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields for each document, usually in frontmatter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-media_folder: "src/assets/images" # Location where files will be stored in the repo
-public_folder: "src/assets/images" # The src attribute for uploaded media
-local_backend: true
+media_folder: src/assets/images # Location where files will be stored in the repo
+public_folder: src/assets/images # The src attribute for uploaded media
+local_backend: true # set to true to allow decap cms to save file locally during development
 backend:
-  abc: 123
+  name: git-gateway
+  repo: codyrushing/rushtopfish
+  branch: main
+# https://decapcms.org/docs/widgets/#select
+collections:
+  - name: page # Used in routes, e.g., /admin/collections/blog
+    label: Page # Used in the UI
+    # slug: "{{fields.slug}}"
+    folder: src/content/pages # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    fields:
+      - name: title
+        label: Title
+        widget: string
+
+      - name: slug
+        label: Slug
+        widget: string
+        hint: Page slug - use "index" for home page
+
+      - name: description
+        label: Description
+        widget: text
+
+      - name: sections
+        label: Page sections
+        widget: list
+        slug: "{{fields.slug}}"
+        summary: "{{fields.title}}"
+        fields:
+          - name: title
+            label: Name
+            widget: string
+          - name: linkable
+            label: Linkable?
+            widget: boolean
+          - name: size
+            label: Size
+            widget: select
+            required: false
+            default: [auto]
+            options: [auto, full_screen]
+          - name: content
+            label: Content
+            widget: markdown
+          - name: images
+            label: Media
+            widget: list
+            fields:
+              - name: image
+                label: Image
+                widget: image
+              - name: fit
+                label: Fit
+                widget: select
+                required: false
+                options: [contain, cover, fill, none]
+              - name: media_x_pos
+                label: Horizontal position
+                widget: number
+                default: 2
+                value_type: "int"
+                hint: 0 is left, 50 is center, 100 is right
+                min: 0
+                max: 40
+                step: 1
+                required: false
+              - name: media_y_pos
+                label: Vertical position
+                widget: number
+                default: 2
+                value_type: "int"
+                hint: 0 is top, 50 is center, 100 is bottom
+                min: 0
+                max: 40
+                step: 1
+                required: false
+              - name: background_color
+                label: Background color
+                required: false
+                widget: color
+              - name: caption
+                label: Caption
+                required: false
+                widget: markdown
+          - name: image_presentation
+            label: Image presentation
+            hint: Only applies when using multiple images
+            widget: select
+            require: false
+            options: [carousel, grid]
+          - name: parallax
+            label: Parallax scroll
+            widget: boolean
