@@ -1,0 +1,17 @@
+---
+import Layout from 'src/layouts/Layout.astro';
+import type { Page } from '../content/config';
+import PageSection from './PageSection.astro';
+
+export interface Props {
+  page: {
+    data: Page
+  }
+}
+const { page } = Astro.props;
+---
+<Layout title={page.data.title}>
+  <div class="page">
+    { page.data.sections.map(section => <PageSection {...section} />) }
+  </div>
+</Layout>

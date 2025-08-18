@@ -1,29 +1,20 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getCollection, getEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import PageComponent from "../components/Page.astro";
+import type { Props as PageProps } from "../components/Page.astro";
 import type { Page } from '../content/config';
-import PageSection from "src/components/PageSection.astro";
 
 export async function getStaticPaths() {
-  const pages = await getCollection('pages');
-  return pages.map((page: any) => ({
+  const pages = await getCollection("pages");
+  return pages.map((page: Page) => ({
     params: { slug: page.slug },
     props: { page }, // Pass page as a prop for convenience
   }));
 }
 
-interface Props {
-  page: {
-    data: Page
-  }
-}
+interface Props extends PageProps {}
+
 const { slug } = Astro.params;
 const { page } = Astro.props;
-
 ---
-<Layout title="Placeholder">
-  <div class="page">
-    { page.data.sections.map(section => <PageSection {...section} />) }
-    <!-- <pre>{JSON.stringify(page, null, 2)}</pre> -->
-  </div>
-</Layout>
+<PageComponent page={page} />

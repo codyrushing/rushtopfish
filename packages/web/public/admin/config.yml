@@ -35,18 +35,50 @@ collections:
           - name: title
             label: Name
             widget: string
+
           - name: linkable
             label: Linkable?
             widget: boolean
+
           - name: size
             label: Size
             widget: select
             required: false
             default: [auto]
             options: [auto, full_screen]
+
           - name: content
             label: Content
             widget: markdown
+
+          - name: content_style
+            label: Content style
+            widget: select
+            options: [light, dark]
+            required: false
+
+          - name: x_pos
+            label: Content horizontal position
+            widget: select
+            options: [left, center, right]
+            required: false
+
+          - name: y_pos
+            label: Content vertical position
+            widget: select
+            options: [top, center, bottom]
+            required: false
+
+          - name: content_background
+            label: Content background
+            widget: boolean
+            required: false
+
+          - name: extra_classes
+            label: Extra classes
+            widget: string
+            required: false
+
           - name: images
             label: Media
             widget: list
@@ -54,45 +86,56 @@ collections:
               - name: image
                 label: Image
                 widget: image
+
               - name: fit
                 label: Fit
                 widget: select
                 required: false
                 options: [contain, cover, fill, none]
-              - name: media_x_pos
+
+              - name: x_pos
                 label: Horizontal position
                 widget: number
-                default: 2
+                default: 50
                 value_type: "int"
                 hint: 0 is left, 50 is center, 100 is right
-                min: 0
-                max: 40
                 step: 1
                 required: false
-              - name: media_y_pos
+
+              - name: y_pos
                 label: Vertical position
                 widget: number
-                default: 2
+                default: 50
                 value_type: "int"
                 hint: 0 is top, 50 is center, 100 is bottom
-                min: 0
-                max: 40
                 step: 1
                 required: false
+
               - name: background_color
                 label: Background color
                 required: false
                 widget: color
+
+              - name: alt
+                label: Alt
+                required: false
+                hint: Short description of image
+                widget: string
+
               - name: caption
                 label: Caption
                 required: false
+                hint: eg. photo credit
                 widget: markdown
+
           - name: image_presentation
             label: Image presentation
             hint: Only applies when using multiple images
             widget: select
-            require: false
+            required: false
             options: [carousel, grid]
+
           - name: parallax
             label: Parallax scroll
             widget: boolean
+            required: false

@@ -10,14 +10,20 @@ const PagesSchema = z.object({
       slug: z.string().optional(),
       linkable: z.boolean().optional(),
       size: z.enum(["auto", "full_screen"]).optional(),
+      extra_classes: z.string().optional(),
       content: z.string().optional(), // Markdown content
+      content_style: z.enum(["light", "dark"]).optional(),
+      content_background: z.boolean().optional(),
+      x_pos: z.enum(["left", "center", "right"]).optional(),
+      y_pos: z.enum(["top", "center", "bottom"]).optional(),
       images: z.array(
         z.object({
           image: z.string(),
           fit: z.enum(["contain", "cover", "fill", "none"]).optional(),
-          media_x_pos: z.number().optional(),
-          media_y_pos: z.number().optional(),
+          x_pos: z.number().optional(),
+          y_pos: z.number().optional(),
           background_color: z.string().optional(), // color hex or code
+          alt: z.string().optional(),
           caption: z.string().optional()
         })
       ).optional(),

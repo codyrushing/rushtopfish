@@ -1,0 +1,8 @@
+---
+import { getEntry } from 'astro:content';
+import PageComponent from "../components/Page.astro";
+import type { Page } from '../content/config';
+
+const page = await getEntry("pages", "index");
+---
+<PageComponent page={page} />

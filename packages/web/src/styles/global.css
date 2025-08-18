@@ -9,11 +9,19 @@
     "wdth" 100;
 }
 
+h1 {
+    @apply text-7xl;
+}
+
 .body-type, body {
   font-family: "Signika Negative", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 400;
   font-style: normal;
   @apply text-gray-700;
   @apply bg-stone-200;
+}
+
+.content-dark {
+  @apply text-stone-200;
 }

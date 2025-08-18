@@ -1,31 +1,47 @@
 ---
 import { Image } from "astro:assets";
 import type { Page } from "../content/config";
-import { renderMarkdown } from "../utils/render-utils";
+import { renderMarkdown } from "../utils/render";
 
 type Props = Page["sections"][number];
 
 const props = Astro.props;
 const slug = (props.slug ?? props.title).toLowerCase().replaceAll(/\W|\D/g, "");
 const markdown = props.content ?? "";
-const html = "<p>abc</p>";//await renderMarkdown(markdown);
+const html = await renderMarkdown(markdown);
 
-const wrapperClasses = ["p-4", "md:p-8", "relative"]
+const wrapperClasses : string[] = []
 if (props.size === "full_screen") {
   wrapperClasses.push("h-screen");
 }
+if (props.extra_classes) {
+  wrapperClasses.push(props.extra_classes);
+}
+
+const contentClasses = [];
+
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
 
 ---
-<section class={`page-section ${wrapperClasses.join(" ")}`} id={`section_${slug}`}>
-    <div class="content" set:html={html} />
-    { props.images?.length && <div class="images">
+<section class={`page-section p-4 md:p-8 relative ${wrapperClasses.join(" ")}`} id={`section_${slug}`}>
+    <div class="content z-1" class="" set:html={html} />
+    {
+    props.images?.length &&
+    <div class="images z-0">
       { props.images.map(props => {
         return <figure>
             <div class="absolute top-0 left-0 w-full bottom-0">
-                <Image src={images[`/${props.image}`]()} alt="abc" class="w-full h-full object-cover object-center" />
+                <Image
+                    src={images[`/${props.image}`]()}
+                    alt={props.alt ?? ""}
+                    style={{
+                      objectFit: props.fit ?? "none",
+                      objectPosition: `top ${props.y_pos ?? 0}% left ${props.x_pos ?? 0}%`
+                    }}
+                    class="w-full h-full" />
             </div>
         </figure>
       }) }
-    </div> }
+    </div>
+    }
 </section>
