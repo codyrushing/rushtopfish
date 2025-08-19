@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { Page } from "../content/config";
 import { renderMarkdown } from "../utils/render";
+import NewsletterSignup from "./NewsletterSignup.astro";
 
 type Props = Page["sections"][number];
 
@@ -23,10 +24,13 @@ const contentClasses = [];
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
 
 ---
-<section class={`page-section p-4 md:p-8 relative ${wrapperClasses.join(" ")}`} id={`section_${slug}`}>
-    <div class="content z-1" class="" set:html={html} />
+<section class={`page-section p-4 flex flex-col items-center justify-center md:p-8 relative overflow-x-hidden ${wrapperClasses.join(" ")}`} id={`section_${slug}`}>
+    <div class="content max-w-6xl relative z-1">
+        {!!props.newsletter_signup && <NewsletterSignup />}
+        {!!html && <div set:html={html} />}
+    </div>
     {
-    props.images?.length &&
+    !!props.images?.length &&
     <div class="images z-0">
       { props.images.map(props => {
         return <figure>

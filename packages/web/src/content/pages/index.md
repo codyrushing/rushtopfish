@@ -9,7 +9,7 @@ sections:
     slug: hero
     linkable: true
     parallax: false
-    content: "# rushtopfish"
+    content: ""
     images:
       - image: src/assets/images/img_9716.jpeg
         fit: cover
@@ -25,22 +25,49 @@ sections:
       <div class="mt-8 flex flex-col items-center gap-6 md:flex-row md:items-start">
 
 
-      <div class="max-w-xs aspect-square rounded-full overflow-hidden flex-1 ring-8 ring-gray-300">
+      <div class="max-w-xs aspect-square overflow-hidden">
 
 
-      ![Emily Rushing](src/assets/images/img_4819.jpeg "Emily Rushing")
+      ![Emily Rushing](src/assets/images/img_4819.jpeg)
 
 
       </div>
 
 
-      <div class="flex-1 text-start">
+      <div class="flex-1">
 
 
       ## Emily Rushing
 
 
-      is a cool lady
+      is super cool
+
+
+      </div>
+
+
+      </div>
+
+
+      <div class="mt-8 flex flex-col items-center gap-6 md:flex-row md:items-start">
+
+
+      <div class="max-w-xs overflow-hidden aspect-square">
+
+
+      ![](src/assets/images/img_9986-2.jpeg)
+
+
+      </div>
+
+
+      <div class="flex-1">
+
+
+      ## Carissa Topham Fisher
+
+
+      is also a cool person
 
 
       </div>
@@ -48,4 +75,16 @@ sections:
 
       </div>
     extra_classes: ""
+  - size: auto
+    title: newsletter_signup
+    linkable: true
+    content: ""
+    images:
+      - x_pos: 50
+        y_pos: 50
+        image: src/assets/images/adf-2025.jpg
+        fit: cover
+        alt: Austin Dance Festival 2025
+    newsletter_signup: true
+    extra_classes: bg-stone-400
 ---

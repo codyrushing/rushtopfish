@@ -47,9 +47,15 @@ collections:
             default: [auto]
             options: [auto, full_screen]
 
+          - name: newsletter_signup
+            label: Newsletter signup
+            widget: boolean
+            required: false
+
           - name: content
             label: Content
             widget: markdown
+            required: false
 
           - name: content_style
             label: Content style
@@ -78,6 +84,11 @@ collections:
             label: Extra classes
             widget: string
             required: false
+
+          - name: background_color
+            label: Background color
+            required: false
+            widget: color
 
           - name: images
             label: Media
@@ -110,11 +121,6 @@ collections:
                 hint: 0 is top, 50 is center, 100 is bottom
                 step: 1
                 required: false
-
-              - name: background_color
-                label: Background color
-                required: false
-                widget: color
 
               - name: alt
                 label: Alt

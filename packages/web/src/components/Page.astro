@@ -2,6 +2,9 @@
 import Layout from 'src/layouts/Layout.astro';
 import type { Page } from '../content/config';
 import PageSection from './PageSection.astro';
+import Image from "astro:assets";
+import RushTopFishLogo from './RushTopFishLogo.astro';
+import InstagramLogo from "../assets/icons/instagram.svg";
 
 export interface Props {
   page: {
@@ -11,7 +14,17 @@ export interface Props {
 const { page } = Astro.props;
 ---
 <Layout title={page.data.title}>
-  <div class="page">
-    { page.data.sections.map(section => <PageSection {...section} />) }
-  </div>
+    <header class="p-2 stick top-0 w-full z-100 bg-stone-200/85 flex justify-between items-center">
+        <RushTopFishLogo />
+    </header>
+	<main>
+        <div class="page">
+            { page.data.sections.map(section => <PageSection {...section} />) }
+        </div>
+	</main>
+	<footer class="bg-gray-800 sticky bottom-0 w-full z-100 px-2 py-1 flex items-center justify-center">
+	    <a target="_blank" href="https://www.instagram.com/rush.top.fish/">
+			<InstagramLogo class="w-7 h-7 fill-stone-200" />
+		</a>
+	</footer>
 </Layout>

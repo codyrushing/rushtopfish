@@ -10,7 +10,9 @@ const PagesSchema = z.object({
       slug: z.string().optional(),
       linkable: z.boolean().optional(),
       size: z.enum(["auto", "full_screen"]).optional(),
+      newsletter_signup: z.boolean().optional(),
       extra_classes: z.string().optional(),
+      background_color: z.string().optional(), // color hex or code
       content: z.string().optional(), // Markdown content
       content_style: z.enum(["light", "dark"]).optional(),
       content_background: z.boolean().optional(),
@@ -22,7 +24,6 @@ const PagesSchema = z.object({
           fit: z.enum(["contain", "cover", "fill", "none"]).optional(),
           x_pos: z.number().optional(),
           y_pos: z.number().optional(),
-          background_color: z.string().optional(), // color hex or code
           alt: z.string().optional(),
           caption: z.string().optional()
         })
