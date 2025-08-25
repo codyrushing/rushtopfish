@@ -10,7 +10,8 @@
 }
 
 h1 {
-    @apply text-7xl;
+    @apply text-5xl;
+    @apply lg:text-7xl
 }
 
 .body-type, body {
@@ -18,10 +19,15 @@ h1 {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  @apply text-gray-700;
+  @apply text-gray-600;
   @apply bg-stone-200;
 }
 
-.content-dark {
-  @apply text-stone-200;
+.richtext {
+  p + p,
+  p + ul,
+  ul + ul,
+  ol + ul {
+    @apply mt-2;
+  }
 }

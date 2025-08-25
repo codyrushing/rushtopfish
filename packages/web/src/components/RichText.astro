@@ -1,0 +1,14 @@
+---
+import { renderMarkdown } from 'src/utils/render';
+import type { ContentBlock } from "./PageSection.astro";
+
+type Props = {
+  markdown: string,
+  extraClasses?: string
+};
+
+const { markdown, extraClasses } = Astro.props;
+const html = markdown ? renderMarkdown(markdown) : null;
+
+---
+{!!html && <div class={`richtext ${extraClasses ?? ""}`} set:html={html} />}

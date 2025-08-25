@@ -14,17 +14,21 @@ export interface Props {
 const { page } = Astro.props;
 ---
 <Layout title={page.data.title}>
-    <header class="p-2 stick top-0 w-full z-100 bg-stone-200/85 flex justify-between items-center">
+    <header class="py-1 px-2 fixed top-1 left-1 right-1 z-100 bg-stone-200/90 flex justify-between items-center gap-2">
         <RushTopFishLogo />
+   	    <a target="_blank" href="https://www.instagram.com/rush.top.fish/">
+			<InstagramLogo class="w-6 h-6 fill-gray-700" />
+		</a>
     </header>
 	<main>
         <div class="page">
             { page.data.sections.map(section => <PageSection {...section} />) }
         </div>
 	</main>
-	<footer class="bg-gray-800 sticky bottom-0 w-full z-100 px-2 py-1 flex items-center justify-center">
-	    <a target="_blank" href="https://www.instagram.com/rush.top.fish/">
-			<InstagramLogo class="w-7 h-7 fill-stone-200" />
-		</a>
+	<footer class="bg-gray-800 content-dark text-xs w-full px-2 py-1 flex items-center">
+	    <p>Copyright &copy; RushTopFish 2025</p>
 	</footer>
 </Layout>
+<script>
+console.log('hello from page');
+</script>

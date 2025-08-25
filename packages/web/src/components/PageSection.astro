@@ -3,36 +3,85 @@ import { Image } from "astro:assets";
 import type { Page } from "../content/config";
 import { renderMarkdown } from "../utils/render";
 import NewsletterSignup from "./NewsletterSignup.astro";
+import RichText from "./RichText.astro";
+import AsideContent from "./AsideContent.astro";
 
 type Props = Page["sections"][number];
+export type ContentBlock = NonNullable<Page["sections"][number]["content_blocks"]>[number];
 
 const props = Astro.props;
-const slug = (props.slug ?? props.title).toLowerCase().replaceAll(/\W|\D/g, "");
-const markdown = props.content ?? "";
-const html = await renderMarkdown(markdown);
+const slug = (props.title).toLowerCase().replaceAll(/\W/g, "");
 
-const wrapperClasses : string[] = []
-if (props.size === "full_screen") {
-  wrapperClasses.push("h-screen");
-}
-if (props.extra_classes) {
-  wrapperClasses.push(props.extra_classes);
+function getWrapperClasses() : string[] {
+  const wrapperClasses : string[] = []
+  if (props.size === "full_screen") {
+    wrapperClasses.push("h-screen");
+  }
+  switch(props.x_pos) {
+    case "left":
+      wrapperClasses.push("items-start");
+      break;
+    case "right":
+      wrapperClasses.push("items-end");
+    case "center":
+    default:
+      wrapperClasses.push("items-center");
+      break;
+  }
+
+  wrapperClasses.push(props.extra_classes ?? "");
+  return wrapperClasses;
 }
 
-const contentClasses = [];
+function getContentClasses() : string[] {
+  const contentClasses: string[] = [];
+  if (props.content_style === "dark") {
+    contentClasses.push("content-dark");
+  }
+
+  if (props.content_background) {
+    contentClasses.push(...["p-4", "-mx-2", "rounded-sm"]);
+    contentClasses.push(props.content_style === "dark" ? "content-dark-bg" : "content-light-bg");
+  }
+
+  return contentClasses;
+}
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
 
+const wrapperStyle = {
+  ...(props.background_color ? {
+    backgroundColor: props.background_color
+  } : {})
+}
+
+const headingClasses: string[] = [];
+if (props.content_style === "dark") {
+  headingClasses.push("content-dark");
+}
+
 ---
-<section class={`page-section p-4 flex flex-col items-center justify-center md:p-8 relative overflow-x-hidden ${wrapperClasses.join(" ")}`} id={`section_${slug}`}>
-    <div class="content max-w-6xl relative z-1">
-        {!!props.newsletter_signup && <NewsletterSignup />}
-        {!!html && <div set:html={html} />}
+<section style={wrapperStyle} class={`page-section p-6 flex flex-col items-center justify-center md:p-8 relative overflow-x-hidden ${getWrapperClasses().join(" ")}`} id={`section_${slug}`}>
+  <div class="content max-w-5xl relative z-1">
+    { props.heading && <h1 class={`section-heading z-1 mb-4 ${headingClasses.filter(Boolean).join(" ")}`}>{props.heading}</h1> }
+    <div class={`flex flex-col gap-8 ${getContentClasses().filter(Boolean).join(" ")}`}>
+      {props.content_blocks?.map(block => {
+        switch(block.type) {
+          case "aside":
+            return <AsideContent block={block} />
+          case "rich_text":
+            return <RichText markdown={block.content} />
+          case "newsletter_signup":
+            return <NewsletterSignup />
+        }
+      })}
     </div>
-    {
+  </div>
+  {
     !!props.images?.length &&
     <div class="images z-0">
       { props.images.map(props => {
+        const captionHTML = props.caption ? renderMarkdown(props.caption) : null;
         return <figure>
             <div class="absolute top-0 left-0 w-full bottom-0">
                 <Image
@@ -43,9 +92,19 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{j
                       objectPosition: `top ${props.y_pos ?? 0}% left ${props.x_pos ?? 0}%`
                     }}
                     class="w-full h-full" />
+                { captionHTML && <div class="caption" set:html={captionHTML} />}
             </div>
         </figure>
       }) }
     </div>
-    }
+  }
 </section>
+<style>
+@reference "tailwindcss";
+.content-dark {
+  @apply text-stone-200;
+}
+.content-dark-bg {
+  @apply bg-gray-800/80;
+}
+</style>

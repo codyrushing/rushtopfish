@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import type { ContentBlock } from "./PageSection.astro";
+import RichText from "./RichText.astro";
+
+type Props = {
+  block: Extract<ContentBlock, {type: "aside"}>
+};
+
+const { block } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
+
+const imageClasses: string[] = [];
+if (block.image_aspect_ratio) {
+  imageClasses.push(block.image_aspect_ratio);
+}
+imageClasses.push(block.image_extra_classes ?? "");
+
+const { image_placement="before" } = block;
+const contentClasses: string[] = [];
+if (image_placement === "before") {
+  imageClasses.push("order-0");
+  contentClasses.push("order-1");
+}
+contentClasses.push(block.content_extra_classes ?? "");
+
+---
+<div class="aside flex flex-col gap-4 sm:gap-8 sm:flex-row">
+  { block.content && <RichText extraClasses={`flex-1 ${contentClasses.filter(Boolean).join(" ")}`} markdown={block.content!} /> }
+  { block.image && <div class={`image self-center flex-1 overflow-hidden sm:self-start ${imageClasses.filter(Boolean).join(" ")}`}>
+    <Image
+      class={`object-cover w-full h-full`}
+      style={{
+        objectPosition: `top ${block.y_pos ?? 0}% left ${block.x_pos ?? 0}%`
+      }}
+      src={images[`/${block.image}`]()}
+      alt={block.alt ?? ""} />
+  </div> }
+</div>

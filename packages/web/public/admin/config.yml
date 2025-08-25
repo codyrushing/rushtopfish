@@ -29,16 +29,22 @@ collections:
       - name: sections
         label: Page sections
         widget: list
-        slug: "{{fields.slug}}"
+        slug: "{{fields.name}}"
         summary: "{{fields.title}}"
         fields:
           - name: title
             label: Name
             widget: string
 
+          - name: heading
+            label: Heading text
+            widget: string
+            required: false
+
           - name: linkable
             label: Linkable?
             widget: boolean
+            required: false
 
           - name: size
             label: Size
@@ -47,20 +53,102 @@ collections:
             default: [auto]
             options: [auto, full_screen]
 
-          - name: newsletter_signup
-            label: Newsletter signup
-            widget: boolean
+          - name: content_blocks
+            label: Content blocks
+            widget: list
             required: false
+            types:
+              - label: Rich text
+                name: rich_text
+                widget: object
+                fields:
+                  - label: Rich text content
+                    name: content
+                    widget: markdown
 
-          - name: content
-            label: Content
-            widget: markdown
-            required: false
+              - label: Aside content
+                name: aside
+                hint: Add an image along side some content
+                widget: object
+                fields:
+                  - name: image
+                    label: Image
+                    widget: image
+                    required: false
+
+                  - name: alt
+                    label: Image Alt
+                    widget: string
+                    required: false
+
+                  - name: caption
+                    label: Caption
+                    widget: markdown
+                    required: false
+
+                  - name: image_extra_classes
+                    label: Image extra classes
+                    widget: string
+                    required: false
+
+                  - name: content
+                    label: Content
+                    widget: markdown
+                    required: false
+
+                  - name: content_extra_classes
+                    label: Content extra classes
+                    widget: string
+                    required: false
+
+                  - name: image_aspect_ratio
+                    label: Image aspect ratio
+                    widget: select
+                    options:
+                      - label: "None"
+                        value: "aspect-auto"
+                      - label: "1x1"
+                        value: "aspect-square"
+                      - label: "3x2"
+                        value: "aspect-3/2"
+                    required: false
+
+                  - name: x_pos
+                    label: Horizontal position
+                    widget: number
+                    default: 50
+                    value_type: "int"
+                    hint: 0 is left, 50 is center, 100 is right
+                    step: 1
+                    required: false
+
+                  - name: y_pos
+                    label: Vertical position
+                    widget: number
+                    default: 50
+                    value_type: "int"
+                    hint: 0 is top, 50 is center, 100 is bottom
+                    step: 1
+                    required: false
+
+              - label: Newsletter signup
+                name: newsletter_signup
+                widget: object
+                fields:
+                  - label: Show newsletter signup form
+                    name: show_signup_form
+                    widget: boolean
+                    required: false
 
           - name: content_style
             label: Content style
             widget: select
             options: [light, dark]
+            required: false
+
+          - name: content_background
+            label: Content background
+            widget: boolean
             required: false
 
           - name: x_pos
@@ -73,11 +161,6 @@ collections:
             label: Content vertical position
             widget: select
             options: [top, center, bottom]
-            required: false
-
-          - name: content_background
-            label: Content background
-            widget: boolean
             required: false
 
           - name: extra_classes
