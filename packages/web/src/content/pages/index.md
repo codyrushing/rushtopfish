@@ -5,10 +5,18 @@ description: Rushtopfish is a contemporary dance company based in Austin, Texas
   founded by Emily Rushing and Carissa Topham-Fisher
 sections:
   - size: full_screen
-    heading: ""
+    heading: VELVET SHINES HEAVY
     content_style: dark
     slug: hero
-    linkable: true
+    content_blocks:
+      - type: rich_text
+        content: |-
+          
+          * Oct 16 - 18
+          * East Side Performing Arts
+          * Tickets available soon
+    linkable: false
+    content_background: true
     parallax: false
     title: hero
     images:
@@ -19,7 +27,7 @@ sections:
     content: ""
   - size: auto
     linkable: true
-    title: about
+    title: About
     content_blocks:
       - type: rich_text
         content: >-
@@ -33,7 +41,7 @@ sections:
           Our work is a raw processing of our experiences as humans on this planet. Through movement we aim to explore and illuminate the full spectrum of what it means to be alive. We believe that dance isn’t only about performance but it’s about connection, and having shared moments of joy, sorrow, laughter and absurdity with our audiences, collaborators and community.
     heading: ABOUT
   - size: full_screen
-    title: class
+    title: Class
     linkable: true
     images:
       - x_pos: 50
@@ -58,7 +66,7 @@ sections:
     content_background: true
     heading: CLASS
   - size: auto
-    title: who_we_are
+    title: Who we are
     linkable: true
     extra_classes: ""
     content_blocks:
@@ -69,9 +77,13 @@ sections:
         y_pos: 38
         content_extra_classes: ""
         image_extra_classes: rounded-full max-w-sm
-        content: |-
+        content: >-
           ## Emily Rushing
-          She's cool, check her out
+
+
+          Emily Rushing (she/her) has spent her entire adult life putting down roots in the Austin creative performance community. She has
+           choreographed, collaborated, and performed with local artists and 
+          companies including Chaddick Dance Theater, Blue Lapis Light, Jennifer Sherburn, BLiPSWiTCH, Kathy Dunn Hamrick Dance Company, Ellen Bartel Collective, Lisa Nicks, Sharon Maroquín, Rosalyn Nasky and Carissa Topham Fisher.  She continues to find inspiration through continuing education in her movement practice, which has led her to train with Deborah Hay, Fabian Wixe, Anouk Van Dijk, and Anton Lachky.  Studying with David Zambrano, she completed 50 hours of Flying Low and Passing Through in 2018. That same year, she co-founded The Seam Project, a series of backyard shows for local performers and audiences alike. These radically-accessible shows ran for two seasons and hosted scores of artists. As [Jonelle Seitz wrote about her](https://www.markingit.org/all-issues/fall-2023) in 2023: “More than anything, Emily thrives in collaborating and finding ways to support others’ work.” She received a [nomination for Best Dancer in 2018 by the Austin Critics Table for her dancing in *Flicker.Burn.Repeat*](https://www.austinchronicle.com/daily/arts/2018-05-14/critics-name-cream-of-the-cultural-crop/)*.,* a collaborative piece with Carissa Fisher and Cody Rushing. In 2025 She completed an ISMETA recognized Somatic Movement Program with Ellen Bartel at Austin Community College, and is a fully certified STOTT Pilates instructor with over a decade of teaching experience. She is a co-producer for the Austin-based dance festival, [Dance Carousel](https://www.kut.org/life-arts/2023-10-06/i-think-its-just-fun-dance-carousel-returns-after-an-eleven-year-hiatus) (founded by Ellen Bartel in 2004) and teaches contemporary dance with Carissa Topham Fisher at East Side Performing Arts on Mondays from 3:30-5pm.
         type: aside
         image: src/assets/images/img_4819.jpeg
         image_shape: rounded_full
@@ -92,7 +104,7 @@ sections:
         image_aspect_ratio: aspect-square
     heading: Who we are
   - size: full_screen
-    title: newsletter_signup
+    title: Contact
     linkable: true
     content: ""
     images:

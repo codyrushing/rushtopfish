@@ -1,0 +1,187 @@
+---
+import { getEntry } from 'astro:content';
+import { slugify } from "../utils/string";
+import InstagramLogo from "../assets/icons/instagram.svg";
+import EnvelopeIcon from "../assets/icons/envelope.svg";
+import MenuIcon from "../assets/icons/menu.svg";
+import CloseCircle from "../assets/icons/close-circle.svg";
+import RushTopFishLogo from './RushTopFishLogo.astro';
+
+let navItems: { label: string, url: string, icon?: any }[] = []
+const homePage = await getEntry("pages", "index");
+if (homePage) {
+  const { sections } = homePage.data;
+  navItems = sections.filter(s => s.linkable).map(s => ({
+    label: s.title,
+    url: `/#${slugify(s.title)}`
+  }))
+}
+
+---
+<header class="site-header transition duration-150 p-3 sticky top-0 left-0 right-0 z-100 bg-stone-100/85 flex justify-between items-center gap-2">
+  <RushTopFishLogo />
+  <div class="header-nav gap-4 hidden sm:flex">
+    <nav class="flex gap-4">
+      {navItems.map(
+        item => <a class="hover:text-sky-700 transition duration-100" href={item.url}>{item.label}</a>
+      )}
+    </nav>
+    <div class="third-party">
+      <a target="_blank" class="hover:fill-sky-700 transition duration-100" href="https://www.instagram.com/rush.top.fish/">
+        <InstagramLogo class="w-6 h-6 fill-gray-700" />
+      </a>
+    </div>
+  </div>
+
+  <!-- dialog nav (mobile only) -->
+  <button data-modal-trigger class="sm:hidden outline-0 cursor-pointer">
+    <MenuIcon class="w-6 h-6" />
+  </button>
+  <dialog data-modal-dialog class="fixed flex-col justify-center bg-transparent max-h-none max-w-none h-screen w-screen top-0 bottom-0 p-8 overflow-y-auto backdrop:bg-gray-800/80">
+    <div data-dialog-panel class="panel flex flex-col overflow-y-auto relative z-1 p-4 gap-4 rounded-md size-auto bg-stone-200">
+      <!-- nav links -->
+      <nav class="flex flex-col px-4 divide-y-1 divide-stone-400">
+        {navItems.map(
+          item => <a class="hover:text-sky-700 py-4 text-lg w-full text-center transition duration-100" href={item.url}>{item.label}</a>
+        )}
+      </nav>
+      <!-- third party links -->
+      <div class="third-party flex gap-4 justify-center items-center">
+        <a target="_blank" class="transition duration-100" href="https://www.instagram.com/rush.top.fish/">
+          <InstagramLogo class="w-10 h-10 fill-gray-700 hover:fill-sky-700" />
+        </a>
+        <a class="transition duration-100" href="mailto:rushtopfish@gmail.com">
+          <EnvelopeIcon class="w-12 h-12 hover:text-sky-700" />
+        </a>
+      </div>
+      <!-- close button -->
+      <button data-modal-close class="cursor-pointer absolute top-0 right-0 hover:opacity-60">
+        <CloseCircle class="w-10 h-10 text-gray-700" />
+      </button>
+    </div>
+    <div data-dialog-backdrop class="z-0 absolute top-0 left-0 right-0 bottom-0"></div>
+  </dialog>
+</header>
+<style>
+</style>
+<script>
+const header: HTMLDivElement | null = document.querySelector(".site-header");
+
+function collapseHeader() {
+  if (header) {
+    header.style.transform = `translateY(-${header.offsetHeight}px)`;
+  }
+}
+
+function showHeader() {
+  if (header) {
+    header.style.transform = "translateY(0px)";
+  }
+}
+
+function dialogControls() {
+  const menuDialogTrigger = document.querySelector("button[data-modal-trigger]");
+  const menuDialog: HTMLDialogElement | null = document.querySelector("dialog[data-modal-dialog]");
+  const modalLinks = menuDialog?.querySelectorAll("a");
+  const closeButton = menuDialog?.querySelector("button[data-modal-close]");
+  const dialogPanel = menuDialog?.querySelector("[data-dialog-panel]");
+  const dialogBackdrop = menuDialog?.querySelector("[data-dialog-backdrop]");
+
+  // dialog controls
+  function openDialog() {
+    if (menuDialog) {
+      menuDialog.showModal();
+      menuDialog.style.display = "flex";
+    }
+  }
+  function closeDialog() {
+    menuDialog?.close();
+    if (menuDialog) {
+      menuDialog.style.display = "none";
+    }
+  }
+  if (menuDialog) {
+    menuDialogTrigger?.addEventListener("click", () => openDialog());
+    dialogPanel?.addEventListener("click", e => e.stopPropagation());
+    dialogBackdrop?.addEventListener("click", () => closeDialog());
+  }
+
+  for (const modalLink of modalLinks ?? []) {
+    modalLink.addEventListener("click", () => {
+      collapseHeader();
+      closeDialog();
+    });
+  }
+  closeButton?.addEventListener("click", () => closeDialog());
+}
+dialogControls();
+
+function scrollManagement() {
+  // scroll management
+  let currPos = window.scrollY;
+  let currVelocity: number;
+  const timeline : { pos: number, t: number }[] = [];
+  let velocityInterval : NodeJS.Timeout | undefined;
+  let debounceTimeout : NodeJS.Timeout | undefined;
+
+  function setVelocity(v:number) {
+    if (v < 0 && currVelocity >= 0) {
+      // scrolling up
+      showHeader();
+    }
+    else if (v > 0 && currVelocity <= 0) {
+      // scrolling down
+      collapseHeader();
+    }
+    currVelocity = v;
+  }
+
+  function onScroll() {
+    const pos:number = scrollY;
+
+    // add current position to timeline
+    timeline.unshift({ pos, t: Date.now() });
+    timeline.length = Math.min(timeline.length, 2);
+
+    if (!velocityInterval) {
+      velocityInterval = setInterval(
+        () => {
+          if (timeline.length < 2) {
+            setVelocity(0);
+          }
+          else {
+            const final = timeline[0];
+            const initial = timeline[timeline.length-1];
+            setVelocity((final.pos - initial.pos)/(Date.now() - initial.t) * 1000);
+          }
+
+          // remove an item from the timeline
+          // stop interval when none are left
+          timeline.shift();
+          if (!timeline.length) {
+            clearInterval(velocityInterval);
+            velocityInterval = undefined;
+          }
+        },
+        20
+      );
+    }
+
+    if (debounceTimeout) {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = undefined;
+    }
+
+    // throttled to update position
+    debounceTimeout = setTimeout(
+      () => {
+        currPos = pos;
+      },
+      200
+    );
+  }
+
+  window.addEventListener("scroll", onScroll);
+}
+scrollManagement();
+</script>

@@ -5,17 +5,18 @@ import { renderMarkdown } from "../utils/render";
 import NewsletterSignup from "./NewsletterSignup.astro";
 import RichText from "./RichText.astro";
 import AsideContent from "./AsideContent.astro";
+import { slugify } from "../utils/string";
 
 type Props = Page["sections"][number];
 export type ContentBlock = NonNullable<Page["sections"][number]["content_blocks"]>[number];
 
 const props = Astro.props;
-const slug = (props.title).toLowerCase().replaceAll(/\W/g, "");
+const slug = slugify(props.title);
 
 function getWrapperClasses() : string[] {
   const wrapperClasses : string[] = []
   if (props.size === "full_screen") {
-    wrapperClasses.push("h-screen");
+    wrapperClasses.push("min-h-screen");
   }
   switch(props.x_pos) {
     case "left":
@@ -36,7 +37,7 @@ function getWrapperClasses() : string[] {
 function getContentClasses() : string[] {
   const contentClasses: string[] = [];
   if (props.content_style === "dark") {
-    contentClasses.push("content-dark");
+    contentClasses.push("content-dark-mode");
   }
 
   if (props.content_background) {
@@ -57,11 +58,11 @@ const wrapperStyle = {
 
 const headingClasses: string[] = [];
 if (props.content_style === "dark") {
-  headingClasses.push("content-dark");
+  headingClasses.push("content-dark-mode");
 }
 
 ---
-<section style={wrapperStyle} class={`page-section p-6 flex flex-col items-center justify-center md:p-8 relative overflow-x-hidden ${getWrapperClasses().join(" ")}`} id={`section_${slug}`}>
+<section style={wrapperStyle} class={`bg-stone-300 page-section p-6 flex flex-col items-center justify-center md:p-8 relative overflow-x-hidden ${getWrapperClasses().join(" ")}`} id={slug}>
   <div class="content max-w-5xl relative z-1">
     { props.heading && <h1 class={`section-heading z-1 mb-4 ${headingClasses.filter(Boolean).join(" ")}`}>{props.heading}</h1> }
     <div class={`flex flex-col gap-8 ${getContentClasses().filter(Boolean).join(" ")}`}>
@@ -72,7 +73,7 @@ if (props.content_style === "dark") {
           case "rich_text":
             return <RichText markdown={block.content} />
           case "newsletter_signup":
-            return <NewsletterSignup />
+            return <NewsletterSignup client:visible />
         }
       })}
     </div>
@@ -101,7 +102,7 @@ if (props.content_style === "dark") {
 </section>
 <style>
 @reference "tailwindcss";
-.content-dark {
+.content-dark-mode {
   @apply text-stone-200;
 }
 .content-dark-bg {

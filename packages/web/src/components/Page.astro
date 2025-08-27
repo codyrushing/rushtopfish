@@ -2,9 +2,8 @@
 import Layout from 'src/layouts/Layout.astro';
 import type { Page } from '../content/config';
 import PageSection from './PageSection.astro';
-import Image from "astro:assets";
 import RushTopFishLogo from './RushTopFishLogo.astro';
-import InstagramLogo from "../assets/icons/instagram.svg";
+import Header from './Header.astro';
 
 export interface Props {
   page: {
@@ -12,14 +11,10 @@ export interface Props {
   }
 }
 const { page } = Astro.props;
+
 ---
 <Layout title={page.data.title}>
-    <header class="py-1 px-2 fixed top-1 left-1 right-1 z-100 bg-stone-200/90 flex justify-between items-center gap-2">
-        <RushTopFishLogo />
-   	    <a target="_blank" href="https://www.instagram.com/rush.top.fish/">
-			<InstagramLogo class="w-6 h-6 fill-gray-700" />
-		</a>
-    </header>
+  <Header />
 	<main>
         <div class="page">
             { page.data.sections.map(section => <PageSection {...section} />) }
@@ -30,5 +25,12 @@ const { page } = Astro.props;
 	</footer>
 </Layout>
 <script>
-console.log('hello from page');
+const externalLinks = document.querySelectorAll("a[href^=\"http\"]");;
+
+for (const externalLink of externalLinks ?? []) {
+  const href = externalLink.getAttribute("href");
+  if (!href?.startsWith(window.location.origin)) {
+    externalLink.setAttribute("target", "_blank");
+  }
+}
 </script>

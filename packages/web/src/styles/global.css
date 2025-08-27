@@ -20,7 +20,7 @@ h1 {
   font-weight: 400;
   font-style: normal;
   @apply text-gray-600;
-  @apply bg-stone-200;
+  @apply bg-stone-300;
 }
 
 .richtext {
@@ -30,4 +30,8 @@ h1 {
   ol + ul {
     @apply mt-2;
   }
+}
+
+main a {
+  @apply transition duration-100 text-sky-600 hover:text-sky-700 hover:underline;
 }
