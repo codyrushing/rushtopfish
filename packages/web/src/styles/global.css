@@ -1,17 +1,27 @@
 @import "tailwindcss";
 
 .heading-type, h1, h2, h3, h4, h5, h6 {
-  font-family: "Asap", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "BenchNine", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
 }
 
 h1 {
     @apply text-5xl;
     @apply lg:text-7xl
+}
+
+h2 {
+  @apply text-4xl;
+}
+
+h3 {
+  @apply text-3xl;
+}
+
+
+h4 {
+  @apply text-2xl;
 }
 
 .body-type, body {
@@ -32,6 +42,17 @@ h1 {
   }
 }
 
-main a {
+main a:not(.no-style) {
   @apply transition duration-100 text-sky-600 hover:text-sky-700 hover:underline;
+}
+
+/* default is light mode. put any dark mode overrides here */
+.content-dark-mode {
+  @apply text-stone-200;
+}
+.content-dark-bg {
+  @apply bg-gray-800/80;
+}
+.content-light-bg {
+  @apply bg-stone-200/80;
 }

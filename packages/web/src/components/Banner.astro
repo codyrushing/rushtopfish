@@ -1,0 +1,30 @@
+---
+import type { Page } from "../content/config";
+import { renderMarkdown } from "../utils/render";
+import CloseIcon from "../assets/icons/close.svg";
+
+type Props = Page["banner"];
+
+const props = Astro.props;
+
+const contentClasses: string[] = [];
+
+const contentHTML = props?.content ? renderMarkdown(props.content) : null;
+---
+<div data-banner class={`banner z-100 absolute w-full left-0 ${props?.extra_classes ?? ""}`}>
+  { contentHTML && <div class={`content max-w-5xl p-2 mx-auto ${contentClasses.join(" ")}`} set:html={contentHTML} /> }
+  <div data-banner-close class="absolute top-0 right-0 p-2 cursor-pointer hover:bg-white/20">
+    <CloseIcon class="w-4 h-4" />
+  </div>
+</div>
+<script>
+const bannerCloseSelection = document.querySelectorAll('[data-banner-close]');
+const bannerSelection = document.querySelectorAll('[data-banner]');
+for (const bannerClose of bannerCloseSelection) {
+  bannerClose.addEventListener("click", () => {
+    for (const banner of bannerSelection) {
+      (banner as HTMLDivElement).style.display = "none";
+    }
+  })
+}
+</script>

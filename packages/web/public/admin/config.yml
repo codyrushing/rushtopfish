@@ -26,6 +26,24 @@ collections:
         label: Description
         widget: text
 
+      - name: banner
+        label: Banner
+        widget: object
+        required: false
+        fields:
+          - name: hidden
+            label: Hidden
+            widget: boolean
+            required: false
+          - name: extra_classes
+            label: extra_classes
+            widget: string
+            required: false
+          - name: content
+            label: Content
+            widget: markdown
+            required: false
+
       - name: sections
         label: Page sections
         widget: list
@@ -65,6 +83,19 @@ collections:
                   - label: Rich text content
                     name: content
                     widget: markdown
+                  - label: Content style
+                    name: content_style
+                    widget: select
+                    options: ["light", "dark"]
+                    required: false
+                  - label: Content background
+                    name: content_background
+                    widget: boolean
+                    required: false
+                  - label: Extra classes
+                    name: extra_classes
+                    widget: string
+                    required: false
 
               - label: Aside content
                 name: aside

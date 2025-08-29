@@ -3,20 +3,23 @@ title: Home
 slug: index
 description: Rushtopfish is a contemporary dance company based in Austin, Texas
   founded by Emily Rushing and Carissa Topham-Fisher
+banner:
+  content: |
+    <h4 class="text-center text-base">Velvet Shines Heavy</h4>
+    <ul class="flex flex-wrap gap-4 items-center justify-center">
+      <li class="whitespace-nowrap font-bold">Oct 16-18 2025</li>
+      <li class="whitespace-nowrap">East Side Performing Arts</li>
+      <li class="whitespace-nowrap">Details coming soon!</li>
+    </ul>
+  extra_classes: bg-purple-800/60 content-dark-mode text-xs
 sections:
   - size: full_screen
-    heading: VELVET SHINES HEAVY
+    heading: ""
     content_style: dark
     slug: hero
-    content_blocks:
-      - type: rich_text
-        content: |-
-          
-          * Oct 16 - 18
-          * East Side Performing Arts
-          * Tickets available soon
+    content_blocks: []
     linkable: false
-    content_background: true
+    content_background: false
     parallax: false
     title: hero
     images:
@@ -57,7 +60,7 @@ sections:
           This exhilarating 90 min class explores dynamic movement that challenges strength and endurance. Using everything from quick, quirky, gestural and pedestrian to luscious, full body integrated movement. We explore boundaries both physically and artistically while keeping a playful approach. Plan to work on technique, rhythm and musicality, as well as elements of physical theatre. Come mash with us!
 
 
-          * __Time:__ Mondays 3:45-5:15 pm
+          * __Time:__ Mondays 3:30-5:00 pm
 
           * __Location:__ [East Side Performing Arts](https://www.eastsideperformingarts.com/)
 
@@ -70,6 +73,21 @@ sections:
     linkable: true
     extra_classes: ""
     content_blocks:
+      - type: aside
+        x_pos: 47
+        y_pos: 50
+        image: src/assets/images/img_9986-2.jpeg
+        caption: ""
+        image_extra_classes: rounded-full max-w-sm
+        content: >-
+          ## Carissa Topham Fisher
+
+
+          Carissa Topham Fisher is a rare Austin TX native who has been dancing professionally around town since graduating from college in 2010. She was hired right away by the Kathy Dunn Hamrick dance company who she still performs and collaborates with to this day. During her time with KDH she had the pleasure of performing numerous works by KDH herself as well as collaborating and choreographing in select shows where company members were asked to contribute. She is currently performing KDH work by new artistic director Alyson Dolan, and loving every second of being in the studio. In addition to KDH she has performed work by Darla Johnson, BLiPSWiTCH and has collaborated on a great many pieces with Emily Rushing. Alongside Emily Rushing she has choreographed work that has been seen at Austin Dance Festival, Dance Carousel, Small Plates Dance Festival, Austin Community College as well as producing SMORG a dance show where they created several small duets and invited other local dance makers to show work. Carissa continues to deepen her practice by teaching dance class for Austin dance lovers and professionals (RushTopFish-Kinetic Mashup) as well continues to take weekly class to keep both her body and creative mind fresh. Carissa's movement and teaching style draws on contemporary/release techniques with a focus on athleticism and musicality, and she values being curious and open to the senses in class, rehearsal and performance. She loves getting lost in the creative process and aims to create and perform in a way that leaves audience feeling viscerally connected to the work. In addition to choreographing dance works, Carissa is a painter (under the name CarLeigh Artworks), she creates sound scores for many of the RushTopFish works by layering sounds, textures and music, and is on the KDH costume team and helps design and shop for all KDH Dance costumes alongside Cara Cook.
+
+
+          Carissa holds a BFA in dance from The University of North Texas, a pilates teacher certification through STOTT Pilates. In addition to her career in dance she is also a dedicated Pilates teacher and mother.
+        image_aspect_ratio: aspect-square
       - image_placement: before
         caption: ""
         image_aspect_ratio: aspect-square
@@ -87,22 +105,7 @@ sections:
         type: aside
         image: src/assets/images/img_4819.jpeg
         image_shape: rounded_full
-      - type: aside
-        x_pos: 47
-        y_pos: 50
-        image: src/assets/images/img_9986-2.jpeg
-        caption: ""
-        image_extra_classes: rounded-full max-w-sm
-        content: >-
-          ## Carissa Topham Fisher
-
-
-          Carissa Topham Fisher is a rare Austin TX native who has been dancing professionally around town since graduating from college in 2010. She was hired right away by the Kathy Dunn Hamrick dance company who she still performs and collaborates with to this day. During her time with KDH she had the pleasure of performing numerous works by KDH herself as well as collaborating and choreographing in select shows where company members were asked to contribute. She is currently performing KDH work by new artistic director Alyson Dolan, and loving every second of being in the studio. In addition to KDH she has performed work by Darla Johnson, BLiPSWiTCH and has collaborated on a great many pieces with Emily Rushing. Alongside Emily Rushing she has choreographed work that has been seen at Austin Dance Festival, Dance Carousel, Small Plates Dance Festival, Austin Community College as well as producing SMORG a dance show where they created several small duets and invited other local dance makers to show work. Carissa continues to deepen her practice by teaching dance class for Austin dance lovers and professionals (RushTopFish-Kinetic Mashup) as well continues to take weekly class to keep both her body and creative mind fresh. Carissa's movement and teaching style draws on contemporary/release techniques with a focus on athleticism and musicality, and she values being curious and open to the senses in class, rehearsal and performance. She loves getting lost in the creative process and aims to create and perform in a way that leaves audience feeling viscerally connected to the work. In addition to choreographing dance works, Carissa is a painter (under the name CarLeigh Artworks), she creates sound scores for many of the RushTopFish works by layering sounds, textures and music, and is on the KDH costume team and helps design and shop for all KDH Dance costumes alongside Cara Cook.
-
-
-          Carissa holds a BFA in dance from The University of North Texas, a pilates teacher certification through STOTT Pilates. In addition to her career in dance she is also a dedicated Pilates teacher and mother.
-        image_aspect_ratio: aspect-square
-    heading: Who we are
+    heading: WHO WE ARE
   - size: full_screen
     title: Contact
     linkable: true
@@ -118,4 +121,14 @@ sections:
     content_blocks:
       - type: newsletter_signup
         show_signup_form: true
+      - type: rich_text
+        content_style: dark
+        content_background: true
+        content: >
+          <a href="mailto:rush.top.fish@gmail.com" class="text-center block
+          text-sm text-gray-800 hover:text-gray-600 no-style">
+
+          rush.top.fish@gmail.com
+
+          </a>
 ---

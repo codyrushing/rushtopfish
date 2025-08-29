@@ -4,6 +4,11 @@ const PagesSchema = z.object({
   title: z.string(),
   slug: z.string().optional(),
   description: z.string().optional(),
+  banner: z.object({
+    hidden: z.boolean().optional(),
+    extra_classes: z.string().optional(),
+    content: z.string().optional()
+  }).optional(),
   sections: z.array(
     z.object({
       title: z.string(),
@@ -14,7 +19,10 @@ const PagesSchema = z.object({
         z.discriminatedUnion("type", [
           z.object({
             type: z.literal("rich_text"),
-            content: z.string() // Markdown content
+            content: z.string(), // Markdown content
+            content_style: z.enum(["light", "dark"]).optional(),
+            content_background: z.boolean().optional(),
+            extra_classes: z.string().optional()
           }),
           z.object({
             type: z.literal("aside"),

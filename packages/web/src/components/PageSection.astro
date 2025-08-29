@@ -71,9 +71,19 @@ if (props.content_style === "dark") {
           case "aside":
             return <AsideContent block={block} />
           case "rich_text":
-            return <RichText markdown={block.content} />
+            // add some extra classes to rich text content block
+            const contentClasses = [block.extra_classes ?? ""];
+            const content_style = block.content_style ?? props.content_style;
+            if (content_style === "dark") {
+              contentClasses.push("content-dark");
+            }
+            if (block.content_background) {
+              contentClasses.push(...["p-4", "-mx-2", "rounded-sm"]);
+              contentClasses.push(props.content_style === "dark" ? "content-dark-bg" : "content-light-bg");
+            }
+            return <RichText extraClasses={contentClasses.filter(Boolean).join(" ")} markdown={block.content} />
           case "newsletter_signup":
-            return <NewsletterSignup client:visible />
+            return <NewsletterSignup />
         }
       })}
     </div>
@@ -102,10 +112,4 @@ if (props.content_style === "dark") {
 </section>
 <style>
 @reference "tailwindcss";
-.content-dark-mode {
-  @apply text-stone-200;
-}
-.content-dark-bg {
-  @apply bg-gray-800/80;
-}
 </style>

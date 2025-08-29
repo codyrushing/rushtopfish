@@ -2,6 +2,7 @@
 import Layout from 'src/layouts/Layout.astro';
 import type { Page } from '../content/config';
 import PageSection from './PageSection.astro';
+import Banner from './Banner.astro';
 import RushTopFishLogo from './RushTopFishLogo.astro';
 import Header from './Header.astro';
 
@@ -16,13 +17,11 @@ const { page } = Astro.props;
 <Layout title={page.data.title}>
   <Header />
 	<main>
-        <div class="page">
-            { page.data.sections.map(section => <PageSection {...section} />) }
-        </div>
+    <div class="page">
+      { (page.data.banner && !page.data.banner.hidden) && <Banner {...page.data.banner} /> }
+      { page.data.sections.map(section => <PageSection {...section} />) }
+    </div>
 	</main>
-	<footer class="bg-gray-800 content-dark text-xs w-full px-2 py-1 flex items-center">
-	    <p>Copyright &copy; RushTopFish 2025</p>
-	</footer>
 </Layout>
 <script>
 const externalLinks = document.querySelectorAll("a[href^=\"http\"]");;
