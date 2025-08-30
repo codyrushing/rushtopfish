@@ -25,5 +25,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
+  },
+  "devDependencies": {
+    "vite-plugin-imagemin": "^0.6.1"
   }
 }

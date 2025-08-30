@@ -1,9 +1,8 @@
 ---
 import '../styles/global.css';
-export interface Props {
-	title: string;
-}
-const { title } = Astro.props;
+import type { Page } from '../content/config';
+export type Props = Page;
+const { title, description }: Page = Astro.props;
 const isProduction = import.meta.env.PROD;
 ---
 
@@ -11,7 +10,7 @@ const isProduction = import.meta.env.PROD;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
+		<meta name="description" content={description ?? "Page description goes here"}>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
