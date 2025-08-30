@@ -1,5 +1,5 @@
 ---
-title: "RushTopFish :: Contemporary Dance in Austin, TX"
+title: "RushTopFish - Contemporary Dance in Austin, TX"
 slug: index
 description: RushTopFish is a contemporary dance company based in Austin, Texas
   founded by Emily Rushing and Carissa Topham Fisher
@@ -85,10 +85,10 @@ sections:
           #### Co-Director
 
 
-          Carissa Topham Fisher is a rare Austin TX native who has been dancing professionally around town since graduating from college in 2010. She was hired right away by the Kathy Dunn Hamrick dance company who she still performs and collaborates with to this day. During her time with KDH she had the pleasure of performing numerous works by KDH herself as well as collaborating and choreographing in select shows where company members were asked to contribute. She is currently performing KDH work by new artistic director Alyson Dolan, and loving every second of being in the studio. 
+          Carissa Topham Fisher is a rare Austin TX native who has been dancing professionally around town since graduating from college in 2010. She was hired right away by the Kathy Dunn Hamrick dance company who she still performs and collaborates with to this day. During her time with KDH she had the pleasure of performing numerous works by KDH herself as well as collaborating and choreographing in select shows where company members were asked to contribute. She is currently performing KDH work by new artistic director Alyson Dolan, and loving every second of being in the studio.
 
 
-          In addition to KDH she has performed work by Darla Johnson, BLiPSWiTCH and has collaborated on a great many pieces with Emily Rushing. Alongside Emily Rushing she has choreographed work that has been seen at Austin Dance Festival, Dance Carousel, Small Plates Dance Festival, Austin Community College as well as producing SMORG a dance show where they created several small duets and invited other local dance makers to show work. Carissa continues to deepen her practice by teaching dance class for Austin dance lovers and professionals (RushTopFish-Kinetic Mashup) as well continues to take weekly class to keep both her body and creative mind fresh. 
+          In addition to KDH she has performed work by Darla Johnson, BLiPSWiTCH and has collaborated on a great many pieces with Emily Rushing. Alongside Emily Rushing she has choreographed work that has been seen at Austin Dance Festival, Dance Carousel, Small Plates Dance Festival, Austin Community College as well as producing SMORG a dance show where they created several small duets and invited other local dance makers to show work. Carissa continues to deepen her practice by teaching dance class for Austin dance lovers and professionals (RushTopFish-Kinetic Mashup) as well continues to take weekly class to keep both her body and creative mind fresh.
 
 
           Carissa's movement and teaching style draws on contemporary/release techniques with a focus on athleticism and musicality, and she values being curious and open to the senses in class, rehearsal and performance. She loves getting lost in the creative process and aims to create and perform in a way that leaves audience feeling viscerally connected to the work. In addition to choreographing dance works, Carissa is a painter (under the name CarLeigh Artworks), she creates sound scores for many of the RushTopFish works by layering sounds, textures and music, and is on the KDH costume team and helps design and shop for all KDH Dance costumes alongside Cara Cook.
@@ -110,11 +110,11 @@ sections:
 
 
           Emily Rushing (she/her) has spent her entire adult life putting down roots in the Austin creative performance community. She has
-           choreographed, collaborated, and performed with local artists and 
+           choreographed, collaborated, and performed with local artists and
           companies including Chaddick Dance Theater, Blue Lapis Light, Jennifer Sherburn, BLiPSWiTCH, Kathy Dunn Hamrick Dance Company, Ellen Bartel Collective, Lisa Nicks, Sharon Maroquín, Rosalyn Nasky and Carissa Topham Fisher. 
 
 
-          She continues to find inspiration through continuing education in her movement practice, which has led her to train with Deborah Hay, Fabian Wixe, Anouk Van Dijk, and Anton Lachky.  Studying with David Zambrano, she completed 50 hours of Flying Low and Passing Through in 2018. That same year, she co-founded The Seam Project, a series of backyard shows for local performers and audiences alike. These radically-accessible shows ran for two seasons and hosted scores of artists. As [Jonelle Seitz wrote about her](https://www.markingit.org/all-issues/fall-2023) in 2023: “More than anything, Emily thrives in collaborating and finding ways to support others’ work.” She received a [nomination for Best Dancer in 2018 by the Austin Critics Table for her dancing in *Flicker.Burn.Repeat*](https://www.austinchronicle.com/daily/arts/2018-05-14/critics-name-cream-of-the-cultural-crop/)*.,* a collaborative piece with Carissa Fisher and Cody Rushing. 
+          She continues to find inspiration through continuing education in her movement practice, which has led her to train with Deborah Hay, Fabian Wixe, Anouk Van Dijk, and Anton Lachky.  Studying with David Zambrano, she completed 50 hours of Flying Low and Passing Through in 2018. That same year, she co-founded The Seam Project, a series of backyard shows for local performers and audiences alike. These radically-accessible shows ran for two seasons and hosted scores of artists. As [Jonelle Seitz wrote about her](https://www.markingit.org/all-issues/fall-2023) in 2023: “More than anything, Emily thrives in collaborating and finding ways to support others’ work.” She received a [nomination for Best Dancer in 2018 by the Austin Critics Table for her dancing in *Flicker.Burn.Repeat*](https://www.austinchronicle.com/daily/arts/2018-05-14/critics-name-cream-of-the-cultural-crop/)*.,* a collaborative piece with Carissa Fisher and Cody Rushing.
 
 
           In 2025 She completed an ISMETA recognized Somatic Movement Program with Ellen Bartel at Austin Community College, and is a fully certified STOTT Pilates instructor with over a decade of teaching experience. She is a co-producer for the Austin-based dance festival, [Dance Carousel](https://www.kut.org/life-arts/2023-10-06/i-think-its-just-fun-dance-carousel-returns-after-an-eleven-year-hiatus) (founded by Ellen Bartel in 2004) and teaches contemporary dance with Carissa Topham Fisher at East Side Performing Arts on Mondays from 3:30-5pm.
