@@ -1,0 +1,19 @@
+---
+import InstagramLogo from "../assets/icons/instagram.svg"
+import EnvelopeIcon from "../assets/icons/envelope.svg";
+---
+<div class="contact-links flex gap-4 justify-center items-center">
+  <a target="_blank" class="transition duration-100" href="https://www.instagram.com/rush.top.fish/">
+    <InstagramLogo class="w-12 h-12 transition duration-100" />
+  </a>
+  <a class="transition duration-100" href="mailto:rushtopfish@gmail.com">
+    <EnvelopeIcon class="w-12 h-12 transition duration-100" />
+  </a>
+</div>
+
+<style>
+@reference "tailwindcss";
+.contact-links a:hover svg {
+  @apply fill-sky-800;
+}
+</style>

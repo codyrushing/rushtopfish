@@ -27,10 +27,13 @@ h4 {
 .body-type, body {
   font-family: "Signika Negative", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   @apply text-gray-600;
   @apply bg-stone-300;
+  b, strong, font-bold {
+    font-weight: 600
+  }
 }
 
 .richtext {
@@ -49,6 +52,9 @@ main a:not(.no-style) {
 /* default is light mode. put any dark mode overrides here */
 .content-dark-mode {
   @apply text-stone-200;
+  a:not(.no-style) {
+    @apply text-sky-300 hover:text-sky-400;
+  }
 }
 .content-dark-bg {
   @apply bg-gray-800/80;

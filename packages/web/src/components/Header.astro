@@ -4,8 +4,9 @@ import { slugify } from "../utils/string";
 import InstagramLogo from "../assets/icons/instagram.svg";
 import EnvelopeIcon from "../assets/icons/envelope.svg";
 import MenuIcon from "../assets/icons/menu.svg";
-import CloseCircle from "../assets/icons/close-circle.svg";
 import RushTopFishLogo from './RushTopFishLogo.astro';
+import CloseIcon from "../assets/icons/close.svg";
+import ContactLinks from './ContactLinks.astro';
 
 let navItems: { label: string, url: string, icon?: any }[] = []
 const homePage = await getEntry("pages", "index");
@@ -19,18 +20,13 @@ if (homePage) {
 
 ---
 <header class="site-header transition duration-150 p-3 sticky top-0 left-0 right-0 z-100 bg-stone-200 flex justify-between items-center gap-2">
-  <RushTopFishLogo />
+  <a href="/" title="Home"><RushTopFishLogo /></a>
   <div class="header-nav gap-4 hidden sm:flex">
     <nav class="flex gap-4">
       {navItems.map(
         item => <a class="hover:text-sky-700 transition duration-100" href={item.url}>{item.label}</a>
       )}
     </nav>
-    <div class="third-party">
-      <a target="_blank" class="hover:fill-sky-700 transition duration-100" href="https://www.instagram.com/rush.top.fish/">
-        <InstagramLogo class="w-6 h-6 fill-gray-700" />
-      </a>
-    </div>
   </div>
 
   <!-- dialog nav (mobile only) -->
@@ -46,24 +42,15 @@ if (homePage) {
         )}
       </nav>
       <!-- third party links -->
-      <div class="third-party flex gap-4 justify-center items-center">
-        <a target="_blank" class="transition duration-100" href="https://www.instagram.com/rush.top.fish/">
-          <InstagramLogo class="w-10 h-10 fill-gray-700 hover:fill-sky-700" />
-        </a>
-        <a class="transition duration-100" href="mailto:rushtopfish@gmail.com">
-          <EnvelopeIcon class="w-12 h-12 hover:text-sky-700" />
-        </a>
-      </div>
+      <ContactLinks />
       <!-- close button -->
-      <button data-modal-close class="cursor-pointer absolute top-0 right-0 hover:opacity-60">
-        <CloseCircle class="w-10 h-10 text-gray-700" />
+      <button data-modal-close class="cursor-pointer absolute top-1 right-1 hover:opacity-60">
+        <CloseIcon class="w-6 h-6 text-gray-700" />
       </button>
     </div>
     <div data-dialog-backdrop class="z-0 absolute top-0 left-0 right-0 bottom-0"></div>
   </dialog>
 </header>
-<style>
-</style>
 <script>
 const header: HTMLDivElement | null = document.querySelector(".site-header");
 

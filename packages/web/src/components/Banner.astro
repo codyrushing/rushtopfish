@@ -11,7 +11,7 @@ const contentClasses: string[] = [];
 
 const contentHTML = props?.content ? renderMarkdown(props.content) : null;
 ---
-<div data-banner class={`banner z-100 absolute w-full left-0 ${props?.extra_classes ?? ""}`}>
+<div data-banner class={`banner z-1 absolute w-full left-0 ${props?.extra_classes ?? ""}`}>
   { contentHTML && <div class={`content max-w-5xl p-2 mx-auto ${contentClasses.join(" ")}`} set:html={contentHTML} /> }
   <div data-banner-close class="absolute top-0 right-0 p-2 cursor-pointer hover:bg-white/20">
     <CloseIcon class="w-4 h-4" />

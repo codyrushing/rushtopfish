@@ -5,6 +5,7 @@ import PageSection from './PageSection.astro';
 import Banner from './Banner.astro';
 import RushTopFishLogo from './RushTopFishLogo.astro';
 import Header from './Header.astro';
+import Footer from './Footer.astro';
 
 export interface Props {
   page: {
@@ -22,6 +23,7 @@ const { page } = Astro.props;
       { page.data.sections.map(section => <PageSection {...section} />) }
     </div>
 	</main>
+	<Footer />
 </Layout>
 <script>
 const externalLinks = document.querySelectorAll("a[href^=\"http\"]");;
