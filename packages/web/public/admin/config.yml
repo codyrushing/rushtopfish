@@ -1,5 +1,5 @@
-media_folder: src/assets/images # Location where files will be stored in the repo
-public_folder: src/assets/images # The src attribute for uploaded media
+media_folder: packages/web/src/assets/images # Location where files will be stored in the repo
+public_folder: packages/web/src/assets/images # The src attribute for uploaded media
 local_backend: true # set to true to allow decap cms to save file locally during development
 backend:
   name: git-gateway
@@ -10,7 +10,7 @@ collections:
   - name: page # Used in routes, e.g., /admin/collections/blog
     label: Page # Used in the UI
     # slug: "{{fields.slug}}"
-    folder: src/content/pages # The path to the folder where the documents are stored
+    folder: packages/web/src/content/pages # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     fields:
       - name: title
