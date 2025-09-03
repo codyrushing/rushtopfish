@@ -7,8 +7,8 @@ import type { Page } from '../content/config';
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
   return pages.map((page: Page) => ({
-    params: { slug: page.slug },
-    props: { page }, // Pass page as a prop for convenience
+      params: { slug: page.slug },
+      props: { page }, // Pass page as a prop for convenience
   }));
 }
 

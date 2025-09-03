@@ -1,5 +1,5 @@
 ---
-title: "RushTopFish - Contemporary Dance in Austin, TX"
+title: Home
 slug: index
 description: RushTopFish is a contemporary dance company based in Austin, Texas
   founded by Emily Rushing and Carissa Topham Fisher

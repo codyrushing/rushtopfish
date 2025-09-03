@@ -111,13 +111,16 @@ function scrollManagement() {
   let velocityInterval : NodeJS.Timeout | undefined;
   let debounceTimeout : NodeJS.Timeout | undefined;
 
+  let scrollingDown: boolean = false;
   function setVelocity(v:number) {
-    if (v < 0 && currVelocity >= 0) {
+    if (v < -50 && scrollingDown) {
       // scrolling up
+      scrollingDown = false;
       showHeader();
     }
-    else if (v > 0 && currVelocity <= 0) {
+    else if (v > 50 && !scrollingDown) {
       // scrolling down
+      scrollingDown = true;
       collapseHeader();
     }
     currVelocity = v;
@@ -166,6 +169,10 @@ function scrollManagement() {
       },
       200
     );
+
+    if (pos === 0) {
+      showHeader();
+    }
   }
 
   window.addEventListener("scroll", onScroll);

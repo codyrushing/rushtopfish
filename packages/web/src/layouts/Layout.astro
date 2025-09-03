@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import NetlifyIdentityRedirect from '../components/NetlifyIdentityRedirect.astro';
 import type { Page } from '../content/config';
 export type Props = Page;
 const { title, description }: Page = Astro.props;
@@ -14,10 +15,9 @@ const isProduction = import.meta.env.PROD;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{title} - RushTopFish - Contemporary Dance in Austin, TX</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Asap:wght@600&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet"> -->
         <link href="https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
 	</head>
 	<body>
@@ -33,5 +33,6 @@ const isProduction = import.meta.env.PROD;
         gtag('config', 'G-Z8M30R4JJK');
       </script>
       }
+      <NetlifyIdentityRedirect />
 	</body>
 </html>

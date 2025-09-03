@@ -1,0 +1,12 @@
+---
+/*
+This snippet is responsible for capturing any Netlify Identity tokens in the URL hash
+and redirecting them to the `/admin` route where the Netlify Identity stuff actually lives
+*/
+---
+<script>
+const [tokenKind] = window.location.hash.replaceAll(/^#/ig, "").split("=");
+if (["invite_token", "confirmation_token", "recovery_token", "email_change_token"].includes(tokenKind)) {
+  window.location.href = `/admin/#${window.location.hash}`;
+}
+</script>
