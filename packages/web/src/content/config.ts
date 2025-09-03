@@ -62,7 +62,7 @@ const PagesSchema = z.object({
       image_presentation: z.enum(["carousel", "grid"]).optional(),
       parallax: z.boolean().optional()
     })
-  )
+  ).optional()
 });
 
 export type Page = z.infer<typeof PagesSchema>;

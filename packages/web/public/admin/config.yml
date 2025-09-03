@@ -49,6 +49,7 @@ collections:
         widget: list
         slug: "{{fields.name}}"
         summary: "{{fields.title}}"
+        required: false
         fields:
           - name: title
             label: Name
@@ -207,6 +208,7 @@ collections:
           - name: images
             label: Media
             widget: list
+            required: false
             fields:
               - name: image
                 label: Image
