@@ -6,9 +6,10 @@ import NewsletterSignup from "./NewsletterSignup.astro";
 import RichText from "./RichText.astro";
 import AsideContent from "./AsideContent.astro";
 import { slugify } from "../utils/string";
+import { Picture } from "astro:assets";
 
-type Props = Page["sections"][number];
-export type ContentBlock = NonNullable<Page["sections"][number]["content_blocks"]>[number];
+type Props = NonNullable<Page["sections"]>[number];
+export type ContentBlock = NonNullable<NonNullable<Page["sections"]>[number]["content_blocks"]>[number];
 
 const props = Astro.props;
 const slug = slugify(props.title);
@@ -91,12 +92,15 @@ if (props.content_style === "dark") {
   {
     !!props.images?.length &&
     <div class="images z-0">
-      { props.images.map(props => {
+      { props.images.map(async props => {
         const captionHTML = props.caption ? renderMarkdown(props.caption) : null;
+        const image = (await images[`/${props.image}`]()).default;
         return <figure>
             <div class="absolute top-0 left-0 w-full bottom-0">
-                <Image
-                    src={images[`/${props.image}`]()}
+                <Picture
+                    src={image}
+                    width={image.width}
+                    height={image.height}
                     alt={props.alt ?? ""}
                     style={{
                       objectFit: props.fit ?? "none",

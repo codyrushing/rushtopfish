@@ -12,14 +12,16 @@ let navItems: { label: string, url: string, icon?: any }[] = []
 const homePage = await getEntry("pages", "index");
 if (homePage) {
   const { sections } = homePage.data;
-  navItems = sections.filter(s => s.linkable).map(s => ({
-    label: s.title,
-    url: `/#${slugify(s.title)}`
-  }))
+  if (Array.isArray(sections)) {
+    navItems = sections.filter(s => s.linkable).map(s => ({
+      label: s.title,
+      url: `/#${slugify(s.title)}`
+    }))
+  }
 }
 
 ---
-<header class="site-header transition duration-150 p-3 sticky top-0 left-0 right-0 z-100 bg-stone-200 flex justify-between items-center gap-2">
+<header data-site-header class="transition duration-150 p-3 sticky top-0 left-0 right-0 z-100 bg-stone-200 flex justify-between items-center gap-2">
   <a href="/" title="Home"><RushTopFishLogo /></a>
   <div class="header-nav gap-4 hidden sm:flex">
     <nav class="flex gap-4">
@@ -52,17 +54,25 @@ if (homePage) {
   </dialog>
 </header>
 <script>
-const header: HTMLDivElement | null = document.querySelector(".site-header");
+const header: HTMLDivElement | null = document.querySelector("[data-site-header]");
+const footer: HTMLDivElement | null = document.querySelector("[data-site-footer]");
 
-function collapseHeader() {
+function showFixedElements() {
   if (header) {
-    header.style.transform = `translateY(-${header.offsetHeight}px)`;
+    header.style.transform = "translateY(0px)";
+  }
+  if (footer) {
+    footer.style.transform = "translateY(0px)";
   }
 }
 
-function showHeader() {
+function hideFixedElements() {
   if (header) {
-    header.style.transform = "translateY(0px)";
+    header.style.transform = `translateY(-${header.offsetHeight}px)`;
+  }
+
+  if (footer) {
+    footer.style.transform = `translateY(${footer.offsetHeight}px)`;
   }
 }
 
@@ -95,7 +105,7 @@ function dialogControls() {
 
   for (const modalLink of modalLinks ?? []) {
     modalLink.addEventListener("click", () => {
-      collapseHeader();
+      hideFixedElements();
       closeDialog();
     });
   }
@@ -116,12 +126,12 @@ function scrollManagement() {
     if (v < -50 && scrollingDown) {
       // scrolling up
       scrollingDown = false;
-      showHeader();
+      showFixedElements();
     }
     else if (v > 50 && !scrollingDown) {
       // scrolling down
       scrollingDown = true;
-      collapseHeader();
+      hideFixedElements();
     }
     currVelocity = v;
   }
@@ -171,7 +181,7 @@ function scrollManagement() {
     );
 
     if (pos === 0) {
-      showHeader();
+      showFixedElements();
     }
   }
 

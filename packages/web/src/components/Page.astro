@@ -20,7 +20,7 @@ const { page } = Astro.props;
 	<main>
     <div class="page">
       { (page.data.banner && !page.data.banner.hidden) && <Banner {...page.data.banner} /> }
-      { page.data.sections.map(section => <PageSection {...section} />) }
+      { page.data.sections?.map(section => <PageSection {...section} />) }
     </div>
 	</main>
 	<Footer />
