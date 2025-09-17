@@ -45,7 +45,11 @@ h4 {
   }
 }
 
-main a:not(.no-style) {
+.button {
+  @apply p-1.5 inline-block font-bold rounded-sm no-underline text-stone-200 bg-gray-800 hover:bg-gray-950;
+}
+
+main a:not(.no-style,.button) {
   @apply transition duration-100 text-sky-600 hover:text-sky-700 hover:underline;
 }
 

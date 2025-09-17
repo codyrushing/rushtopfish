@@ -4,12 +4,19 @@ slug: index
 description: RushTopFish is a contemporary dance company based in Austin, Texas
   founded by Emily Rushing and Carissa Topham Fisher
 banner:
-  content: |
+  content: >
     <h4 class="text-center text-base">Velvet Shines Heavy</h4>
+
     <ul class="flex flex-wrap gap-x-4 items-center justify-center">
       <li class="whitespace-nowrap font-bold">Oct 16-18 2025</li>
       <li class="whitespace-nowrap">East Side Performing Arts</li>
-      <li class="whitespace-nowrap">Details coming soon!</li>
+      <li>
+        <a
+          class="button no-style" 
+          href="https://www.ticketleap.events/tickets/rushtopfishcom/velvet-shines-heavy-2136271330">
+          GET TICKETS
+        </a>
+      </li>
     </ul>
   extra_classes: bg-purple-800/60 content-dark-mode text-xs
 sections:
