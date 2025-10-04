@@ -144,4 +144,27 @@ sections:
     content_blocks:
       - type: newsletter_signup
         show_signup_form: true
+  - size: full_screen
+    title: Velvet Shines Heavy
+    images: []
+    content_blocks:
+      - type: aside
+        x_pos: 50
+        y_pos: 50
+        image: packages/web/src/assets/images/vsh-postcard-vertical-1-.jpg
+        alt: Velvet Shines Heavy
+        content: >-
+          RushTopFish Presents
+
+
+          ## Velvet Shines Heavy
+
+
+          ### Oct 16-18 at East Side Performing Arts
+
+           <a
+                class="button no-style" 
+                href="https://www.ticketleap.events/tickets/rushtopfishcom/velvet-shines-heavy-2136271330">
+                GET TICKETS
+           </a>
 ---
