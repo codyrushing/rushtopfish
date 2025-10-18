@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { ContentBlock } from "./PageSection.astro";
 import RichText from "./RichText.astro";
 import { Picture } from "astro:assets";
+import { getImageAsset } from "../utils/image";
 
 type Props = {
   block: Extract<ContentBlock, {type: "aside"}>
@@ -26,7 +27,7 @@ if (image_placement === "before") {
 }
 contentClasses.push(block.content_extra_classes ?? "");
 
-let imageAsset = block.image ? (await images[`/${block.image}`]()).default : undefined;
+const imageAsset = block.image ? await getImageAsset(block.image) : undefined;
 
 ---
 <div class="aside flex flex-col gap-4 sm:gap-8 sm:flex-row">
@@ -37,7 +38,7 @@ let imageAsset = block.image ? (await images[`/${block.image}`]()).default : und
       style={{
         objectPosition: `top ${block.y_pos ?? 0}% left ${block.x_pos ?? 0}%`
       }}
-      src={images[`/${block.image}`]()}
+      src={imageAsset}
       width={imageAsset.width}
       height={imageAsset.height}
       alt={block.alt ?? ""} />

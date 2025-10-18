@@ -18,6 +18,10 @@ if (homePage) {
       url: `/#${slugify(s.title)}`
     }))
   }
+  navItems.push({
+    label: "Donate",
+    url: "https://fundraising.fracturedatlas.org/velvet-shines-heavy"
+  })
 }
 
 ---
@@ -176,13 +180,19 @@ function scrollManagement() {
     debounceTimeout = setTimeout(
       () => {
         currPos = pos;
+
+        // if we're at the bottom or the top, show fixed elements
+        if (
+          (header && pos < header.offsetHeight) ||
+          (document.body.offsetHeight - pos <= window.innerHeight)
+        ) {
+          showFixedElements();
+        }
+
       },
       200
     );
 
-    if (pos === 0) {
-      showFixedElements();
-    }
   }
 
   window.addEventListener("scroll", onScroll);
