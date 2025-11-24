@@ -19,6 +19,7 @@ banner:
       </li>
     </ul>
   extra_classes: bg-purple-800/60 content-dark-mode text-xs
+  hidden: true
 sections:
   - size: full_screen
     heading: ""
