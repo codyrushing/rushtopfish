@@ -2,8 +2,7 @@
 import '../styles/global.css';
 import NetlifyIdentityRedirect from '../components/NetlifyIdentityRedirect.astro';
 import type { Page } from '../content/config';
-export type Props = Page;
-const { title, description }: Page = Astro.props;
+const { title, description } = Astro.props as Pick<Page, "title" | "description">;
 const isProduction = import.meta.env.PROD;
 ---
 
@@ -33,6 +32,6 @@ const isProduction = import.meta.env.PROD;
         gtag('config', 'G-Z8M30R4JJK');
       </script>
       }
-      <NetlifyIdentityRedirect />
+      <!-- <NetlifyIdentityRedirect /> -->
 	</body>
 </html>

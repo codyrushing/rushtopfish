@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^6.3.6",
-    "decap-cms-app": "^3.8.3",
     "marked": "^16.1.2"
   }
 }

@@ -9,10 +9,13 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@sveltia/cms": "^0.152.0",
     "@tailwindcss/vite": "^4.1.11",
+    "@types/js-yaml": "^4.0.9",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "astro": "^5.2.5",
+    "js-yaml": "^4.1.1",
     "marked": "^16.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -25,7 +28,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate:content-config": "bun run scripts/generate-content-config.ts"
   },
   "devDependencies": {
     "vite-plugin-imagemin": "^0.6.1"

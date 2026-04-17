@@ -1,7 +1,9 @@
 ---
 import { getEntry } from 'astro:content';
-import PageComponent from "../components/Page.astro";
+import Layout from 'src/layouts/Layout.astro';
 
-const page = await getEntry("pages", "index")!;
+const landingPage = await getEntry("landing_page", "landing")!;
 ---
-<PageComponent page={page} />
+<Layout title={landingPage.data.title} description={landingPage.data.description}>
+  home page y'all
+</Layout>
