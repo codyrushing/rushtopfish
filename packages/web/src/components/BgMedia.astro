@@ -1,0 +1,54 @@
+---
+import probe from "probe-image-size"
+import type { BgMedia } from "src/content/config";
+import { renderMarkdown } from "../utils/render";
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from "astro";
+const props = Astro.props;
+type Props = BgMedia;
+
+if (!props.media) {
+  return null;
+}
+const isRemote = /^https?\:/.test(props.media);
+
+async function getImageMetadata() {
+  const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
+  if (!images[props.media]) throw new Error(`"${props.media}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+  return (await images[props.media]()).default;
+};
+
+const imageMetadata = isRemote ? undefined : await getImageMetadata();
+
+async function getImageDimensions() {
+  if (imageMetadata) {
+    return { width: imageMetadata.width, height: imageMetadata.height }
+  }
+
+  const { width, height } = await probe(props.media);
+  return {
+    width,
+    height,
+  }
+}
+
+const { width, height } = await getImageDimensions();
+const captionHTML = props.caption ? renderMarkdown(props.caption) : null;
+
+const sharedImageProps = {
+  src: isRemote ? props.media : imageMetadata!,
+  width,
+  height,
+  alt: props.alt ?? "",
+  style: {
+    objectFit: props.fit ?? "none",
+    objectPosition: `top ${props.y_pos ?? 0}% left ${props.x_pos ?? 0}%`
+  },
+  class: "w-full h-full"
+}
+
+---
+<figure class="absolute top-0 left-0 w-full bottom-0">
+  {isRemote ? <img {...sharedImageProps} /> : <Image {...sharedImageProps} />}
+  { captionHTML && <figcaption class="caption" set:html={captionHTML} />}
+</figure>

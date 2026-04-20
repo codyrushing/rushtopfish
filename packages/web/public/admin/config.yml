@@ -244,7 +244,7 @@ _shared:
 # ======================= BEGIN CONFIGURATION ======================
 
 media_folder: packages/web/src/assets/images # Location where files will be stored in the repo
-public_folder: packages/web/src/assets/images # The src attribute for uploaded media
+public_folder: /src/assets/images # The src attribute for uploaded media
 backend:
   name: github
   repo: codyrushing/rushtopfish
@@ -276,7 +276,7 @@ collections:
 
   - name: pages_dance
     label: Dance pages
-    icon: sports_kabaddi
+    icon: news
     slug: "{{fields.slug}}"
     create: true # Allow users to create new documents in this collection
     files:
@@ -294,7 +294,7 @@ collections:
 
   - name: pages_pilates
     label: Pilates pages
-    icon: fitness_center
+    icon: news
     slug: "{{fields.slug}}"
     create: true # Allow users to create new documents in this collection
     files:

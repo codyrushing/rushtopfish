@@ -1,8 +1,7 @@
 ---
 import '../styles/global.css';
-import NetlifyIdentityRedirect from '../components/NetlifyIdentityRedirect.astro';
 import type { Page } from '../content/config';
-const { title, description } = Astro.props as Pick<Page, "title" | "description">;
+const { title, description, pageType } = Astro.props as Pick<Page, "title" | "description"> & { pageType: "dance" | "pilates" };
 const isProduction = import.meta.env.PROD;
 ---
 
@@ -17,9 +16,13 @@ const isProduction = import.meta.env.PROD;
 		<title>{title} - RushTopFish - Contemporary Dance in Austin, TX</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- DANCE -->
         <link href="https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+
+        <!-- PILATES -->
+        <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600&display=swap" rel="stylesheet">
 	</head>
-	<body>
+	<body class={pageType}>
 	    <slot />
 			{ isProduction &&
 			<!-- Google tag (gtag.js) -->
@@ -32,6 +35,5 @@ const isProduction = import.meta.env.PROD;
         gtag('config', 'G-Z8M30R4JJK');
       </script>
       }
-      <!-- <NetlifyIdentityRedirect /> -->
 	</body>
 </html>

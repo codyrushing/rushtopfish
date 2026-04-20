@@ -1,9 +1,45 @@
 ---
 import { getEntry } from 'astro:content';
 import Layout from 'src/layouts/Layout.astro';
+import BgMedia from 'src/components/BgMedia.astro';
+import DanceLogo from "../assets/branding/Tricolor plain.svg";
+import PilatesLogo from "../assets/branding/Goldfoil plain.svg";
 
 const landingPage = await getEntry("landing_page", "landing")!;
+
 ---
-<Layout title={landingPage.data.title} description={landingPage.data.description}>
-  home page y'all
+<Layout title={landingPage.data.title} description={landingPage.data.description} pageType="pilates">
+  <section id="split-hero-section" class="h-screen overflow-hidden flex landscape:flex-row portrait:flex-col">
+    <a href="/dance" class="block relative flex-1 flex-col content-start justify-items-end">
+      <div class="absolute flex items-start justify-items-end z-10 w-full p-2 md:p-4 top-0  bg-gray-200/75">
+        <DanceLogo class="w-1/2 min-w-[150px] max-w-[450px]" />
+        <h1 class="text-brand-red">Dance company</h1>
+      </div>
+      <BgMedia {...landingPage.data.dance_media} />
+    </a>
+    <a href="/pilates" class="block relative flex-1 flex-col content-start">
+      <div class="absolute flex justify-between items-center z-10 w-full p-2 md:p-4 bottom-0 bg-gray-700/50">
+        <PilatesLogo class="w-1/2 min-w-[150px] max-w-[450px]" />
+      </div>
+      <BgMedia {...landingPage.data.pilates_media} />
+    </a>
+  </section>
 </Layout>
+
+<style>
+  @reference "../styles/global.css";
+
+  #split-hero-section :global(a img) {
+    filter: grayscale(100%);
+    transition: filter 0.2s ease-in-out;
+  }
+  #split-hero-section :global(a:hover img),
+  #split-hero-section :global(a:active img) {
+    filter: grayscale(33%);
+  }
+  #split-hero-section h1 {
+    @apply md:text-lg;
+    @apply lg:text-2xl;
+    @apply xl:text-3xl;
+  }
+</style>
