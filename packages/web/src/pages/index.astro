@@ -7,19 +7,19 @@ import logoBlack from '../assets/logos/rtf-black.svg?url';
 import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
 ---
 
-<Layout title="RushTopFish">
+<Layout title="RushTopFish - a woman-owned movement organization">
   <header class="top" id="top">
-    <div class="eyebrow">A woman-owned movement organization</div>
+    <div class="eyebrow">One brand · two practices</div>
     <div class="wordmark">
       <img src={logoBlack} alt="RushTopFish" class="logo black" />
       <img src={logoTricolor} alt="" class="logo tri" aria-hidden="true" />
     </div>
-    <div class="fine">Est. 2024 · Austin, TX</div>
+    <div class="fine">A woman-owned movement organization</div>
   </header>
 
   <main class="stage" id="stage" data-hover="">
 
-    <a class="side pilates" href="/pilates">
+    <a class="panel pilates" href="/pilates">
       <Image
         src={pilatesPhoto}
         alt=""
@@ -31,13 +31,13 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
       <div class="wash" aria-hidden="true"></div>
       <div class="content">
         <span class="kicker">The studio</span>
-        <h1>Pilates<!--<br><em>&amp; somatics</em>--></h1>
-        <p>Reformer and mat classes taught by dancers, somatic therapists, and movement nerds who actually listen to your body.</p>
+        <h1>Pilates<br><em class="whitespace-nowrap">&amp; movement</em></h1>
+        <!-- <p>Reformer and mat classes taught by dancers, somatic therapists, and movement nerds who actually listen to your body.</p> -->
         <span class="enter">Enter the studio <span class="arrow">→</span></span>
       </div>
     </a>
 
-    <a class="side dance" href="/dance">
+    <a class="panel dance" href="/dance">
       <Image
         src={dancePhoto}
         alt=""
@@ -50,20 +50,16 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
       <div class="content">
         <span class="kicker">The company</span>
         <h1>Dance</h1>
-        <p>A non-profit company making original work for bodies and cities. Season one, 2026.</p>
-        <span class="enter">See the season <span class="arrow">→</span></span>
+        <!-- <p>A non-profit company making original work for bodies and cities. Season one, 2026.</p> -->
+        <span class="enter">Explore the company <span class="arrow">→</span></span>
       </div>
     </a>
-
   </main>
-
-  <div class="bottom">
-    <div class="l pulse">One brand · two practices</div>
-    <div class="r">rushtopfish.com</div>
-  </div>
 </Layout>
 
 <style>
+  @references "../styles/global.css";
+
   :global(html),
   :global(body) {
     height: 100%;
@@ -91,7 +87,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
     letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 600;
-    color: var(--color-gold);
+    color: var(--color-ink);
   }
 
   .top .wordmark {
@@ -136,7 +132,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
   .stage[data-hover="pilates"] { grid-template-columns: 1.35fr 0.65fr; }
   .stage[data-hover="dance"]   { grid-template-columns: 0.65fr 1.35fr; }
 
-  .side {
+  .panel {
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -145,7 +141,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
     padding: 64px;
     transition: padding var(--duration-slow) var(--ease-soft);
   }
-  .side, .side:hover, .side:focus, .side * { text-decoration: none; }
+  .panel, .panel:hover, .panel:focus, .panel * { text-decoration: none; }
 
   /* ── Photo (replaces CSS background-image) ───────────────────────────── */
   .photo {
@@ -164,7 +160,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
 
   .pilates .photo { filter: saturate(0.8) brightness(0.98); }
   .dance   .photo { filter: saturate(0.9) brightness(0.72); }
-  .side:hover .photo { transform: scale(1.08); filter: none; }
+  .panel:hover .photo { transform: scale(1.08); filter: none; }
 
   /* ── Color wash overlay ──────────────────────────────────────────────── */
   .wash {
@@ -231,7 +227,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
     display: inline-block;
     transition: width var(--duration-slow) var(--ease-soft);
   }
-  .side:hover .kicker::before { width: 48px; }
+  .panel:hover .kicker::before { width: 48px; }
 
   h1 {
     font-family: var(--font-display);
@@ -273,7 +269,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
     display: inline-block;
     transition: transform var(--duration-base) var(--ease-soft);
   }
-  .side:hover .arrow { transform: translateX(6px); }
+  .panel:hover .arrow { transform: translateX(6px); }
 
   /* ── Pilates palette ─────────────────────────────────────────────────── */
   .pilates              { color: var(--color-ink); }
@@ -292,59 +288,17 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
   .dance .enter       { background: var(--color-pink);  color: var(--color-ink); }
   .dance:hover .enter { background: var(--color-cream); color: var(--color-ink); }
 
-  /* ── Bottom strip ────────────────────────────────────────────────────── */
-  .bottom {
-    position: fixed;
-    left: 0; right: 0; bottom: 0;
-    z-index: 20;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 32px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    pointer-events: none;
-  }
-  .bottom .l { color: var(--color-smoke); }
-  .bottom .r { color: var(--color-sand); opacity: 0.72; }
-
-  .pulse {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .pulse::before {
-    content: "";
-    width: 6px; height: 6px;
-    border-radius: 999px;
-    background: var(--color-gold);
-    display: inline-block;
-    animation: pulse 2.4s var(--ease-soft) infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50%       { opacity: 1;   transform: scale(1.4); }
-  }
-
   /* ── Mobile ──────────────────────────────────────────────────────────── */
-  @media (max-width: 820px) {
+  @media (max-aspect-ratio: 1/1) {
     :global(html),
     :global(body) { overflow: auto; }
 
     .stage { grid-template-columns: 1fr; height: auto; }
     .stage[data-hover] { grid-template-columns: 1fr; }
-    .side { min-height: 60vh; padding: 80px 28px 48px; }
+    .panel { height: 50vh; padding: 80px 28px 48px; }
     h1 { font-size: clamp(44px, 12vw, 80px); }
-    .seam, .seam-badge { display: none; }
     .top { padding: 16px 20px; grid-template-columns: 1fr; }
     .top .eyebrow, .top .fine { display: none; }
-    .bottom {
-      position: static;
-      padding: 20px 20px 28px;
-      background: var(--color-ink);
-      color: var(--color-cream);
-    }
   }
 </style>
 
@@ -357,7 +311,7 @@ import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
     topEl.classList.toggle('show-tri', !!name);
   }
 
-  document.querySelectorAll<HTMLElement>('.side').forEach(side => {
+  document.querySelectorAll<HTMLElement>('.panel').forEach(side => {
     const name = side.classList.contains('pilates') ? 'pilates' : 'dance';
     side.addEventListener('mouseenter', () => setHover(name));
     side.addEventListener('mouseleave', () => setHover(''));
