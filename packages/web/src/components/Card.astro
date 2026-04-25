@@ -1,0 +1,103 @@
+---
+interface Tag {
+  label: string;
+  solid?: boolean;
+}
+
+interface Props {
+  title: string;
+  eyebrow?: string;
+  meta?: string;
+  image?: string;
+  imageAlt?: string;
+  tags?: Tag[];
+}
+
+const { title, eyebrow, meta, image, imageAlt = '', tags } = Astro.props;
+---
+
+<article class="card">
+  {image && (
+    <div class="img" role="img" aria-label={imageAlt} style={`background-image: url('${image}')`} />
+  )}
+  <div class="body">
+    {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+    <div class="title">{title}</div>
+    {meta && <div class="meta">{meta}</div>}
+    {tags && tags.length > 0 && (
+      <div class="tag-row">
+        {tags.map(tag => (
+          <span class:list={['tag', { solid: tag.solid }]}>{tag.label}</span>
+        ))}
+      </div>
+    )}
+    <slot />
+  </div>
+</article>
+
+<style>
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    transition:
+      box-shadow var(--duration-base) var(--ease-soft),
+      transform var(--duration-base) var(--ease-soft);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .img {
+    aspect-ratio: 16 / 11;
+    background: center / cover no-repeat;
+    background-color: var(--color-bone);
+  }
+
+  .body {
+    padding: 16px 16px 18px;
+    border-top: 1.5px solid var(--color-ink);
+  }
+
+  .eyebrow {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--color-smoke);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1.1;
+    margin: 4px 0 6px;
+  }
+
+  .meta {
+    font-size: 12.5px;
+    color: var(--color-smoke);
+  }
+
+  .tag-row {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--color-ink);
+    border-radius: 999px;
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+  .tag.solid {
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+</style>

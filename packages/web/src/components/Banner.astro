@@ -1,30 +1,151 @@
 ---
-import type { Page } from "../content/config";
-import { renderMarkdown } from "../utils/render";
-import CloseIcon from "../assets/icons/close.svg";
-
-type Props = Page["banner"];
-
-const props = Astro.props;
-
-const contentClasses: string[] = [];
-
-const contentHTML = props?.content ? renderMarkdown(props.content) : null;
----
-<div data-banner class={`banner z-1 absolute w-full left-0 ${props?.extra_classes ?? ""}`}>
-  { contentHTML && <div class={`content max-w-5xl p-2 mx-auto ${contentClasses.join(" ")}`} set:html={contentHTML} /> }
-  <div data-banner-close class="absolute top-0 right-0 p-2 cursor-pointer hover:bg-white/20">
-    <CloseIcon class="w-4 h-4" />
-  </div>
-</div>
-<script>
-const bannerCloseSelection = document.querySelectorAll('[data-banner-close]');
-const bannerSelection = document.querySelectorAll('[data-banner]');
-for (const bannerClose of bannerCloseSelection) {
-  bannerClose.addEventListener("click", () => {
-    for (const banner of bannerSelection) {
-      (banner as HTMLDivElement).style.display = "none";
-    }
-  })
+interface Props {
+  variant?: 'ink' | 'event' | 'alert' | 'studio' | 'dance';
+  kicker?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  dismissible?: boolean;
 }
+
+const {
+  variant = 'ink',
+  kicker,
+  ctaText,
+  ctaHref = '#',
+  dismissible = true,
+} = Astro.props;
+
+const isAlert = variant === 'alert';
+const variantClass = variant !== 'ink' ? variant : '';
+---
+
+<div class:list={['rtf-banner', variantClass]}>
+  {isAlert && <span class="dot" />}
+  {!isAlert && kicker && <span class="kicker">{kicker}</span>}
+  <span class="msg"><slot /></span>
+  {ctaText && <a href={ctaHref}>{ctaText}</a>}
+  {dismissible && <button class="close" aria-label="Dismiss">✕</button>}
+</div>
+
+<style>
+  .rtf-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.4;
+    background: var(--color-ink);
+    color: var(--color-cream);
+    border-bottom: 1.5px solid var(--color-ink);
+  }
+
+  .rtf-banner .kicker {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    border-radius: 999px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .rtf-banner .msg { flex: 1; }
+
+  .rtf-banner .msg em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: color-mix(in oklab, currentColor 85%, transparent);
+  }
+
+  .rtf-banner a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    font-weight: 600;
+    font-size: 13px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .rtf-banner a:hover { text-decoration-thickness: 2px; }
+
+  .rtf-banner .close {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0.6;
+    padding: 4px 6px;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+  .rtf-banner .close:hover { opacity: 1; }
+
+  /* Gold — event */
+  .rtf-banner.event {
+    background: var(--color-gold);
+    color: var(--color-ink);
+    border-bottom-color: var(--color-ink);
+  }
+  .rtf-banner.event .kicker {
+    background: var(--color-ink);
+    color: var(--color-gold);
+  }
+
+  /* Orange — alert */
+  .rtf-banner.alert {
+    background: var(--color-orange);
+    color: #fff;
+    border-bottom-color: color-mix(in oklch, var(--color-orange) 70%, black);
+  }
+  .rtf-banner.alert .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #fff;
+    flex-shrink: 0;
+    animation: rtf-banner-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes rtf-banner-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50%       { opacity: 1;   transform: scale(1.25); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rtf-banner .dot { animation: none; opacity: 1; }
+  }
+
+  /* Teal — studio news */
+  .rtf-banner.studio {
+    background: var(--color-teal);
+    color: var(--color-ink);
+    border-bottom-color: var(--color-ink);
+  }
+  .rtf-banner.studio .kicker {
+    background: var(--color-ink);
+    color: var(--color-teal);
+  }
+
+  /* Pink — dance */
+  .rtf-banner.dance {
+    background: var(--color-pink);
+    color: var(--color-ink);
+    border-bottom-color: var(--color-ink);
+  }
+  .rtf-banner.dance .kicker {
+    background: var(--color-ink);
+    color: var(--color-pink);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.rtf-banner .close').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.rtf-banner')?.remove());
+  });
 </script>

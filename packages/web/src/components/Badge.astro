@@ -1,0 +1,29 @@
+---
+interface Props {
+  variant?: 'ink' | 'outline' | 'teal' | 'orange' | 'gold' | 'pink';
+}
+
+const { variant = 'ink' } = Astro.props;
+---
+
+<span class:list={['tag', `t-${variant}`]}><slot /></span>
+
+<style>
+  .tag {
+    display: inline-block;
+    font-size: 11.5px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: 1px solid transparent;
+    line-height: 1.4;
+  }
+
+  .t-ink     { background: var(--color-ink);    color: var(--color-cream); }
+  .t-outline { border-color: var(--color-ink);  color: var(--color-ink);   }
+  .t-teal    { background: var(--color-teal);   color: var(--color-ink);   }
+  .t-orange  { background: var(--color-orange); color: #fff;               }
+  .t-gold    { background: var(--color-gold);   color: var(--color-ink);   }
+  .t-pink    { background: var(--color-pink);   color: var(--color-ink);   }
+</style>
