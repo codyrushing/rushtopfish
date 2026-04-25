@@ -1,0 +1,27 @@
+---
+
+---
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>Slow flow reformer <span class="dot"></span> Somatic mat <span class="dot"></span> Reformer fundamentals <span class="dot"></span> Deep stretch <span class="dot"></span> Mat for movers <span class="dot"></span> Private sessions <span class="dot"></span></span>
+    <span>Slow flow reformer <span class="dot"></span> Somatic mat <span class="dot"></span> Reformer fundamentals <span class="dot"></span> Deep stretch <span class="dot"></span> Mat for movers <span class="dot"></span> Private sessions <span class="dot"></span></span>
+  </div>
+</div>
+<style>
+  .ticker {
+    overflow: hidden;
+    border-top: 1.5px solid var(--color-ink);
+    border-bottom: 1.5px solid var(--color-ink);
+    background: var(--color-cream);
+  }
+  .ticker .track {
+    display: flex; gap: 48px; padding: 14px 0;
+    animation: ticker-scroll 38s linear infinite;
+    font-family: var(--font-display); font-size: 22px;
+    font-variation-settings: "opsz" 100, "SOFT" 80;
+    white-space: nowrap;
+  }
+  .ticker .track span { display: inline-flex; align-items: center; gap: 48px; }
+  .ticker .track .dot { width: 6px; height: 6px; border-radius: 999px; background: var(--color-orange); display: inline-block; }
+  @keyframes ticker-scroll { to { transform: translateX(-50%); } }
+</style>

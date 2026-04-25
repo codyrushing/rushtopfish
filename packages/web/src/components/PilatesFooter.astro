@@ -1,0 +1,57 @@
+---
+import pilatesLogo from '../assets/logos/rtf-pilates.svg?url';
+---
+<footer class="pilates-footer" id="contact">
+<div class="container grid">
+  <div>
+    <img src={pilatesLogo} alt="" class="brand-logo">
+    <p class="brand-desc">A woman-owned studio. We teach reformer and mat pilates, and we pay attention.</p>
+  </div>
+  <div>
+    <h5>Visit</h5>
+    <ul>
+      <li>2201 East Cesar</li>
+      <li>Austin, TX</li>
+      <li>Tue–Sat</li>
+    </ul>
+  </div>
+  <div>
+    <h5>Classes</h5>
+    <ul>
+      <li><a href="#">Reformer</a></li>
+      <li><a href="#">Mat</a></li>
+      <li><a href="#">Privates</a></li>
+      <li><a href="#">Packs &amp; memberships</a></li>
+    </ul>
+  </div>
+  <div>
+    <h5>Studio</h5>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Teachers</a></li>
+      <li><a href="/dance">Dance company ↗</a></li>
+      <li><a href="https://instagram.com/rushtopfish" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </div>
+</div>
+<div class="container fine">
+  <div>© 2026 RushTopFish</div>
+  <div>Woman-owned · Austin, Texas</div>
+</div>
+</footer>
+<style>
+/* Footer */
+footer.pilates-footer { background: var(--color-ink); color: var(--color-cream); padding: 80px 0 40px; }
+footer.pilates-footer .grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+footer.pilates-footer .brand-logo { height: 32px; display: block; filter: invert(1); }
+footer.pilates-footer .brand-desc { margin-top: 20px; max-width: 36ch; color: var(--color-sand); font-size: 14px; line-height: 1.6; }
+footer.pilates-footer h5 { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-sand); margin: 0 0 14px; }
+footer.pilates-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+footer.pilates-footer a { color: var(--color-cream); text-decoration: none; }
+footer.pilates-footer a:hover { text-decoration: underline; text-underline-offset: 0.35em; color: var(--color-cream); }
+footer.pilates-footer .fine {
+  margin-top: 60px; padding-top: 22px;
+  border-top: 1px solid color-mix(in oklab, var(--color-cream) 20%, transparent);
+  display: flex; justify-content: space-between; font-size: 12px; color: var(--color-sand);
+}
+</style>

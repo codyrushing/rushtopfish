@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PilatesNav from '../../components/PilatesNav.astro';
+import PilatesHero from '../../components/PilatesHero.astro';
+import PilatesFooter from '../../components/PilatesFooter.astro';
+import Card from '../../components/Card.astro';
+import '../../styles/pilates.css';
+
+import pilatesMatPhoto from '../../assets/photos/pilates-mat-stretch-sunlit.jpg';
+import pilatesReformerPhoto from '../../assets/photos/pilates-reformer-class.jpg';
+import pilatesAdjustmentPhoto from '../../assets/photos/pilates-adjustment.jpg';
+---
+
+<Layout title="RushTopFish Pilates — Reformer · Mat · Somatic" theme="pilates" pageType="pilates">
+
+  <PilatesNav />
+
+  <PilatesHero
+    eyebrow="Reformer · Mat · Somatic"
+    lede="Pilates taught by dancers, somatic therapists, and movement nerds who actually listen to your body."
+    image={pilatesMatPhoto}
+    imageAlt="Studio mat work in morning light"
+    caption="Morning mat class · Studio A"
+  >
+    <Fragment slot="heading">Move <em>with</em> us.</Fragment>
+  </PilatesHero>
+
+  <section class="container" id="classes">
+    <div class="sect-head">
+      <div>
+        <span class="eyebrow">This week</span>
+        <h2>Classes on offer</h2>
+      </div>
+      <p>Small group sizes, mat and reformer, all levels welcome. Drop in or book a ten-class pack.</p>
+    </div>
+    <div class="class-grid">
+      <Card
+        eyebrow="Tue · 9:30am"
+        title="Slow flow reformer"
+        meta="55 min · All levels · with Marin"
+        image={pilatesReformerPhoto}
+        imageAlt="Slow flow reformer class"
+        tags={[{ label: 'Reformer', solid: true }, { label: '3 spots' }]}
+        data-book="Slow flow reformer"
+      />
+      <Card
+        eyebrow="Wed · 6:00pm"
+        title="Somatic mat"
+        meta="55 min · All levels · with Sita"
+        image={pilatesMatPhoto}
+        imageAlt="Somatic mat class"
+        tags={[{ label: 'Mat', solid: true }, { label: 'Open' }]}
+        data-book="Somatic mat"
+      />
+      <Card
+        eyebrow="Thu · 7:15am"
+        title="Reformer fundamentals"
+        meta="55 min · Beginner · with Elena"
+        image={pilatesAdjustmentPhoto}
+        imageAlt="Reformer fundamentals class"
+        tags={[{ label: 'Reformer', solid: true }, { label: '1 spot', orange: true }]}
+        data-book="Reformer fundamentals"
+      />
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="container">
+      <blockquote>"You don't have to earn your rest. Arrive. Breathe. Begin."</blockquote>
+      <cite>— Marin, studio lead</cite>
+    </div>
+  </section>
+
+  <PilatesFooter />
+
+</Layout>

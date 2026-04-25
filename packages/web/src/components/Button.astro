@@ -6,6 +6,7 @@ interface Props {
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   tag?: string;
+  [key: string]: unknown;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   disabled = false,
   type = 'button',
   tag,
+  ...rest
 } = Astro.props;
 
 const classes = ['btn', `btn-${variant}`, size !== 'md' ? `btn-${size}` : ''];
@@ -22,11 +24,11 @@ const Tag = tag;
 ---
 
 {Tag ? (
-  <Tag class:list={classes}><slot /></Tag>
+  <Tag class:list={classes} {...rest}><slot /></Tag>
 ) : href ? (
-  <a href={href} class:list={classes}><slot /></a>
+  <a href={href} class:list={classes} {...rest}><slot /></a>
 ) : (
-  <button {type} disabled={disabled || undefined} aria-disabled={disabled || undefined} class:list={classes}><slot /></button>
+  <button {type} disabled={disabled || undefined} aria-disabled={disabled || undefined} class:list={classes} {...rest}><slot /></button>
 )}
 
 <style>

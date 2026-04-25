@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+
+import pilatesPortraitPhoto from '../../assets/photos/pilates-portrait-smile.jpg';
+import dancePortraitPhoto from '../../assets/photos/dance-portrait-red-jacket.jpg';
+import pilates15Photo from '../../assets/photos/pilates-15.jpg';
+---
+<section class="container" id="teachers">
+  <div class="sect-head">
+    <div>
+      <span class="eyebrow">Who's teaching</span>
+      <h2>Real teachers, real bodies.</h2>
+    </div>
+    <p>Our teachers are dancers, somatic therapists, and long-time movers. Every class is personal because they actually watch.</p>
+  </div>
+  <div class="teachers-grid">
+    <div class="teacher">
+      <div class="teacher-photo">
+        <Image src={pilatesPortraitPhoto} alt="Marin, studio lead" widths={[400, 600]} sizes="(max-width: 860px) 100vw, 33vw" />
+      </div>
+      <div class="name">Marin</div>
+      <div class="role">Reformer · Somatic · Studio lead</div>
+    </div>
+    <div class="teacher">
+      <div class="teacher-photo">
+        <Image src={dancePortraitPhoto} alt="Sita, teacher" widths={[400, 600]} sizes="(max-width: 860px) 100vw, 33vw" />
+      </div>
+      <div class="name">Sita</div>
+      <div class="role">Mat · Dance-trained</div>
+    </div>
+    <div class="teacher">
+      <div class="teacher-photo">
+        <Image src={pilates15Photo} alt="Elena, teacher" widths={[400, 600]} sizes="(max-width: 860px) 100vw, 33vw" />
+      </div>
+      <div class="name">Elena</div>
+      <div class="role">Reformer fundamentals</div>
+    </div>
+  </div>
+</section>
+<style>
+/* Teachers */
+.teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.teacher .teacher-photo { aspect-ratio: 4/5; overflow: hidden; }
+.teacher .teacher-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.teacher .name { font-family: var(--font-display); font-size: 26px; margin-top: 14px; font-variation-settings: "opsz" 100, "SOFT" 80; line-height: 1.05; }
+.teacher .role { font-size: 13px; color: var(--color-smoke); margin-top: 2px; }
+</style>
