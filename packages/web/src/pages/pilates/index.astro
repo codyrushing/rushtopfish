@@ -1,23 +1,25 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import PilatesNav from '../../components/PilatesNav.astro';
 import PilatesHero from '../../components/PilatesHero.astro';
 import PilatesFooter from '../../components/PilatesFooter.astro';
-import Card from '../../components/Card.astro';
-import '../../styles/pilates.css';
 
 import pilatesMatPhoto from '../../assets/photos/pilates-mat-stretch-sunlit.jpg';
-import pilatesReformerPhoto from '../../assets/photos/pilates-reformer-class.jpg';
-import pilatesAdjustmentPhoto from '../../assets/photos/pilates-adjustment.jpg';
+import PilatesLayout from 'src/layouts/PilatesLayout.astro';
+
+import PhotoStrip from '../../components/PhotoStrip.astro';
+import socksPointImg from '../../assets/photos/pilates-socks-point.jpg';
+import outsideBackbendImg from '../../assets/photos/outside-backbend.jpg';
+import carissaSunlight from '../../assets/photos/carissa-sunlight.jpg';
+import reformerBridgeImg from '../../assets/photos/pilates-reformer-bridge.jpg';
+import seatedLegRaise from '../../assets/photos/pilates-15.jpg';
+
 ---
 
-<Layout title="RushTopFish Pilates — Reformer · Mat · Somatic" theme="pilates" pageType="pilates">
-
-  <PilatesNav />
+<PilatesLayout title="RushTopFish Pilates — Reformer · Mat · Somatic" theme="pilates" pageType="pilates">
 
   <PilatesHero
     eyebrow="Reformer · Mat · Somatic"
-    lede="Pilates taught by dancers, somatic therapists, and movement nerds who actually listen to your body."
+    lede="Our mission is to offer expertly taught and mindfully delivered pilates and somatic based fitness to the South Austin neighborhood community."
     image={pilatesMatPhoto}
     imageAlt="Studio mat work in morning light"
     caption="Morning mat class · Studio A"
@@ -25,52 +27,22 @@ import pilatesAdjustmentPhoto from '../../assets/photos/pilates-adjustment.jpg';
     <Fragment slot="heading">Move <em>with</em> us.</Fragment>
   </PilatesHero>
 
-  <section class="container" id="classes">
-    <div class="sect-head">
-      <div>
-        <span class="eyebrow">This week</span>
-        <h2>Classes on offer</h2>
-      </div>
-      <p>Small group sizes, mat and reformer, all levels welcome. Drop in or book a ten-class pack.</p>
-    </div>
-    <div class="class-grid">
-      <Card
-        eyebrow="Tue · 9:30am"
-        title="Slow flow reformer"
-        meta="55 min · All levels · with Marin"
-        image={pilatesReformerPhoto}
-        imageAlt="Slow flow reformer class"
-        tags={[{ label: 'Reformer', solid: true }, { label: '3 spots' }]}
-        data-book="Slow flow reformer"
-      />
-      <Card
-        eyebrow="Wed · 6:00pm"
-        title="Somatic mat"
-        meta="55 min · All levels · with Sita"
-        image={pilatesMatPhoto}
-        imageAlt="Somatic mat class"
-        tags={[{ label: 'Mat', solid: true }, { label: 'Open' }]}
-        data-book="Somatic mat"
-      />
-      <Card
-        eyebrow="Thu · 7:15am"
-        title="Reformer fundamentals"
-        meta="55 min · Beginner · with Elena"
-        image={pilatesAdjustmentPhoto}
-        imageAlt="Reformer fundamentals class"
-        tags={[{ label: 'Reformer', solid: true }, { label: '1 spot', orange: true }]}
-        data-book="Reformer fundamentals"
-      />
-    </div>
-  </section>
-
-  <section class="quote-section">
+  <section class="page-section bg-teal border-ink border-y-1.5">
     <div class="container">
-      <blockquote>"You don't have to earn your rest. Arrive. Breathe. Begin."</blockquote>
-      <cite>— Marin, studio lead</cite>
+      <span class="eyebrow text-xs">You Belong Here</span>
+      <h2 class="mt-2 mb-4 text-3xl">Our philosophy</h2>
+      <p>Our vision is to bring the community together through movement. We offer an inclusive environment where everybody belongs regardless of race, gender, orientation, age, body size or fitness level. We believe that movement is nourishing and healing both physically and mentally, and we want to offer a non-competitive, judgment free space where Austinites can drop in and take part in some sweaty selfcare. </p>
+      <p>This is not your typical “Pilates is for thin, wealthy, upper class women looking to get hot for summer” studio. We believe that our bodies are already beautifully stunning just the way they are, and we workout as a means of caring for our health, and celebrating what our bodies were made to do – <span class="italic font-bold">MOVE!</span></p>
     </div>
   </section>
 
-  <PilatesFooter />
+  <PhotoStrip
+    images={[
+      { src: socksPointImg, alt: '' },
+      { src: outsideBackbendImg, alt: '' },
+      { src: reformerBridgeImg, alt: '' },
+      { src: seatedLegRaise, alt: '' },
+    ]}
+  />
 
-</Layout>
+</PilatesLayout>

@@ -6,6 +6,7 @@ interface Props {
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   tag?: string;
+  class?: string;
   [key: string]: unknown;
 }
 
@@ -16,10 +17,11 @@ const {
   disabled = false,
   type = 'button',
   tag,
+  class: propClass,
   ...rest
 } = Astro.props;
 
-const classes = ['btn', `btn-${variant}`, size !== 'md' ? `btn-${size}` : ''];
+const classes = ['btn', `btn-${variant}`, size !== 'md' ? `btn-${size}` : '', propClass ?? ''];
 const Tag = tag;
 ---
 

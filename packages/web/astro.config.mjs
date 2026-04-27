@@ -14,6 +14,9 @@ export default defineConfig({
       hostname: 'picsum.photos'
     }]
   },
+  devToolbar: {
+    enabled: false
+  },
   vite: {
     plugins: [
       tailwindcss(),

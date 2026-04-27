@@ -1,0 +1,11 @@
+---
+import PilatesNav from 'src/components/PilatesNav.astro';
+import '../styles/pilates.css';
+import Layout from './Layout.astro';
+import PilatesFooter from 'src/components/PilatesFooter.astro';
+---
+<Layout {...Astro.props}>
+  <PilatesNav />
+  <slot />
+  <PilatesFooter />
+</Layout>

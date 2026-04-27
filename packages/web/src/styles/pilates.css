@@ -1,71 +1,59 @@
 /* RushTopFish Pilates — page layout and section styles.
    Loaded only on pilates pages. Nav and hero styles live in their components. */
+@import 'tailwindcss';
 
-/* Layout */
-.container { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
-section { padding-block: var(--spacing-9); }
-section + section { border-top: 1px solid var(--border-soft); }
+@layer components {
+  /* Layout */
+  section.page-section {
+    @apply p-4 md:p-8;
+  }
+  .container { max-width: 1240px; margin: 0 auto; }
+  section { padding-block: var(--spacing-9); }
+  section + section { border-top: 1px solid var(--border-soft); }
 
-body.menu-open { overflow: hidden; }
+  body.menu-open { overflow: hidden; }
 
-/* Section heading */
-.sect-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 48px; gap: 32px; }
-.sect-head h2 {
-  font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px);
-  margin: 0; line-height: 1.02; letter-spacing: -0.03em;
-  font-variation-settings: "opsz" 100, "SOFT" 70; max-width: 14ch;
-}
-.sect-head .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-smoke); margin-bottom: 10px; display: block; }
-.sect-head p { margin: 0; max-width: 42ch; color: var(--color-smoke); font-size: 15px; line-height: 1.6; }
+  /* Section heading */
+  .sect-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 48px; gap: 32px; }
+  .sect-head h2 {
+    font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px);
+    margin: 0; line-height: 1.02; letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 100, "SOFT" 70; max-width: 14ch;
+  }
+  .sect-head .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-smoke); margin-bottom: 10px; display: block; }
+  .sect-head p { margin: 0; max-width: 42ch; color: var(--color-smoke); font-size: 15px; line-height: 1.6; }
 
-/* Class cards grid */
-.class-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  /* Class cards grid */
+  .class-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 
-/* Quote section */
-.quote-section {
-  background: var(--color-teal); color: var(--color-ink);
-  padding-block: var(--spacing-9);
-  border-top: 1.5px solid var(--color-ink);
-  border-bottom: 1.5px solid var(--color-ink);
-}
-.quote-section blockquote {
-  font-family: var(--font-display); font-size: clamp(32px, 4.2vw, 56px);
-  line-height: 1.08; letter-spacing: -0.02em; max-width: 22ch;
-  margin: 0 auto; text-align: center;
-  font-variation-settings: "opsz" 100, "SOFT" 90; font-style: italic;
-}
-.quote-section cite {
-  display: block; margin-top: 28px; font-style: normal;
-  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-  text-align: center; color: var(--color-ink);
+  /* Booking modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: color-mix(in oklab, var(--color-ink) 55%, transparent);
+    display: none; align-items: center; justify-content: center;
+    z-index: 60; padding: 24px;
+  }
+  .modal-backdrop.open { display: flex; animation: modal-fade-in var(--duration-base) var(--ease-out); }
+  .modal {
+    background: var(--color-cream); border-radius: var(--radius-sm);
+    max-width: 480px; width: 100%; padding: 32px;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal h3 { font-family: var(--font-display); font-size: 32px; margin: 0 0 6px; font-variation-settings: "opsz" 100, "SOFT" 80; }
+  .modal .modal-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-smoke); }
+  .modal .modal-desc { color: var(--color-smoke); font-size: 14px; margin: 0; }
+  .modal label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-smoke); margin: 16px 0 6px; }
+  .modal input { width: 100%; box-sizing: border-box; font: 14px var(--font-body); padding: 11px 12px; border: 1px solid var(--color-ink); border-radius: var(--radius-xs); background: #fff; }
+  .modal .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+
+  /* Responsive */
+  @media (max-width: 860px) {
+    .class-grid { grid-template-columns: 1fr; }
+    .teachers-grid { grid-template-columns: 1fr; }
+    .sched-row { grid-template-columns: 80px 1fr; gap: 10px; }
+    .sched-row .time, .sched-row .teacher-name, .sched-row .book { display: none; }
+    footer.pilates-footer .grid { grid-template-columns: 1fr; }
+  }
 }
 
-/* Booking modal */
-.modal-backdrop {
-  position: fixed; inset: 0;
-  background: color-mix(in oklab, var(--color-ink) 55%, transparent);
-  display: none; align-items: center; justify-content: center;
-  z-index: 60; padding: 24px;
-}
-.modal-backdrop.open { display: flex; animation: modal-fade-in var(--duration-base) var(--ease-out); }
-.modal {
-  background: var(--color-cream); border-radius: var(--radius-sm);
-  max-width: 480px; width: 100%; padding: 32px;
-  box-shadow: var(--shadow-lg);
-}
-.modal h3 { font-family: var(--font-display); font-size: 32px; margin: 0 0 6px; font-variation-settings: "opsz" 100, "SOFT" 80; }
-.modal .modal-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-smoke); }
-.modal .modal-desc { color: var(--color-smoke); font-size: 14px; margin: 0; }
-.modal label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-smoke); margin: 16px 0 6px; }
-.modal input { width: 100%; box-sizing: border-box; font: 14px var(--font-body); padding: 11px 12px; border: 1px solid var(--color-ink); border-radius: var(--radius-xs); background: #fff; }
-.modal .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
 @keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
-
-/* Responsive */
-@media (max-width: 860px) {
-  .class-grid { grid-template-columns: 1fr; }
-  .teachers-grid { grid-template-columns: 1fr; }
-  .sched-row { grid-template-columns: 80px 1fr; gap: 10px; }
-  .sched-row .time, .sched-row .teacher-name, .sched-row .book { display: none; }
-  footer.pilates-footer .grid { grid-template-columns: 1fr; }
-}

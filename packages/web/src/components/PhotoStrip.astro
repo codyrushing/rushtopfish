@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface StripImage {
+  src: ImageMetadata | string;
+  alt?: string;
+}
+
+interface Props {
+  images: StripImage[];
+  columns?: number;
+  [key: string]: unknown;
+}
+
+const { images, columns = 4, ...rest } = Astro.props;
+---
+
+<div
+  class="photo-strip grid grid-cols-2 md:grid-cols-4 gap-px border-t border-b"
+  {...rest}
+>
+  {images.map(({ src, alt = '' }) => (
+    <div class="aspect-[4/5] overflow-hidden">
+      {typeof src === 'object'
+        ? <Image
+            src={src as ImageMetadata}
+            alt={alt}
+            class="w-full h-full object-cover block"
+            widths={[400, 700]}
+            sizes={`(max-width: 860px) 50vw, ${Math.round(100 / columns)}vw`}
+          />
+        : <img src={src as string} alt={alt} class="w-full h-full object-cover block" />
+      }
+    </div>
+  ))}
+</div>
+
