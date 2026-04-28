@@ -14,11 +14,9 @@ const navLinks = [
   { href: '/pilates/about',  label: 'About',  key: 'classes' },
   { href: '/pilates/offerings', label: 'Offerings', key: 'offerings' },
   { href: '/pilates/info', label: 'Info', key: 'info' },
-  { href: '/dance', label: 'Dance Company ↗', key: 'dance' },
 ];
 
 ---
-
 <header id="site-header" data-menu-state="closed">
   <div class="inner">
     <a class="brand" href="/pilates">
@@ -26,7 +24,7 @@ const navLinks = [
     </a>
 
     <nav class="header-nav">
-      <ul>
+      <ul class="flex list-none gap-4 items-center p-0 m-0 text-xs">
         {navLinks.map(link => (
           <li>
             <a href={link.href} class:list={[{ active: activePage === link.key }]}>
@@ -36,13 +34,13 @@ const navLinks = [
         ))}
         <li>
           <a
-            class="ig"
+            class="ig p-2"
             href="https://instagram.com/rushtopfish.pilates"
             target="_blank"
             rel="noopener"
             aria-label="RushTopFish on Instagram"
           >
-            <InstagramLogo />
+            <InstagramLogo class="w-5 h-5" />
           </a>
         </li>
       </ul>
@@ -76,7 +74,7 @@ const navLinks = [
         <li><a href="/pilates/book"><em>Book a class</em></a></li>
       </ul>
     </nav>
-    <div class="foot mt-8 flex flex-col gap-4">
+    <div class="foot mt-6 flex flex-col gap-4">
       <div class="flex flex-row justify-center items-center gap-4">
         <a class="ig" href="https://instagram.com/rushtopfish" target="_blank" rel="noopener">
           <InstagramLogo class="w-12 h-12" />
@@ -94,11 +92,13 @@ const navLinks = [
 
 <style>
 @reference "tailwindcss";
+
 #site-header {
   position: sticky; top: 0; z-index: 40;
   background: color-mix(in oklab, var(--color-cream) 88%, transparent);
   backdrop-filter: blur(10px);
-  @apply h-13 flex flex-col transition-all duration-200 ease-in-out;
+  overflow: visible;
+  @apply transition-all duration-200 ease-in-out;
 }
 
 #site-header[data-menu-state="open"] {
@@ -114,8 +114,7 @@ const navLinks = [
 .brand img { height: 24px; display: block; }
 
 nav ul {
-  list-style: none; display: flex; gap: 28px;
-  padding: 0; margin: 0; font-size: 14px; letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
 }
 nav a {
   text-decoration: none; color: var(--color-ink);
@@ -153,7 +152,6 @@ nav .ig:hover { color: var(--color-orange); text-decoration: none; }
 
 .mobile-menu {
   display: none; flex-direction: column;
-  padding: 22px 28px 40px;
   overflow-y: auto;
   flex-grow: 1;
   opacity: 0;

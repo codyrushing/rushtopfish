@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import pilatesLogo from '../assets/logos/rtf-pilates.svg?url';
+import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
+
 ---
 <footer class="pilates-footer p-4">
 <!-- <div class="container grid">
@@ -34,22 +37,26 @@ import pilatesLogo from '../assets/logos/rtf-pilates.svg?url';
     </ul>
   </div>
 </div> -->
-  <div class="container fine">
-    <div>© 2026 RushTopFish</div>
-    <div>Woman-owned · Austin, Texas</div>
+  <div class="container text-sand text-[12px] md:text-xs">
+    <div class="flex justify-between gap-4">
+      <div class="flex flex-wrap items-center">
+        <img src={logoTricolor} class="h-4 relative bottom-[2px] mr-1" />
+        <span class="whitespace-nowrap inline-block ml-[2px] leading-1">Woman-owned  ·  Austin, TX</span>
+      </div>
+      <a href="/dance" class="whitespace-nowrap" title="RushTopFish Dance Company" target="_blank">
+        RushTopFish Dance Company &raquo;
+      </a>
+    </div>
   </div>
 </footer>
 <style>
 /* Footer */
-footer.pilates-footer { background: var(--color-ink); color: var(--color-cream); }
-footer.pilates-footer .grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+footer.pilates-footer { background: var(--color-ink); }
+/*footer.pilates-footer .grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
 footer.pilates-footer .brand-logo { height: 32px; display: block; filter: invert(1); }
 footer.pilates-footer .brand-desc { margin-top: 20px; max-width: 36ch; color: var(--color-sand); font-size: 14px; line-height: 1.6; }
 footer.pilates-footer h5 { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-sand); margin: 0 0 14px; }
-footer.pilates-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
-footer.pilates-footer a { color: var(--color-cream); text-decoration: none; }
+footer.pilates-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }*/
+footer.pilates-footer a { color: var(--color-sand); text-decoration: none; }
 footer.pilates-footer a:hover { text-decoration: underline; text-underline-offset: 0.35em; color: var(--color-cream); }
-footer.pilates-footer .fine {
-  display: flex; justify-content: space-between; font-size: 12px; color: var(--color-sand);
-}
 </style>
