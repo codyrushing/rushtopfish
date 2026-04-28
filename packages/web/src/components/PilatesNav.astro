@@ -24,7 +24,7 @@ const navLinks = [
     </a>
 
     <nav class="header-nav">
-      <ul class="flex list-none gap-4 items-center p-0 m-0 text-xs">
+      <ul class="flex list-none gap-4 items-center p-0 m-0 text-sm">
         {navLinks.map(link => (
           <li>
             <a href={link.href} class:list={[{ active: activePage === link.key }]}>
@@ -109,14 +109,14 @@ const navLinks = [
   display: flex; align-items: center; justify-content: space-between;
   border-bottom: 1px solid var(--border-soft);
   @apply py-2 px-4;
-  @apply h-13;
 }
-.brand img { height: 24px; display: block; }
+.brand img { @apply -ml-1; height: 24px; display: block; }
 
 nav ul {
   letter-spacing: 0.01em;
 }
 nav a {
+  font-size: 17px;
   text-decoration: none; color: var(--color-ink);
   transition: color var(--duration-fast) var(--ease-out);
 }

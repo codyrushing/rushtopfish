@@ -1,15 +1,12 @@
 ---
-import PilatesNav from '../../components/PilatesNav.astro';
-import PilatesHero from '../../components/PilatesHero.astro';
-import PilatesFooter from '../../components/PilatesFooter.astro';
-
-import pilatesMatPhoto from '../../assets/photos/pilates-mat-stretch-sunlit.jpg';
 import PilatesLayout from 'src/layouts/PilatesLayout.astro';
+import PilatesHero from '../../components/PilatesHero.astro';
 
 import PhotoStrip from '../../components/PhotoStrip.astro';
 import socksPointImg from '../../assets/photos/pilates-socks-point.jpg';
 import outsideBackbendImg from '../../assets/photos/outside-backbend.jpg';
-import carissaSunlight from '../../assets/photos/carissa-sunlight.jpg';
+import groupArmRaiseLineImg from '../../assets/photos/group-arm-raise-line.jpg';
+
 import reformerBridgeImg from '../../assets/photos/pilates-reformer-bridge.jpg';
 import seatedLegRaise from '../../assets/photos/pilates-15.jpg';
 import Button from 'src/components/Button.astro';
@@ -21,18 +18,18 @@ import Button from 'src/components/Button.astro';
     eyebrow="Reformer · Mat · Somatic"
     ledeInset={true}
     lede="Our mission is to offer expertly taught and mindfully delivered pilates and somatic based fitness to the South Austin neighborhood community."
-    image={pilatesMatPhoto}
+    image={groupArmRaiseLineImg}
     imageAlt="Studio mat work in morning light"
     caption="Morning mat class · Studio A"
   >
-    <Fragment slot="heading">Move <em>with</em> us.</Fragment>
+    <Fragment slot="heading">Move <em>with</em> us</Fragment>
     <Fragment slot="actions">
       <Button href="/book" type="button">Book a class <span aria-hidden="true">→</span></Button>
     </Fragment>
   </PilatesHero>
 
   <section class="page-section bg-teal-soft border-ink border-y-1.5">
-    <div class="container max-w-3xl">
+    <div class="container max-w-3xl text-sm">
       <span class="eyebrow text-xs">You Belong Here</span>
       <h2 class="mt-2 mb-4 text-3xl">Our philosophy</h2>
       <p>Our vision is to bring the community together through movement. We offer an inclusive environment where everybody belongs regardless of race, gender, orientation, age, body size or fitness level. We believe that movement is nourishing and healing both physically and mentally, and we want to offer a non-competitive, judgment free space where Austinites can drop in and take part in some sweaty self-care.</p>

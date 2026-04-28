@@ -5,19 +5,21 @@ import type { ImageMetadata } from 'astro';
 interface Props {
   image: {
     src: ImageMetadata | string;
+    placement?: 'left' | 'right';
     alt?: string;
   }
 }
 
-const { image } = Astro.props;
+const { image: { src, alt, placement="left" } } = Astro.props;
+
 ---
 
-<article class="article-aside">
-  <div class="img-col aspect-[4/5] overflow-hidden">
+<article class="article-aside gap-6 py-6 px-4 md:py-8 md:px-6">
+  <div class={`img-col aspect-[4/5] overflow-hidden ${placement === 'left' ? 'order-0' : 'order-1'}`}>
     <Image
       layout="constrained"
-      src={image.src as ImageMetadata}
-      alt={image.alt ?? ""}
+      src={src as ImageMetadata}
+      alt={alt ?? ""}
       class="w-full h-full object-cover block"/>
   </div>
   <div class="content-col">
@@ -32,14 +34,12 @@ const { image } = Astro.props;
   .article-aside {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    @apply gap-6;
-    padding-block: var(--sp-8);
   }
   .article-aside + .article-aside { border-top: 1px solid var(--border-soft); }
   /*.article-asides .article-aside:nth-child(even) .img-col { order: 2; }*/
 
   @media (max-width: 860px) {
-    .article-aside { grid-template-columns: 1fr; gap: 28px; padding-block: var(--sp-7); }
-    /*.article-asides .article-aside:nth-child(even) .img-col { order: 0; }*/
+    .article-aside { grid-template-columns: 1fr; gap: 28px; }
+    .img-col { order: 0; }
   }
 </style>

@@ -2,18 +2,11 @@
 import PilatesHero from '../../components/PilatesHero.astro';
 import ArticleAside from '../../components/ArticleAside.astro';
 
-import pilatesMatPhoto from '../../assets/photos/pilates-mat-stretch-sunlit.jpg';
 import PilatesLayout from 'src/layouts/PilatesLayout.astro';
 
-import PhotoStrip from '../../components/PhotoStrip.astro';
-import socksPointImg from '../../assets/photos/pilates-socks-point.jpg';
-import outsideBackbendImg from '../../assets/photos/outside-backbend.jpg';
-import carissaSunlight from '../../assets/photos/carissa-sunlight.jpg';
-import reformerBridgeImg from '../../assets/photos/pilates-reformer-bridge.jpg';
-import seatedLegRaise from '../../assets/photos/pilates-15.jpg';
 import carissaEmBackToBackImg from '../../assets/photos/carissa-em-back-to-back.jpg'
-
 import carissaPortrait from '../../assets/photos/pilates-portrait-smile.jpg';
+import emStretchSunlit from '../../assets/photos/pilates-mat-stretch-sunlit.jpg';
 
 ---
 
@@ -25,8 +18,8 @@ import carissaPortrait from '../../assets/photos/pilates-portrait-smile.jpg';
     imageAlt="Emily Rushing and Carissa Topham-Fisher"
     caption="Morning mat class · Studio A"
   >
-    <Fragment slot="heading">Who <em>we are</em></Fragment>
-    <Fragment slot="lede"><strong>RushTopFish</strong> is the professional collaboration between Emily Rushing and Carissa Topham Fisher. We are a woman-owned organization that offers Pilates and Somatic based fitness classes to our community. We offer both mat and reformer classes for a variety of levels/ workout intensities, and our classes are a fusion of all of our professional knowledge from many years of being pilates instructors, professional dancers, somatic experts and movement enthusiasts.</Fragment>
+    <Fragment slot="heading">Who <em>we</em> are</Fragment>
+    <Fragment slot="lede"><strong>RushTopFish</strong> is the professional collaboration between Emily Rushing and Carissa Topham Fisher. We are a woman-owned organization that offers Pilates and Somatic based fitness classes to our community. We offer both mat and reformer classes for a variety of levels/workout intensities, and our classes are a fusion of all of our professional knowledge from many years of being pilates instructors, professional dancers, somatic experts, and movement enthusiasts.</Fragment>
   </PilatesHero>
 
   <div class="container">
@@ -35,11 +28,23 @@ import carissaPortrait from '../../assets/photos/pilates-portrait-smile.jpg';
         <div class="bio">
           <span class="eyebrow text-orange">Cofounder</span>
           <h2>Carissa Topham-Fisher</h2>
-          <!-- <p class="role">Reformer · somatic</p> -->
-          <p>Marin opened RushTopFish in 2022, in a 600-square-foot warehouse with a single reformer she'd refurbished herself. She'd spent ten years teaching pilates around Austin and was tired of teaching the way studios wanted her to teach — fast, packed, scripted.</p>
-          <p>Her training is in contemporary dance, with an MFA from the University of Texas, and she came to pilates in her late twenties as a way back into her body after a stage injury. That route — through pain, through dance, through somatic work — is still the lens she teaches from. She's certified through STOTT and is a Somatic Experiencing Practitioner.</p>
-          <p>Marin teaches the Tuesday slow-flow reformer and the Friday deep-stretch mat. Outside the studio she's a mediocre swimmer, an excellent listener, and the person who chose every chair in the lobby.</p>
-          <div class="certs">STOTT · Somatic Experiencing Practitioner · MFA Dance · 12 yrs teaching</div>
+          <p>Carissa has dedicated her life to movement and to discovering the joy it brings. She began teaching in 2010 after earning her BFA in Dance from the University of North Texas, and has since gained years of experience leading classes in dance, barre, spin, HIIT, functional movement, and recovery techniques. In 2013, she earned her STOTT Pilates certification and began teaching Pilates, a practice through which she has transformed her own movement efficiency and structural alignment. Carissa is committed to sharing this knowledge with anyone ready to explore their body’s potential. Driven by a deep curiosity for the “how” and the “why,” Carissa is passionate about the subtleties of movement and how small, intentional adjustments can create meaningful change. Her work is rooted in form, biomechanics, and breath, as well as the somatic connection between mind and body. She believes that repatterning the body goes hand in hand with rewiring the brain.</p>
+          <p>Her classes emphasize juicy flows, deep sustained strength, and expansive breath, while cultivating presence, awareness, and focused attention. Carissa is committed to creating a supportive and inclusive environment where clients can feel good in their bodies as they move toward their goals.</p>
+          <p>She has been dancing professionally with KDH Dance Company since 2010 and recently partnered with co-founder Emily Rushing to launch RushTopFish Dance Company. When Carissa isn’t practicing Pilates, she’s diving into dance projects, treasure-hunting for thrifted gems, or soaking up some quality time with her husband and kiddo.</p>
+          <div class="certs">STOTT · BFA Dance · 13 yrs teaching</div>
+        </div>
+      </Fragment>
+    </ArticleAside>
+
+    <ArticleAside image={{ src: emStretchSunlit, alt: 'Emily Rushing', placement: 'right'}}>
+      <Fragment slot="content">
+        <div class="bio">
+          <span class="eyebrow text-orange">Cofounder</span>
+          <h2>Emily Rushing</h2>
+          <p>Emily’s relationship with movement began in the pine trees of rural Wisconsin, where she spent her childhood exploring the outdoors before finding her way to tap and jazz classes. That early curiosity evolved into a professional dance career in Austin and a teaching journey for over a decade in a variety of modalities that included a year leading Pilates and barre classes in Melbourne, Australia. As the co-founder of RushTopFish, Emily pairs her full STOTT Pilates certification with a BA in Theatre and Dance from UT Austin. Her instruction is also informed by her 2025 completion of Austin Community College’s somatic movement program; as she works toward becoming a Registered Somatic Movement Educator (RSME), she remains passionate about sharing the healing, nourishing power of movement with her local community.</p>
+          <p>Emily believes movement should be a joyful practice that brings you fully into the present. She is committed to ensuring every client feels seen, creating an inclusive environment where all bodies belong. Her classes are designed as a journey—inviting you to move authentically, listen to your body’s unique needs, and leave feeling centered, challenged, and inspired.</p>
+          <p>When she isn’t in the studio or on stage, Emily is likely soaking up Austin’s live music scene, experimenting with new recipes in the kitchen, or savoring quality time with the family and friends who keep her inspired.</p>
+          <div class="certs">STOTT · BA Dance · 12 yrs teaching</div>
         </div>
       </Fragment>
     </ArticleAside>
@@ -71,7 +76,7 @@ import carissaPortrait from '../../assets/photos/pilates-portrait-smile.jpg';
   margin: 0 0 26px;
 }
 .bio p {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.75;
   margin: 0 0 16px;
   @apply text-ink;

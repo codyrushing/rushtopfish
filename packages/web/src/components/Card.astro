@@ -17,6 +17,9 @@ interface Props {
   imageWidths?: number[];
   imageSizes?: string;
   tags?: Tag[];
+  layout?: "vertical" | "horizontal",
+  class?: string,
+  imgClass?: string,
   [key: string]: unknown;
 }
 
@@ -29,17 +32,21 @@ const {
   imageWidths = [400, 700],
   imageSizes = '(max-width: 860px) 100vw, 33vw',
   tags,
+  layout="vertical",
+  class: classProp="",
+  imgClass="",
   ...rest
 } = Astro.props;
 
 const isImageMetadata = image && typeof image === 'object';
+
 ---
 
-<article class="card" {...rest}>
+<article class={`card flex flex-col ${layout === "horizontal" ? "lg:flex-row" : "lg:flex-col"} ${classProp}`} {...rest}>
   {image && (
-    <div class="img-wrap">
+    <div class={`img-wrap shrink-0 overflow-hidden ${layout === "horizontal" ? "lg:aspect-[4/5]" : "aspect-[16/9]"} ${imgClass}`}>
       {isImageMetadata
-        ? <Image src={image as ImageMetadata} alt={imageAlt} widths={imageWidths} sizes={imageSizes} />
+        ? <Image src={image as ImageMetadata} layout="constrained" alt={imageAlt} widths={imageWidths} sizes={imageSizes} />
         : <img src={image as string} alt={imageAlt}>
       }
     </div>
@@ -60,6 +67,7 @@ const isImageMetadata = image && typeof image === 'object';
 </article>
 
 <style>
+@import "../styles/global.css";
   .card {
     background: var(--surface);
     border: 1px solid var(--border-soft);
@@ -75,10 +83,6 @@ const isImageMetadata = image && typeof image === 'object';
     box-shadow: var(--shadow-md);
   }
 
-  .img-wrap {
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-  }
   .img-wrap :global(img) {
     width: 100%; height: 100%;
     object-fit: cover; display: block;

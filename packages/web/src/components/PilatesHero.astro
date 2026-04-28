@@ -6,7 +6,7 @@ interface Props {
   eyebrow?: string;
   lede?: string;
   ledeInset?: boolean;
-  image: ImageMetadata;
+  image?: ImageMetadata;
   imageAlt?: string;
   caption?: string;
   primaryCtaText?: string;
@@ -40,7 +40,7 @@ const {
       </div>
     </div>
 
-    <div class="img-col">
+    { !!image && <div class="img-col">
       <div class="img-frame">
         <Image
           src={image}
@@ -50,7 +50,8 @@ const {
         />
       </div>
       {caption && <div class="caption">{caption}</div>}
-    </div>
+    </div>}
+
   </div>
 </section>
 

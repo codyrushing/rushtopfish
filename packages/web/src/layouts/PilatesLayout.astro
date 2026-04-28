@@ -6,6 +6,8 @@ import PilatesFooter from 'src/components/PilatesFooter.astro';
 ---
 <Layout {...Astro.props}>
   <PilatesNav />
-  <slot />
+  <main class="grow">
+    <slot />
+  </main>
   <PilatesFooter />
 </Layout>
