@@ -12,19 +12,23 @@ import outsideBackbendImg from '../../assets/photos/outside-backbend.jpg';
 import carissaSunlight from '../../assets/photos/carissa-sunlight.jpg';
 import reformerBridgeImg from '../../assets/photos/pilates-reformer-bridge.jpg';
 import seatedLegRaise from '../../assets/photos/pilates-15.jpg';
-
+import Button from 'src/components/Button.astro';
 ---
 
 <PilatesLayout title="RushTopFish Pilates — Reformer · Mat · Somatic" theme="pilates" pageType="pilates">
 
   <PilatesHero
     eyebrow="Reformer · Mat · Somatic"
+    ledeInset={true}
     lede="Our mission is to offer expertly taught and mindfully delivered pilates and somatic based fitness to the South Austin neighborhood community."
     image={pilatesMatPhoto}
     imageAlt="Studio mat work in morning light"
     caption="Morning mat class · Studio A"
   >
     <Fragment slot="heading">Move <em>with</em> us.</Fragment>
+    <Fragment slot="actions">
+      <Button href="/book" type="button">Book a class <span aria-hidden="true">→</span></Button>
+    </Fragment>
   </PilatesHero>
 
   <section class="page-section bg-teal-soft border-ink border-y-1.5">

@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: {
+    src: ImageMetadata | string;
+    alt?: string;
+  }
+}
+
+const { image } = Astro.props;
+---
+
+<article class="article-aside">
+  <div class="img-col aspect-[4/5] overflow-hidden">
+    <Image
+      layout="constrained"
+      src={image.src as ImageMetadata}
+      alt={image.alt ?? ""}
+      class="w-full h-full object-cover block"/>
+  </div>
+  <div class="content-col">
+    <slot name="content" />
+  </div>
+</article>
+
+<style>
+  @import "../styles/global.css";
+
+  /* ------- Founders section ------- */
+  .article-aside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @apply gap-6;
+    padding-block: var(--sp-8);
+  }
+  .article-aside + .article-aside { border-top: 1px solid var(--border-soft); }
+  /*.article-asides .article-aside:nth-child(even) .img-col { order: 2; }*/
+
+  @media (max-width: 860px) {
+    .article-aside { grid-template-columns: 1fr; gap: 28px; padding-block: var(--sp-7); }
+    /*.article-asides .article-aside:nth-child(even) .img-col { order: 0; }*/
+  }
+</style>

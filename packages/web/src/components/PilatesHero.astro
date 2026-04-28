@@ -2,10 +2,10 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Button from './Button.astro';
-
 interface Props {
   eyebrow?: string;
   lede?: string;
+  ledeInset?: boolean;
   image: ImageMetadata;
   imageAlt?: string;
   caption?: string;
@@ -18,31 +18,25 @@ interface Props {
 const {
   eyebrow = 'Reformer · Mat · Somatic',
   lede,
+  ledeInset,
   image,
   imageAlt = '',
-  caption,
-  primaryCtaText = 'Book a class',
-  primaryCtaHref,
-  secondaryCtaText = 'See the schedule',
-  secondaryCtaHref = '#schedule',
+  caption
 } = Astro.props;
----
 
+---
 <section class="hero container">
   <div class="hero-grid">
     <div class="copy">
       {eyebrow && <span class="hero-eyebrow">{eyebrow}</span>}
       <h1><slot name="heading" /></h1>
-      {lede && <p class="lede">{lede}</p>}
+      {(lede || Astro.slots.has('lede')) && (
+        <p class={`lede ${ledeInset ? 'max-w-[38ch]' : ''}`}>
+          <slot name="lede">{lede}</slot>
+        </p>
+      )}
       <div class="actions">
-        {primaryCtaHref ? (
-          <Button href={primaryCtaHref}>{primaryCtaText} <span aria-hidden="true">→</span></Button>
-        ) : (
-          <Button type="button" data-book="">{primaryCtaText} <span aria-hidden="true">→</span></Button>
-        )}
-        {secondaryCtaText && (
-          <Button href={secondaryCtaHref} variant="ghost">{secondaryCtaText}</Button>
-        )}
+        <slot name="actions" />
       </div>
     </div>
 
@@ -92,8 +86,8 @@ const {
   }
 
   .lede {
-    font-family: var(--font-serif); font-style: italic; font-size: 22px;
-    line-height: 1.45; color: var(--color-smoke); max-width: 38ch;
+    font-family: var(--font-serif); font-size: 22px;
+    line-height: 1.45; color: var(--color-smoke);
     margin: 28px 0 0;
   }
 
