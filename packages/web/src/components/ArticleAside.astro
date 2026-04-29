@@ -15,9 +15,9 @@ const { image: { src, alt, placement="left" }={} } = Astro.props;
 ---
 
 <article class="article-aside gap-6 py-6 md:py-8">
-  <div class="img-col">
+  <div class={`img-col ${placement === 'left' ? 'order-0' : 'order-1'}`}>
     { Astro.slots.has('image') && <slot name="image" /> }
-    { !Astro.slots.has('image') && <div class={`aspect-[4/5] overflow-hidden ${placement === 'left' ? 'order-0' : 'order-1'}`}>
+    { !Astro.slots.has('image') && <div class={`aspect-[4/5] overflow-hidden`}>
       <Image
         layout="constrained"
         src={src as ImageMetadata}
