@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
 import type { Page } from '../content/config';
-const { title, description, pageType, theme } = Astro.props as Pick<Page, "title" | "description"> & { pageType?: "dance" | "pilates"; theme?: "dance" | "pilates" };
+export type Props = Pick<Page, "title" | "description"> & { theme?: "dance" | "pilates" };
+const { title, description, theme } = Astro.props;
 const isProduction = import.meta.env.PROD;
 ---
 

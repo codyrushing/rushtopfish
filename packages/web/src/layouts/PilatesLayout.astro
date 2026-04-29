@@ -2,10 +2,12 @@
 import PilatesNav from 'src/components/PilatesNav.astro';
 import '../styles/pilates.css';
 import Layout from './Layout.astro';
+import type Props from './Layout.astro';
+const { activePage } = Astro.props;
 import PilatesFooter from 'src/components/PilatesFooter.astro';
 ---
 <Layout {...Astro.props}>
-  <PilatesNav />
+  <PilatesNav activePage={activePage} />
   <main class="grow">
     <slot />
   </main>
