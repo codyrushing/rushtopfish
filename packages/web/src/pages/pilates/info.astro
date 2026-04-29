@@ -8,13 +8,17 @@ import Button from 'src/components/Button.astro';
 import { Image } from 'astro:assets';
 ---
 
-<PilatesLayout title="About Us - RushTopFish Pilates" theme="pilates" pageType="pilates">
+<PilatesLayout
+  title="Info and Policies - RushTopFish Pilates"
+  description="The practical bits — what to expect, how to cancel, and how to find us."
+  theme="pilates"
+  pageType="pilates">
 
   <PilatesHero
     eyebrow="Policies, FAQs, and Visiting"
     ledeInset={false}
   >
-    <Fragment slot="lede">The practical bits — what to wear, how to cancel, how to find us. If anything here isn't clear, write us at <a href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a> and we'll get back to you.</Fragment>
+    <Fragment slot="lede">The practical bits — what to expect, how to cancel, how to find us. If anything here isn't clear, write us at <a href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a> and we'll get back to you.</Fragment>
     <Fragment slot="heading">Info</Fragment>
   </PilatesHero>
 
