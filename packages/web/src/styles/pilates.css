@@ -5,6 +5,7 @@
 @layer components {
   /* Layout */
   .container { max-width: 1240px; margin: 0 auto; @apply p-4; }
+  .page-section { @apply py-4; }
   /*section { padding-block: var(--spacing-9); }*/
   section + section { border-top: 1px solid var(--border-soft); }
 

@@ -8,6 +8,7 @@ import groupArmRaiseLineImg from '../../assets/photos/group-arm-raise-line.jpg';
 import groupMatCandid from '../../assets/photos/group-mat-candid.jpg';
 import pilatesReformerClass from '../../assets/photos/pilates-reformer-class.jpg';
 import pilatesReformerAdjustment from '../../assets/photos/pilates-reformer-adjustment.jpg';
+import Button from 'src/components/Button.astro';
 ---
 
 <PilatesLayout title="About Us - RushTopFish Pilates" theme="pilates" pageType="pilates">
@@ -16,6 +17,9 @@ import pilatesReformerAdjustment from '../../assets/photos/pilates-reformer-adju
     eyebrow="Our classes"
   >
     <Fragment slot="heading">Offerings</Fragment>
+    <Fragment slot="actions">
+      <Button href="/pilates/book" type="button">Book a class <span aria-hidden="true">→</span></Button>
+    </Fragment>
   </PilatesHero>
 
   <div class="container p-4 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pb-8">

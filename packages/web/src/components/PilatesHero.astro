@@ -26,7 +26,7 @@ const {
 
 ---
 <section class="hero container">
-  <div class="hero-grid">
+  <div class={`hero-grid ${image ? 'has-image' : 'no-image'}`}>
     <div class="copy">
       {eyebrow && <span class="hero-eyebrow">{eyebrow}</span>}
       <h1><slot name="heading" /></h1>
@@ -63,9 +63,11 @@ const {
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
     @apply gap-8;
     align-items: end;
+    &.has-image {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
   }
 
   .hero-eyebrow {
@@ -90,6 +92,7 @@ const {
     font-family: var(--font-serif); font-size: 22px;
     line-height: 1.45; color: var(--color-smoke);
     margin: 28px 0 0;
+    @apply max-w-2xl;
   }
 
   .actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
