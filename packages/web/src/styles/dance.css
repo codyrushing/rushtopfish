@@ -1,0 +1,210 @@
+/* RushTopFish Dance — full-bleed coming-soon page styles. */
+@import 'tailwindcss';
+
+@layer base {
+  html, body { height: 100%; overflow: hidden; }
+
+  @media (max-width: 820px) {
+    body { overflow: auto; }
+  }
+}
+
+@layer components {
+  /* Full-bleed photo stage */
+  .dance-stage {
+    position: fixed;
+    inset: 0;
+    background: #000 center / cover no-repeat;
+    overflow: hidden;
+  }
+
+  /* Radial vignette so type sits on its own ink field */
+  .dance-stage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      120% 80% at 50% 60%,
+      rgba(14, 12, 10, 0) 50%,
+      rgba(14, 12, 10, 0.55) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Header */
+  .dance-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 4;
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dance-header .brand img {
+    height: 28px;
+    filter: invert(1);
+  }
+
+  .dance-header .meta {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--fg-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dance-header .meta .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: var(--color-pink);
+    flex-shrink: 0;
+    animation: dance-pulse 2.4s var(--ease-soft) infinite;
+  }
+
+  /* Centerpiece grid */
+  .dance-centerpiece {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    padding: 96px 40px 120px;
+  }
+
+  .dance-anchor {
+    grid-row: 2;
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    gap: 36px;
+  }
+
+  .dance-eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--color-pink);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .dance-eyebrow-row .line {
+    flex: 0 0 56px;
+    height: 1.5px;
+    background: var(--color-pink);
+  }
+
+  .dance-title {
+    font-family: var(--font-display);
+    font-size: clamp(72px, 13vw, 220px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    margin: 0;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .dance-title em {
+    font-style: italic;
+    color: var(--color-pink);
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+  }
+
+  .dance-lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--fg);
+    max-width: 48ch;
+    margin: 0;
+    opacity: 0.92;
+  }
+
+  /* Footer */
+  .dance-footer {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 4;
+    padding: 24px 40px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    font-size: 12px;
+    color: var(--fg-faint);
+    letter-spacing: 0.04em;
+  }
+
+  .dance-footer .left,
+  .dance-footer .right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .dance-footer a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .dance-footer a:hover { color: var(--color-pink); }
+
+  .dance-footer .credit {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+
+  /* Entry animations */
+  .dance-anim {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: dance-rise var(--duration-slow) var(--ease-soft) forwards;
+  }
+
+  .dance-anim.d1 { animation-delay: 80ms; }
+  .dance-anim.d2 { animation-delay: 240ms; }
+  .dance-anim.d3 { animation-delay: 420ms; }
+  .dance-anim.d4 { animation-delay: 600ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dance-anim { animation: none; opacity: 1; transform: none; }
+    .dance-header .meta .dot { animation: none; }
+  }
+
+  /* Mobile */
+  @media (max-width: 820px) {
+    .dance-stage { position: relative; min-height: 100vh; }
+    .dance-header { padding: 20px 24px; }
+    .dance-centerpiece { padding: 120px 24px 180px; grid-template-rows: 1fr; }
+    .dance-anchor { gap: 28px; }
+    .dance-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 24px;
+    }
+  }
+}
+
+@keyframes dance-rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dance-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.35); }
+}

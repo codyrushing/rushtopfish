@@ -1,0 +1,67 @@
+---
+import Layout from 'src/layouts/Layout.astro';
+import '../../styles/dance.css';
+import bgImg from '../../assets/photos/dance-rooftop-backbend.jpg';
+import danceLogoImg from '../../assets/logos/rtf-dance.svg';
+
+const gradientOverlay = [
+  'linear-gradient(180deg,',
+  '  rgba(14,12,10,0.78) 0%,',
+  '  rgba(14,12,10,0.30) 28%,',
+  '  rgba(14,12,10,0.20) 55%,',
+  '  rgba(14,12,10,0.92) 100%',
+  ')',
+].join(' ');
+
+const stageBg = `${gradientOverlay}, url(${bgImg.src})`;
+---
+
+<Layout title="RushTopFish Dance — 2026 season, coming soon" theme="dance">
+  <div
+    class="dance-stage"
+    role="img"
+    aria-label="Dancer in a backbend on an Austin rooftop at golden hour"
+    style={`background-image: ${stageBg};`}
+  >
+
+    <header class="dance-header">
+      <a class="brand dance-anim d1" href="/dance" aria-label="RushTopFish Dance home">
+        <img src={danceLogoImg.src} alt="RushTopFish Dance" />
+      </a>
+      <div class="meta dance-anim d1">
+        <span class="dot" aria-hidden="true"></span>Season 2026 · in rehearsal
+      </div>
+    </header>
+
+    <main class="dance-centerpiece">
+      <div class="dance-anchor">
+        <div class="dance-eyebrow-row dance-anim d2">
+          <span class="line" aria-hidden="true"></span>
+          <span>Coming soon · 2026 season</span>
+        </div>
+
+        <h1 class="dance-title dance-anim d3">
+          Something is<br>
+          <em>moving</em> here.
+        </h1>
+
+        <p class="dance-lede dance-anim d4">
+          Three new works, a winter revival, and a city we keep finding new rooms inside.
+          We're back this fall — quietly, for now. Stay close.
+        </p>
+      </div>
+    </main>
+
+    <footer class="dance-footer">
+      <div class="left">
+        <span class="credit">© 2026 RushTopFish Dance</span>
+        <a href="mailto:hello@rushtopfish.com">hello@rushtopfish.com</a>
+      </div>
+      <div class="right">
+        <a href="/pilates">Pilates studio ↗</a>
+        <a href="https://instagram.com/rushtopfish" aria-label="Instagram">Instagram</a>
+      </div>
+    </footer>
+
+  </div>
+</Layout>
