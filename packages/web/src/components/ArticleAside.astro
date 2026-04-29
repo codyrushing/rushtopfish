@@ -3,24 +3,27 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
-  image: {
+  image?: {
     src: ImageMetadata | string;
     placement?: 'left' | 'right';
     alt?: string;
   }
 }
 
-const { image: { src, alt, placement="left" } } = Astro.props;
+const { image: { src, alt, placement="left" }={} } = Astro.props;
 
 ---
 
-<article class="article-aside gap-6 py-6 px-4 md:py-8 md:px-6">
-  <div class={`img-col aspect-[4/5] overflow-hidden ${placement === 'left' ? 'order-0' : 'order-1'}`}>
-    <Image
-      layout="constrained"
-      src={src as ImageMetadata}
-      alt={alt ?? ""}
-      class="w-full h-full object-cover block"/>
+<article class="article-aside gap-6 py-6 md:py-8">
+  <div class="img-col">
+    { Astro.slots.has('image') && <slot name="image" /> }
+    { !Astro.slots.has('image') && <div class={`aspect-[4/5] overflow-hidden ${placement === 'left' ? 'order-0' : 'order-1'}`}>
+      <Image
+        layout="constrained"
+        src={src as ImageMetadata}
+        alt={alt ?? ""}
+        class="w-full h-full object-cover block" />
+    </div> }
   </div>
   <div class="content-col">
     <slot name="content" />

@@ -4,11 +4,8 @@
 
 @layer components {
   /* Layout */
-  section.page-section {
-    @apply p-4 md:p-8;
-  }
-  .container { max-width: 1240px; margin: 0 auto; }
-  section { padding-block: var(--spacing-9); }
+  .container { max-width: 1240px; margin: 0 auto; @apply p-4; }
+  /*section { padding-block: var(--spacing-9); }*/
   section + section { border-top: 1px solid var(--border-soft); }
 
   body.menu-open { overflow: hidden; }

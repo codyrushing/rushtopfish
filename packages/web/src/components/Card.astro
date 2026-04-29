@@ -44,7 +44,7 @@ const isImageMetadata = image && typeof image === 'object';
 
 <article class={`card flex flex-col ${layout === "horizontal" ? "lg:flex-row" : "lg:flex-col"} ${classProp}`} {...rest}>
   {image && (
-    <div class={`img-wrap shrink-0 overflow-hidden ${layout === "horizontal" ? "lg:aspect-[4/5]" : "aspect-[16/9]"} ${imgClass}`}>
+    <div class={`img-wrap shrink-0 overflow-hidden border-ink border-b-[1.5px] ${layout === "horizontal" ? 'lg:border-r-[1.5px]' : ''} ${imgClass}`}>
       {isImageMetadata
         ? <Image src={image as ImageMetadata} layout="constrained" alt={imageAlt} widths={imageWidths} sizes={imageSizes} />
         : <img src={image as string} alt={imageAlt}>
@@ -92,7 +92,6 @@ const isImageMetadata = image && typeof image === 'object';
 
   .body {
     padding: 18px 20px 22px;
-    border-top: 1.5px solid var(--color-ink);
   }
 
   .eyebrow {

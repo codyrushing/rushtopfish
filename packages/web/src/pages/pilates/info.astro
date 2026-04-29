@@ -1,0 +1,100 @@
+---
+import PilatesHero from '../../components/PilatesHero.astro';
+import PilatesLayout from 'src/layouts/PilatesLayout.astro';
+
+import mapImg from '../../assets/images/studio-map.png';
+import ArticleAside from 'src/components/ArticleAside.astro';
+import Button from 'src/components/Button.astro';
+import { Image } from 'astro:assets';
+---
+
+<PilatesLayout title="About Us - RushTopFish Pilates" theme="pilates" pageType="pilates">
+
+  <PilatesHero
+    eyebrow="Policies, FAQs, and Visiting"
+    ledeInset={false}
+  >
+    <Fragment slot="lede">The practical bits — what to wear, how to cancel, how to find us. If anything here isn't clear, write us at <a href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a> and we'll get back to you.</Fragment>
+    <Fragment slot="heading">Info</Fragment>
+  </PilatesHero>
+
+  <section id="studio" class="page-section bg-bone border-charcoal/50 border-y-[1.5px]">
+    <div class="container">
+      <ArticleAside image={{ src: mapImg, alt: 'RushTopFish Studio'}}>
+        <Fragment slot="image">
+          <div class="aspect-square overflow-hidden order-0 border-charcoal/50 border">
+            <a target="_blank" href="https://maps.app.goo.gl/PMkfLR2SHiqLSGU17">
+              <Image
+                layout="constrained"
+                src={mapImg}
+                alt="RushTopFish Studio map"
+                class="w-full h-full object-cover block" />
+            </a>
+          </div>
+        </Fragment>
+        <Fragment slot="content">
+          <div class="eyebrow text-orange">Where to Find Us</div>
+          <h2>RushTopFish Studio</h2>
+          <p class="font-serif text-xl text-charcoal">2611 South 5th St. Unit C<br />Austin, TX 78704</p>
+          <p>
+            <Button target="_blank" href="https://maps.app.goo.gl/PMkfLR2SHiqLSGU17">Open in maps</Button>
+          </p>
+          <div class="mt-4 pt-4 border-sand border-t">
+            <div class="eyebrow mb-2">Parking</div>
+            <p>RushTopFish studio is located in a residential area, so we ask that you please park on Cumberland Street alongside South Austin Neighborhood Park. Out of courtesy to our neighbors, <strong>please do no park in front of any nearby residences</strong>. If parking is unavailable on Cumberland Street, you can always park at the South Austin Tennis Center, which is a two-minute walk from RushTopFish Studio. There is no parking available on South 5th St.</p>
+          </div>
+          <div class="pt-4 border-sand border-t">
+            <div class="eyebrow mb-2">Access</div>
+            <p class="mb-0">From the park, you will need to cross South 5th St to access the studio. RushTopFish is located in Unit C which is a detached, teal-colored building with a windowed garage door. The entrance is accessible from South 5th Street - you will will not need to cross the fence to access the studio.</p>
+          </div>
+        </Fragment>
+    </div>
+  </section>
+  <section class="page-section py-6" id="policies">
+    <div class="container">
+      <h1>Policies</h1>
+      <div class="faqs-list flex flex-col divide-y divide-mist gap-6 lg:gap-8">
+        <div class="faq-item">
+          <h2>Reservations</h2>
+          <p>We require all clients to pre-book their spot ahead of time. Please visit our <a href="/book">booking page</a> to secure your spot. Booking will be available up to two hours before class start time.</p>
+        </div>
+
+        <div class="faq-item">
+          <h2>Late Arrivals/Waitlist</h2>
+          <p>If you have not arrived at the start of class, your spot may be released to any waitlisted clients. To ensure safety and a smooth class experience for all clients, latecomers will not be permitted to join after 5 minutes.</p>
+        </div>
+
+        <div class="faq-item">
+          <h2>Cancellation Policy</h2>
+          <p>All class cancellations must take place at least 12 hours before the start time. Cancellations within the 12 hour window and no-shows will forfeit the class credit.</p>
+        </div>
+
+        <div class="faq-item">
+          <h2>Studio Etiquette</h2>
+          <p>Please keep cell phones quiet and out of sight during class sessions.</p>
+        </div>
+
+        <div class="faq-item">
+          <h2>Pregnancies and Modifications</h2>
+          <p>If you are pregnant or have movement limitations please come 10 minutes early to meet with your instructor to discuss your needs.</p>
+        </div>
+
+        <div class="faq-item">
+          <h2>Refunds</h2>
+          <p>All class sales are final, however if cancelled before the 12 hour window, your class credit will go back to your account to be used another time.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</PilatesLayout>
+<style>
+@reference "tailwindcss";
+.faqs-list {
+  @apply gap-6 lg:gap-8;
+}
+.faqs-list > .faq-item:not(:last-child) {
+  @apply pb-2;
+}
+</style>
