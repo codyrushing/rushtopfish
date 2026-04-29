@@ -1,19 +1,27 @@
 ---
-import { Image } from 'astro:assets';
-import pilatesLogo from '../assets/logos/rtf-pilates.svg?url';
 import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
 
 ---
 <footer class="pilates-footer p-4">
-  <div class="text-sand text-[12px] md:text-xs">
-    <div class="flex justify-between gap-4 items-center">
-      <div class="flex flex-wrap items-center">
-        <img src={logoTricolor} class="h-4 relative bottom-[2px] mr-1" />
-        <span class="whitespace-nowrap ml-[2px] leading-1 hidden md:inline-block">Woman-owned  ·  Austin, TX</span>
-      </div>
-      <a href="/dance" class="whitespace-nowrap" title="RushTopFish Dance Company" target="_blank">
-        RushTopFish Dance Company &raquo;
-      </a>
+  <div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+    <div class="hidden md:block">
+      <img src={logoTricolor} class="h-4" />
+      <span class="inline-block text-sand text-xs">Woman-owned  ·  Austin, TX</span>
+    </div>
+
+    <div class="hidden sm:block">
+      <div class="eyebrow text-mist block">Location:</div>
+      <div><a class="inline-block text-sand text-xs" href="/pilates/info#studio">RushTopFish Studio</a></div>
+    </div>
+
+    <div class="">
+      <div class="eyebrow text-mist block">Email:</div>
+      <div><a class="inline-block text-sand text-xs" href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a></div>
+    </div>
+
+    <div class="">
+      <div class="eyebrow text-mist block">More:</div>
+      <div><a href="/dance" class="inline-block text-sand text-xs" title="RushTopFish Dance Company" target="_blank">RushTopFish Dance <span class="whitespace-nowrap">Company &nearr;</span></a></div>
     </div>
   </div>
 </footer>
