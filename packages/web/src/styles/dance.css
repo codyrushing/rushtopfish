@@ -2,7 +2,7 @@
 @import 'tailwindcss';
 
 @layer base {
-  html, body { height: 100%; overflow: hidden; }
+  /*html, body { height: 100%; overflow: hidden; }*/
 
   @media (max-width: 820px) {
     body { overflow: auto; }

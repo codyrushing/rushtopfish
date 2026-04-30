@@ -15,12 +15,11 @@ const gradientOverlay = [
 ].join(' ');
 
 ---
-
 <Layout
   title="RushTopFish Dance — 2026 season, coming soon"
   description="RushTopFish is a contemporary dance company based in Austin, TX" theme="dance">
   <div
-    class="dance-stage h-screen w-screen relative"
+    class="dance-stage min-h-[100dvh] min-w-[100dvw] relative"
     role="img"
     aria-label="Dancers on an Austin rooftop at golden hour"
   >
@@ -34,7 +33,6 @@ const gradientOverlay = [
     <div
       class="bg-gradient absolute top-0 left-0 right-0 bottom-0"
       style={`background-image: ${gradientOverlay};`}>
-
     </div>
 
     <header class="dance-header">
@@ -76,3 +74,14 @@ const gradientOverlay = [
 
   </div>
 </Layout>
+<style>
+body:global {
+  height: 100dvh;
+  width: 100dvh;
+}
+</style>
+<script>
+window.onload = function() {
+  // window.scrollTo(0,99999);
+}
+</script>
