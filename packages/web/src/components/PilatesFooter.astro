@@ -1,0 +1,38 @@
+---
+import logoTricolor from '../assets/logos/rtf-tricolor.svg?url';
+
+---
+<footer class="pilates-footer p-4">
+  <div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+    <div class="hidden md:block">
+      <img src={logoTricolor} class="h-4" />
+      <span class="inline-block text-sand text-xs">Woman-owned  ·  Austin, TX</span>
+    </div>
+
+    <div class="hidden sm:block">
+      <div class="eyebrow text-mist block">Location:</div>
+      <div><a class="inline-block text-sand text-xs" href="/pilates/info#studio">RushTopFish Studio</a></div>
+    </div>
+
+    <div class="">
+      <div class="eyebrow text-mist block">Email:</div>
+      <div><a class="inline-block text-sand text-xs" href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a></div>
+    </div>
+
+    <div class="">
+      <div class="eyebrow text-mist block">More:</div>
+      <div><a href="/dance" class="inline-block text-sand text-xs" title="RushTopFish Dance Company" target="_blank">RushTopFish Dance <span class="whitespace-nowrap">Company &nearr;</span></a></div>
+    </div>
+  </div>
+</footer>
+<style>
+/* Footer */
+footer.pilates-footer { background: var(--color-ink); }
+/*footer.pilates-footer .grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+footer.pilates-footer .brand-logo { height: 32px; display: block; filter: invert(1); }
+footer.pilates-footer .brand-desc { margin-top: 20px; max-width: 36ch; color: var(--color-sand); font-size: 14px; line-height: 1.6; }
+footer.pilates-footer h5 { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-sand); margin: 0 0 14px; }
+footer.pilates-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }*/
+footer.pilates-footer a { color: var(--color-sand); text-decoration: none; }
+footer.pilates-footer a:hover { text-decoration: underline; text-underline-offset: 0.35em; color: var(--color-cream); }
+</style>

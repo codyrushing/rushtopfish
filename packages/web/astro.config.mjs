@@ -6,33 +6,43 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   // integrations: [react(), markdoc(), keystatic()],
-
+  image: {
+    layout: "constrained",
+    domains: ['picsum.photos'],
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'picsum.photos'
+    }]
+  },
+  devToolbar: {
+    enabled: false
+  },
   vite: {
     plugins: [
       tailwindcss(),
-      viteImagemin({
-        // JPEG optimization
-        mozjpeg: {
-          quality: 70,
-          progressive: true
-        },
-        // PNG optimization
-        pngquant: {
-          quality: [0.6, 0.8],
-          speed: 4
-        },
-        // WebP conversion
-        webp: {
-          quality: 70
-        },
-        // SVG optimization
-        svgo: {
-          plugins: [
-            { name: 'removeViewBox', active: false },
-            { name: 'removeEmptyAttrs', active: false }
-          ]
-        }
-      })
+      // viteImagemin({
+      //   // JPEG optimization
+      //   mozjpeg: {
+      //     quality: 70,
+      //     progressive: true
+      //   },
+      //   // PNG optimization
+      //   pngquant: {
+      //     quality: [0.6, 0.8],
+      //     speed: 4
+      //   },
+      //   // WebP conversion
+      //   webp: {
+      //     quality: 70
+      //   },
+      //   // SVG optimization
+      //   svgo: {
+      //     plugins: [
+      //       { name: 'removeViewBox', active: false },
+      //       { name: 'removeEmptyAttrs', active: false }
+      //     ]
+      //   }
+      // })
     ],
   },
 });

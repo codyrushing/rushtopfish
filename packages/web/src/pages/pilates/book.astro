@@ -1,0 +1,51 @@
+---
+import Button from 'src/components/Button.astro';
+import PilatesHero from 'src/components/PilatesHero.astro';
+import PilatesLayout from 'src/layouts/PilatesLayout.astro';
+---
+
+<PilatesLayout title="Book a class and view our schedule - RushTopFish Pilates" theme="pilates" pageType="pilates">
+  <PilatesHero
+    eyebrow="Class schedule"
+  >
+    <Fragment slot="heading">Book <em>with</em> us</Fragment>
+    <Fragment slot="actions">
+      <Button target=_blank href="https://rushtopfish.punchpass.com" type="button">Book on PunchPass <span aria-hidden="true">→</span></Button>
+      <Button variant="ghost" target=_blank href="https://rushtopfish.punchpass.com/passes" type="button">Purchase passes or a membership <span aria-hidden="true">→</span></Button>
+    </Fragment>
+  </PilatesHero>
+
+  <section class="page-section signup-section bg-bone border-charcoal/50 border-y-[1.5px]">
+    <div class="container">
+      <h2>How to sign up</h2>
+      <p><a target=_blank href="https://app.punchpass.com/account/sign_in?company=773293ab-b223-45ab-bd1d-a1b900985943">Sign up on our PunchPass page</a> to get started. New customers get their first mat class for only $10 and their first reformer class for only $20.</p>
+      <h2>Booking a Private Session</h2>
+      <p>Get one-on-one training built entirely around you. Train at your own pace with a program designed specifically for your body and your goals. With an expert instructor by your side, you’ll refine your form, move more efficiently, and build lasting strength. To sign up for a private:</p>
+        <ol class="list-decimal list-inside">
+          <li>Sign up for a PunchPass account (no payment necessary).</li>
+          <li>Email us at <a href="mailto:rushtopfish@gmail.com?subject=Requesting%20a%20private%20session">rushtopfish@gmail.com</a> to request a private session.</li>
+        </ol>
+    </div>
+  </section>
+
+  <section class="page-section bg-white">
+    <div class="container">
+      <h1>Browse the schedule</h1>
+    </div>
+  </section>
+
+  <!-- LIST VIEW -->
+  <section class="bg-white py-4">
+    <iframe name="frame2" src="https://rushtopfish.punchpass.com/classes?embed=true" height="1000" width="100%" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+
+</PilatesLayout>
+<style>
+@reference "tailwindcss";
+  .signup-section {
+    p, li {
+      @apply md:text-lg;
+    }
+  }
+</style>

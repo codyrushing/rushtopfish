@@ -1,25 +1,26 @@
 ---
 import '../styles/global.css';
-import NetlifyIdentityRedirect from '../components/NetlifyIdentityRedirect.astro';
 import type { Page } from '../content/config';
-const { title, description } = Astro.props as Pick<Page, "title" | "description">;
+export type Props = Pick<Page, "title" | "description"> & { theme?: "dance" | "pilates" };
+const { title, description, theme } = Astro.props;
 const isProduction = import.meta.env.PROD;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme={theme}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description ?? "Page description goes here"}>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} - RushTopFish - Contemporary Dance in Austin, TX</title>
+		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap&family=Signika+Negative:wght@300..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
 	</head>
-	<body>
+	<body class="min-h-screen flex flex-col">
 	    <slot />
 			{ isProduction &&
 			<!-- Google tag (gtag.js) -->
@@ -32,6 +33,5 @@ const isProduction = import.meta.env.PROD;
         gtag('config', 'G-Z8M30R4JJK');
       </script>
       }
-      <!-- <NetlifyIdentityRedirect /> -->
 	</body>
 </html>

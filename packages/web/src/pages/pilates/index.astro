@@ -1,0 +1,56 @@
+---
+import PilatesLayout from 'src/layouts/PilatesLayout.astro';
+import PilatesHero from '../../components/PilatesHero.astro';
+
+import PhotoStrip from '../../components/PhotoStrip.astro';
+import seatedBackToBack from '../../assets/photos/seated-back-to-back.jpg';
+import kneelingInLine from '../../assets/photos/kneeling-in-line.jpg';
+import groupArmRaiseLineImg from '../../assets/photos/group-arm-raise-line.jpg';
+
+import seatedReformersStretch from '../../assets/photos/seated-reformers-stretch.jpg';
+import seatedLegRaise from '../../assets/photos/pilates-15.jpg';
+import Button from 'src/components/Button.astro';
+import { punchpassScheduleUrl } from 'src/utils/constants';
+import PhotoCreditSarahAnnie from 'src/components/PhotoCreditSarahAnnie.astro';
+---
+
+<PilatesLayout
+  title="RushTopFish Pilates — Reformer · Mat · Somatic"
+  description="Our mission is to offer expertly taught and mindfully delivered pilates and somatic based fitness to the South Austin neighborhood community."
+  theme="pilates"
+  pageType="pilates">
+
+  <PilatesHero
+    eyebrow="Reformer · Mat · Somatic"
+    ledeInset={true}
+    lede="Our mission is to offer expertly taught and mindfully delivered pilates and somatic based fitness to the South Austin neighborhood community."
+    image={groupArmRaiseLineImg}
+    imageAlt="Studio mat work in morning light"
+  >
+    <Fragment slot="heading">Move <em>with</em> us</Fragment>
+    <Fragment slot="actions">
+      <Button href={punchpassScheduleUrl} target=_blank type="button">Book a class <span aria-hidden="true">→</span></Button>
+    </Fragment>
+    <Fragment slot="caption"><PhotoCreditSarahAnnie /></Fragment>
+  </PilatesHero>
+
+  <section class="page-section bg-teal-soft border-ink border-y-1.5">
+    <div class="container max-w-3xl">
+      <span class="eyebrow text-xs">You Belong Here</span>
+      <h2 class="mt-2 mb-4">Our philosophy</h2>
+      <p class="text-lg">Our vision is to bring the community together through movement. We offer an inclusive environment where everybody belongs regardless of race, gender, orientation, age, body size or fitness level. We believe that movement is nourishing and healing both physically and mentally, and we want to offer a non-competitive, judgment free space where Austinites can drop in and take part in some sweaty self-care.</p>
+      <p class="text-lg">Our workouts are guided by a desire to feel stronger and more at ease in our bodies rather than a mandate to change our appearance. We believe that our bodies are already beautiful just the way they are, and we workout as a means of caring for our health, and celebrating what our bodies were made to do – <span class="italic font-bold">MOVE!</span></p>
+    </div>
+  </section>
+
+  <PhotoStrip
+    images={[
+      { src: seatedBackToBack, alt: '' },
+      { src: kneelingInLine, alt: '' },
+      { src: seatedLegRaise, alt: '' },
+      { src: seatedReformersStretch, alt: '' },
+    ]}>
+      <Fragment slot="caption"><PhotoCreditSarahAnnie /></Fragment>
+    </PhotoStrip>
+
+</PilatesLayout>

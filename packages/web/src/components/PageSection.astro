@@ -49,7 +49,7 @@ function getContentClasses() : string[] {
   return contentClasses;
 }
 
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
+const images = import.meta.glob<{ default: ImageData }>('/src/assets/**/*.{jpeg,jpg,png,gif}');
 
 const wrapperStyle = {
   ...(props.background_color ? {

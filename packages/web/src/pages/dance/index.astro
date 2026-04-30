@@ -1,0 +1,78 @@
+---
+import Layout from 'src/layouts/Layout.astro';
+import '../../styles/dance.css';
+import bgImg from '../../assets/photos/dance-rooftop-together.jpeg';
+import danceLogoImg from '../../assets/logos/rtf-dance.svg';
+import { Image } from 'astro:assets';
+
+const gradientOverlay = [
+  'linear-gradient(180deg,',
+  '  rgba(14,12,10,0.78) 0%,',
+  '  rgba(14,12,10,0.30) 28%,',
+  '  rgba(14,12,10,0.20) 55%,',
+  '  rgba(14,12,10,0.92) 100%',
+  ')',
+].join(' ');
+
+---
+
+<Layout
+  title="RushTopFish Dance — 2026 season, coming soon"
+  description="RushTopFish is a contemporary dance company based in Austin, TX" theme="dance">
+  <div
+    class="dance-stage h-screen w-screen relative"
+    role="img"
+    aria-label="Dancers on an Austin rooftop at golden hour"
+  >
+    <div class="bg-image absolute top-0 left-0 right-0 bottom-0">
+      <Image
+        src={bgImg}
+        alt="Dancers on an Austin rooftop at golden hour"
+        class="w-full h-full object-cover block"
+        style="object-position: 58% 50%;"/>
+    </div>
+    <div
+      class="bg-gradient absolute top-0 left-0 right-0 bottom-0"
+      style={`background-image: ${gradientOverlay};`}>
+
+    </div>
+
+    <header class="dance-header">
+      <a class="brand dance-anim d1" href="/" aria-label="RushTopFish home">
+        <img src={danceLogoImg.src} alt="RushTopFish Dance" />
+      </a>
+      <!-- <div class="meta dance-anim d1">
+        <span class="dot" aria-hidden="true"></span>Season 2026 · in rehearsal
+      </div> -->
+    </header>
+
+    <main class="dance-centerpiece">
+      <div class="dance-anchor">
+        <div class="dance-eyebrow-row dance-anim d2">
+          <span class="line" aria-hidden="true"></span>
+          <span>Coming soon · 2026 season</span>
+        </div>
+
+        <h1 class="dance-title dance-anim d3">
+          <em>2026</em> season updates coming soon
+        </h1>
+
+        <!-- <p class="dance-lede dance-anim d4">
+          Three new works, a winter revival, and a city we keep finding new rooms inside.
+          We're back this fall — quietly, for now. Stay close.
+        </p> -->
+      </div>
+    </main>
+
+    <footer class="dance-footer">
+      <div class="left">
+        <a href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a>
+      </div>
+      <div class="right">
+        <a href="/pilates">Pilates studio ↗</a>
+        <a href="https://instagram.com/rush.top.fish" aria-label="Instagram">Instagram</a>
+      </div>
+    </footer>
+
+  </div>
+</Layout>

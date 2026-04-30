@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Tag {
+  label: string;
+  solid?: boolean;
+  orange?: boolean;
+}
+
+interface Props {
+  title: string;
+  eyebrow?: string;
+  meta?: string;
+  image?: ImageMetadata | string;
+  imageAlt?: string;
+  imageWidths?: number[];
+  imageSizes?: string;
+  tags?: Tag[];
+  layout?: "vertical" | "horizontal",
+  class?: string,
+  imgClass?: string,
+  [key: string]: unknown;
+}
+
+const {
+  title,
+  eyebrow,
+  meta,
+  image,
+  imageAlt = '',
+  imageWidths = [400, 700],
+  imageSizes = '(max-width: 860px) 100vw, 33vw',
+  tags,
+  layout="vertical",
+  class: classProp="",
+  imgClass="",
+  ...rest
+} = Astro.props;
+
+const isImageMetadata = image && typeof image === 'object';
+
+---
+
+<article data-layout={layout} class={`card flex flex-col ${layout === "horizontal" ? "lg:flex-row" : "lg:flex-col"} ${classProp}`} {...rest}>
+  {image && (
+    <div class={`img-wrap shrink-0 overflow-hidden border-ink border-b-[1.5px] ${layout === "horizontal" ? 'lg:border-r-[1.5px]' : ''} ${imgClass}`}>
+      {isImageMetadata
+        ? <Image src={image as ImageMetadata} layout="constrained" alt={imageAlt} widths={imageWidths} sizes={imageSizes} />
+        : <img src={image as string} alt={imageAlt}>
+      }
+    </div>
+  )}
+  <div class="body">
+    {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+    <h3 class="title">{title}</h3>
+    {meta && <div class="meta">{meta}</div>}
+    {tags && tags.length > 0 && (
+      <div class="tag-row">
+        {tags.map(tag => (
+          <span class:list={['tag', { solid: tag.solid, orange: tag.orange }]}>{tag.label}</span>
+        ))}
+      </div>
+    )}
+    <slot />
+  </div>
+</article>
+
+<style>
+@import "../styles/global.css";
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+      box-shadow var(--duration-base) var(--ease-soft),
+      transform var(--duration-base) var(--ease-soft);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card[data-layout="horizontal"] {
+
+  }
+
+  .img-wrap {
+  }
+
+  .img-wrap :global(img) {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform var(--duration-slow) var(--ease-soft);
+  }
+  .card:hover .img-wrap :global(img) { transform: scale(1.02); }
+
+  .body {
+    padding: 18px 20px 22px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-smoke);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 100, "SOFT" 80;
+    margin: 4px 0 8px;
+  }
+
+  .meta {
+    font-size: 13px;
+    color: var(--color-smoke);
+  }
+
+  .tag-row {
+    margin-top: 12px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 11px;
+    border: 1px solid var(--color-ink);
+    border-radius: 999px;
+    color: var(--color-ink);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
+  .tag.solid { background: var(--color-ink); color: var(--color-cream); }
+  .tag.orange { background: var(--color-orange); color: #fff; border-color: transparent; }
+</style>

@@ -1,16 +1,16 @@
 title: RushTopFish - contemporary dance and pilates in Austin, TX
 description: __TODO__ RushTopFish is a very cool dance company
 dance_media:
-  media: /packages/web/src/assets/images/img_9716-cropped.jpeg
-  fit: contain
+  media: /src/assets/images/img_9641.jpeg
+  fit: cover
   x_pos: 50
   y_pos: 50
   alt: ''
   caption: ''
 pilates_media:
-  media: https://picsum.photos/id/200/1920/1280.webp
-  fit: none
+  media: /src/assets/images/11864877173.jpg
+  fit: cover
   x_pos: 50
-  y_pos: 50
+  y_pos: 100
   alt: ''
   caption: ''

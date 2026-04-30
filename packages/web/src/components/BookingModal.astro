@@ -1,0 +1,19 @@
+---
+import Button from "./Button.astro";
+
+---
+<div class="modal-backdrop" id="booking-modal">
+  <div class="modal">
+    <div class="modal-eyebrow">Reserve your spot</div>
+    <h3 id="modal-title">Book a class</h3>
+    <p class="modal-desc">Drop-in · $28. We'll hold your spot for 10 minutes.</p>
+    <label for="booking-name">Your name</label>
+    <input id="booking-name" placeholder="Marin Torres">
+    <label for="booking-email">Email</label>
+    <input id="booking-email" placeholder="you@rushtopfish.com" type="email">
+    <div class="modal-actions">
+      <Button id="booking-confirm">Confirm · $28</Button>
+      <Button variant="ghost" id="booking-cancel">Cancel</Button>
+    </div>
+  </div>
+</div>

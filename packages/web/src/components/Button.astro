@@ -1,0 +1,84 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'link';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  tag?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  disabled = false,
+  type = 'button',
+  tag,
+  class: propClass,
+  ...rest
+} = Astro.props;
+
+const classes = ['btn', `btn-${variant}`, size !== 'md' ? `btn-${size}` : '', propClass ?? ''];
+const Tag = tag;
+---
+
+{Tag ? (
+  <Tag class:list={classes} {...rest}><slot /></Tag>
+) : href ? (
+  <a href={href} class:list={classes} {...rest}><slot /></a>
+) : (
+  <button {type} disabled={disabled || undefined} aria-disabled={disabled || undefined} class:list={classes} {...rest}><slot /></button>
+)}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    letter-spacing: 0.005em;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+      background var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .btn-sm { padding: 8px 16px;  font-size: 13px; }
+  .btn-lg { padding: 15px 28px; font-size: 15px; }
+
+  .btn-primary { background: var(--color-orange); color: #fff; }
+  .btn-primary:hover { background: var(--color-orange-deep); }
+
+  .btn-secondary { background: var(--color-ink); color: var(--color-cream); }
+
+  .btn-ghost { background: transparent; border-color: var(--color-ink); color: var(--color-ink); }
+  .btn-ghost:hover { background: var(--color-ink); color: var(--color-cream); }
+
+  .btn-link {
+    background: transparent;
+    border: 0;
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.35em;
+    padding: 11px 2px;
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+</style>

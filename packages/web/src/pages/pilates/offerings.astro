@@ -1,0 +1,109 @@
+---
+import PilatesHero from '../../components/PilatesHero.astro';
+import PilatesLayout from 'src/layouts/PilatesLayout.astro';
+import Card from '../../components/Card.astro';
+import CardAttrs from 'src/components/CardAttrs.astro';
+
+import carissaSunStretch from '../../assets/photos/carissa-sun-stretch.jpg';
+import pilatesSocksPoint from '../../assets/photos/pilates-socks-point.jpg';
+import pilatesReformerClass from '../../assets/photos/pilates-reformer-class.jpg';
+import pilatesReformerAdjustment from '../../assets/photos/pilates-reformer-adjustment.jpg';
+import Button from 'src/components/Button.astro';
+import { punchpassScheduleUrl } from 'src/utils/constants';
+---
+
+<PilatesLayout
+  activePage="offerings"
+  title="Class Offerings - RushTopFish Pilates"
+  description="RushTopFish Pilates class offerings and descriptions"
+  theme="pilates"
+  pageType="pilates">
+
+  <PilatesHero
+    eyebrow="Our classes"
+  >
+    <Fragment slot="heading">Offerings</Fragment>
+    <Fragment slot="actions">
+      <Button href={punchpassScheduleUrl} target=_blank type="button">Book a class <span aria-hidden="true">→</span></Button>
+      <Button variant="ghost" target=_blank href="https://rushtopfish.punchpass.com/passes" type="button">Purchase passes or a membership <span aria-hidden="true">→</span></Button>
+    </Fragment>
+  </PilatesHero>
+
+  <div class="container p-4 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pb-8">
+    <Card
+      eyebrow="Mat"
+      imgClass="aspect-4/3"
+      image={carissaSunStretch}
+      title="Feel Good Mat">
+        <p>Liberate your body using intentional movement, mindful breath, and a somatic approach to Pilates designed for all levels. This class helps repattern the body and support change at a cellular level while building strength and mobility. Expect to deepen your mind-body connection and leave feeling refreshed, strong and balanced.</p>
+        <CardAttrs attrs={[
+          {
+            label: "Duration",
+            value: "50 min"
+          },
+          {
+            label: "Class size",
+            value: "15"
+          }
+        ]} />
+    </Card>
+    <Card
+      eyebrow="Mat"
+      imgClass="aspect-4/3"
+      image={pilatesSocksPoint}
+      title="Strong Body Mat">
+        <p>Strong Body is a pumped up version of our Feel Good mat class. This class incorporates traditional and functional sequences with the option of advanced movement patterns. Expect to elevate your heart rate, challenge endurance, build strength and work up a sweat from floor sequences to standing, we will keep you moving the entire time leaving you feeling strong and accomplished.</p>
+        <CardAttrs attrs={[
+          {
+            label: "Duration",
+            value: "50 min"
+          },
+          {
+            label: "Class size",
+            value: "15"
+          }
+        ]} />
+    </Card>
+    <Card
+      eyebrow="Reformer"
+      imgClass="aspect-4/3"
+      image={pilatesReformerClass}
+      title="Small Group Reformer">
+        <p>Our Small Group Reformer classes blend contemporary Pilates with fluid pacing. We value intuitive, functional movement that respects your body’s natural range. While the focus remains on form and control, expect to find ease and flow that feels more like a moving meditation than just a standard workout.  We focus on low-impact moves that are gentle on the joints while building strength and improving posture. All levels are welcome in this class. Space is limited to ensure personalized attention and proper form for every participant. To guarantee your spot on a carriage, please sign up ahead of time through our booking portal.</p>
+        <CardAttrs attrs={[
+          {
+            label: "Duration",
+            value: "50 min"
+          },
+          {
+            label: "Class size",
+            value: "3"
+          }
+        ]} />
+    </Card>
+
+    <Card
+      class="lg:col-span-full"
+      imgClass="max-h-96 aspect[16/9] lg:aspect[4/5]"
+      layout="horizontal"
+      eyebrow="Reformer · Mat"
+      layout="horizontal"
+      image={pilatesReformerAdjustment}
+      title="Private Session">
+        <p>Get one-on-one training built entirely around you. Train at your own pace with a program designed specifically for your body and your goals. With an expert instructor by your side, you’ll refine your form, move more efficiently, and build lasting strength. Please contact us to set up your private session.</p>
+        <CardAttrs attrs={[
+          {
+            label: "Duration",
+            value: "50 min"
+          },
+          {
+            label: "Class size",
+            value: "1"
+          }
+        ]} />
+    </Card>
+
+
+  </div>
+
+</PilatesLayout>

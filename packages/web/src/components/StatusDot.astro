@@ -1,0 +1,33 @@
+---
+interface Props {
+  status: 'open' | 'nearly-full' | 'waitlist';
+}
+
+const { status } = Astro.props;
+---
+
+<span class="status-dot">
+  <span class:list={['dot', status]} />
+  <slot />
+</span>
+
+<style>
+  .status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    color: var(--fg);
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .dot.open        { background: #4caa7e;           }
+  .dot.nearly-full { background: var(--color-gold);  }
+  .dot.waitlist    { background: var(--color-orange); }
+</style>
