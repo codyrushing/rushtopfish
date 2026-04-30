@@ -105,7 +105,7 @@
 
   .dance-title {
     font-family: var(--font-display);
-    font-size: clamp(72px, 13vw, 220px);
+    font-size: clamp(72px, 10vw, 220px);
     line-height: 0.86;
     letter-spacing: -0.04em;
     margin: 0;
@@ -116,7 +116,7 @@
   .dance-title em {
     font-style: italic;
     color: var(--color-pink);
-    font-family: var(--font-serif);
+    /*font-family: var(--font-serif);*/
     letter-spacing: -0.02em;
   }
 

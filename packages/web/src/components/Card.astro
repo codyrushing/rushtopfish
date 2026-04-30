@@ -42,7 +42,7 @@ const isImageMetadata = image && typeof image === 'object';
 
 ---
 
-<article class={`card flex flex-col ${layout === "horizontal" ? "lg:flex-row" : "lg:flex-col"} ${classProp}`} {...rest}>
+<article data-layout={layout} class={`card flex flex-col ${layout === "horizontal" ? "lg:flex-row" : "lg:flex-col"} ${classProp}`} {...rest}>
   {image && (
     <div class={`img-wrap shrink-0 overflow-hidden border-ink border-b-[1.5px] ${layout === "horizontal" ? 'lg:border-r-[1.5px]' : ''} ${imgClass}`}>
       {isImageMetadata
@@ -81,6 +81,13 @@ const isImageMetadata = image && typeof image === 'object';
   .card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
+  }
+
+  .card[data-layout="horizontal"] {
+
+  }
+
+  .img-wrap {
   }
 
   .img-wrap :global(img) {

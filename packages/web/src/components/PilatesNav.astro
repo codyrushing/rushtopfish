@@ -3,6 +3,7 @@ import pilatesLogo from '../assets/logos/rtf-pilates.svg?url';
 import Button from './Button.astro';
 import InstagramLogo from '../assets/icons/instagram.svg';
 import EnvelopeIcon from '../assets/icons/envelope.svg';
+import { pilatesInstagramUrl, punchpassScheduleUrl } from 'src/utils/constants';
 
 interface Props {
   activePage?: 'about' | 'book' | 'offerings' | 'info';
@@ -35,7 +36,7 @@ const navLinks = [
         <li>
           <a
             class="ig p-2"
-            href="https://instagram.com/rushtopfish.pilates"
+            href={pilatesInstagramUrl}
             target="_blank"
             rel="noopener"
             aria-label="RushTopFish on Instagram"
@@ -47,7 +48,7 @@ const navLinks = [
     </nav>
 
     <div class="actions flex items-center gap-2">
-      <Button type="button" href="/pilates/book">Book a class</Button>
+      <Button type="button" href={punchpassScheduleUrl} target=_blank>Book a class</Button>
       <button class="menu-toggle" data-menu-toggle type="button" aria-label="Open menu" aria-expanded="false" aria-controls="pilates-mobile-menu" id="pilates-menu-open">
         <!-- open icon -->
         <svg viewBox="0 0 24 24" class="open-icon" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
@@ -71,12 +72,12 @@ const navLinks = [
         {navLinks.map(link => (
           <li><a href={link.href}>{link.label}</a></li>
         ))}
-        <li><a href="/pilates/book"><em>Book a class</em></a></li>
+        <li><a href={punchpassScheduleUrl} target=_blank><em>Book a class</em></a></li>
       </ul>
     </nav>
     <div class="foot mt-6 flex flex-col gap-4">
       <div class="flex flex-row justify-center items-center gap-4">
-        <a class="ig" href="https://instagram.com/rushtopfish" target="_blank" rel="noopener">
+        <a class="ig" href={pilatesInstagramUrl} target="_blank" rel="noopener">
           <InstagramLogo class="w-12 h-12" />
         </a>
         <a class="email" href="mailto:rushtopfish@gmail.com" target="_blank" rel="noopener">

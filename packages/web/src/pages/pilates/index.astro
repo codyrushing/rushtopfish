@@ -3,13 +3,15 @@ import PilatesLayout from 'src/layouts/PilatesLayout.astro';
 import PilatesHero from '../../components/PilatesHero.astro';
 
 import PhotoStrip from '../../components/PhotoStrip.astro';
-import socksPointImg from '../../assets/photos/pilates-socks-point.jpg';
-import outsideBackbendImg from '../../assets/photos/outside-backbend.jpg';
+import seatedBackToBack from '../../assets/photos/seated-back-to-back.jpg';
+import kneelingInLine from '../../assets/photos/kneeling-in-line.jpg';
 import groupArmRaiseLineImg from '../../assets/photos/group-arm-raise-line.jpg';
 
-import reformerBridgeImg from '../../assets/photos/pilates-reformer-bridge.jpg';
+import seatedReformersStretch from '../../assets/photos/seated-reformers-stretch.jpg';
 import seatedLegRaise from '../../assets/photos/pilates-15.jpg';
 import Button from 'src/components/Button.astro';
+import { punchpassScheduleUrl } from 'src/utils/constants';
+import PhotoCreditSarahAnnie from 'src/components/PhotoCreditSarahAnnie.astro';
 ---
 
 <PilatesLayout
@@ -24,12 +26,12 @@ import Button from 'src/components/Button.astro';
     lede="Our mission is to offer expertly taught and mindfully delivered pilates and somatic based fitness to the South Austin neighborhood community."
     image={groupArmRaiseLineImg}
     imageAlt="Studio mat work in morning light"
-    caption="Morning mat class · Studio A"
   >
     <Fragment slot="heading">Move <em>with</em> us</Fragment>
     <Fragment slot="actions">
-      <Button href="/pilates/book" type="button">Book a class <span aria-hidden="true">→</span></Button>
+      <Button href={punchpassScheduleUrl} target=_blank type="button">Book a class <span aria-hidden="true">→</span></Button>
     </Fragment>
+    <Fragment slot="caption"><PhotoCreditSarahAnnie /></Fragment>
   </PilatesHero>
 
   <section class="page-section bg-teal-soft border-ink border-y-1.5">
@@ -43,11 +45,12 @@ import Button from 'src/components/Button.astro';
 
   <PhotoStrip
     images={[
-      { src: socksPointImg, alt: '' },
-      { src: outsideBackbendImg, alt: '' },
-      { src: reformerBridgeImg, alt: '' },
+      { src: seatedBackToBack, alt: '' },
+      { src: kneelingInLine, alt: '' },
       { src: seatedLegRaise, alt: '' },
-    ]}
-  />
+      { src: seatedReformersStretch, alt: '' },
+    ]}>
+      <Fragment slot="caption"><PhotoCreditSarahAnnie /></Fragment>
+    </PhotoStrip>
 
 </PilatesLayout>

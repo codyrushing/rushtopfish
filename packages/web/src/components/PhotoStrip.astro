@@ -8,16 +8,17 @@ interface StripImage {
 }
 
 interface Props {
+  caption?: string;
   images: StripImage[];
   columns?: number;
   [key: string]: unknown;
 }
 
-const { images, columns = 4, ...rest } = Astro.props;
+const { caption, images, columns = 4, ...rest } = Astro.props;
 ---
 
 <div
-  class="photo-strip grid grid-cols-2 md:grid-cols-4 gap-px border-t border-b"
+  class="relative photo-strip grid grid-cols-2 md:grid-cols-4 gap-px border-t border-b"
   {...rest}
 >
   {images.map(({ src, alt = '' }) => (
@@ -34,5 +35,12 @@ const { images, columns = 4, ...rest } = Astro.props;
       }
     </div>
   ))}
+  {(caption || Astro.slots.has('caption')) && (
+    <div class="p-2 bg-ink text-sand text-end col-span-full text-xs"><slot name="caption">{caption}</slot></div>
+  )}
 </div>
+<style>
+  .caption {
 
+  }
+</style>
