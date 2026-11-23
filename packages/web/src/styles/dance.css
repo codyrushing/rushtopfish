@@ -12,9 +12,7 @@
 @layer components {
   /* Full-bleed photo stage */
   .dance-stage {
-    position: fixed;
     inset: 0;
-    background: #000 center / cover no-repeat;
     overflow: hidden;
   }
 
@@ -33,17 +31,14 @@
 
   /* Header */
   .dance-header {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    z-index: 4;
-    padding: 28px 40px;
+    @apply py-4 px-4 border-b-1 border-b-[var(--border)];
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
   .dance-header .brand img {
-    height: 28px;
+    height: 24px;
     filter: invert(1);
   }
 
@@ -133,9 +128,8 @@
 
   /* Footer */
   .dance-footer {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    z-index: 4;
+    @apply border-t-1 border-t-[var(--border)];
+    z-index: 10;
     padding: 24px 40px 28px;
     display: flex;
     justify-content: space-between;
@@ -144,6 +138,7 @@
     font-size: 12px;
     color: var(--fg-faint);
     letter-spacing: 0.04em;
+
   }
 
   .dance-footer .left,
@@ -187,8 +182,7 @@
 
   /* Mobile */
   @media (max-width: 820px) {
-    .dance-stage { position: relative; min-height: 100vh; }
-    .dance-header { padding: 20px 24px; }
+    .dance-stage { min-height: 100vh; }
     .dance-centerpiece { padding: 120px 24px 180px; grid-template-rows: 1fr; }
     .dance-anchor { gap: 28px; }
     .dance-footer {

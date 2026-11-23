@@ -1,0 +1,27 @@
+---
+import '../styles/dance.css';
+import Layout from './Layout.astro';
+import type Props from './Layout.astro';
+const { activePage } = Astro.props;
+import danceLogoImg from '../assets/logos/rtf-dance.svg';
+
+---
+<Layout {...Astro.props}>
+  <header class="dance-header relative">
+    <a class="brand dance-anim d1" href="/" aria-label="RushTopFish home">
+      <img src={danceLogoImg.src} alt="RushTopFish Dance" />
+    </a>
+  </header>
+  <main class="grow">
+    <slot />
+  </main>
+  <footer class="dance-footer">
+    <div class="left">
+      <a href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a>
+    </div>
+    <div class="right">
+      <a href="/pilates">Pilates studio ↗</a>
+      <a href="https://instagram.com/rushtopfish.dance" aria-label="Instagram">Instagram</a>
+    </div>
+  </footer>
+</Layout>

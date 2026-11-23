@@ -109,6 +109,7 @@
   --fg-inverse:   var(--color-white);
   --accent:       var(--color-orange);
   --accent-fg:    var(--color-white);
+  --accent-hover: var(--color-orange-deep);
   --accent-2:     var(--color-teal);
   --accent-3:     var(--color-gold);
   --border:       color-mix(in oklab, var(--color-ink) 14%, transparent);
@@ -130,6 +131,7 @@
   --fg-inverse:   var(--color-ink);
   --accent:       var(--color-pink);
   --accent-fg:    var(--color-ink);
+  --accent-hover: color-mix(in oklch, var(--color-pink) 80%, white);
   --accent-2:     var(--color-orange);
   --accent-3:     var(--color-teal);
   --border:       color-mix(in oklab, #f4ece0 18%, transparent);
@@ -227,5 +229,9 @@
   *:focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
+  }
+
+  .container {
+    @apply mx-auto;
   }
 }

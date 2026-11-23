@@ -1,9 +1,10 @@
 ---
-import Layout from 'src/layouts/Layout.astro';
-import '../../styles/dance.css';
+import DanceLayout from 'src/layouts/DanceLayout.astro';
 import bgImg from '../../assets/photos/dance-rooftop-together.jpeg';
-import danceLogoImg from '../../assets/logos/rtf-dance.svg';
+import closeToTheChestFlyer from '../../assets/images/close-to-your-chest_flyer.png';
 import { Image } from 'astro:assets';
+import ArticleAside from 'src/components/ArticleAside.astro';
+import Button from '../../components/Button.astro';
 
 const gradientOverlay = [
   'linear-gradient(180deg,',
@@ -15,73 +16,37 @@ const gradientOverlay = [
 ].join(' ');
 
 ---
-<Layout
+<DanceLayout
   title="RushTopFish Dance — 2026 season, coming soon"
   description="RushTopFish is a contemporary dance company based in Austin, TX" theme="dance">
-  <div
-    class="dance-stage min-h-[100dvh] min-w-[100dvw] relative"
-    role="img"
-    aria-label="Dancers on an Austin rooftop at golden hour"
-  >
-    <div class="bg-image absolute top-0 left-0 right-0 bottom-0">
-      <Image
-        src={bgImg}
-        alt="Dancers on an Austin rooftop at golden hour"
-        class="w-full h-full object-cover block"
-        style="object-position: 58% 50%;"/>
-    </div>
-    <div
-      class="bg-gradient absolute top-0 left-0 right-0 bottom-0"
-      style={`background-image: ${gradientOverlay};`}>
-    </div>
 
-    <header class="dance-header">
-      <a class="brand dance-anim d1" href="/" aria-label="RushTopFish home">
-        <img src={danceLogoImg.src} alt="RushTopFish Dance" />
-      </a>
-      <!-- <div class="meta dance-anim d1">
-        <span class="dot" aria-hidden="true"></span>Season 2026 · in rehearsal
-      </div> -->
-    </header>
+  <div class="container px-4 md:px-8 -mt-4">
 
-    <main class="dance-centerpiece">
-      <div class="dance-anchor">
-        <div class="dance-eyebrow-row dance-anim d2">
-          <span class="line" aria-hidden="true"></span>
-          <span>Coming soon · 2026 season</span>
-        </div>
-
-        <h1 class="dance-title dance-anim d3">
-          <em>2026</em> season updates coming soon
-        </h1>
-
-        <!-- <p class="dance-lede dance-anim d4">
-          Three new works, a winter revival, and a city we keep finding new rooms inside.
-          We're back this fall — quietly, for now. Stay close.
-        </p> -->
-      </div>
-    </main>
-
-    <footer class="dance-footer">
-      <div class="left">
-        <a href="mailto:rushtopfish@gmail.com">rushtopfish@gmail.com</a>
-      </div>
-      <div class="right">
-        <a href="/pilates">Pilates studio ↗</a>
-        <a href="https://instagram.com/rushtopfish.dance" aria-label="Instagram">Instagram</a>
-      </div>
-    </footer>
-
+    <ArticleAside image={{ src: closeToTheChestFlyer, alt: 'close to your chest'}}>
+      <Fragment slot="content">
+        <span class="eyebrow text-pink">Upcoming show</span>
+        <h1 class="italic">close to your chest</h1>
+        <p class="text-lg font-bold">Dec 17-21 2026</p>
+        <p>
+          <Button
+            href="https://events.ticketleap.com/tickets/rushtopfish/close-to-your-chest"
+            target="_blank"
+            size="lg">
+              TICKETS
+            </Button>
+        </p>
+        <p class="flex flex-col">
+          <strong>CRASHBOX</strong>
+          <span>5305 Bolm Rd. #11 and #12</span>
+          <span>Austin, TX 78721</span>
+        </p>
+        <Button
+          href="https://www.google.com/maps/place/CRASHBOX/@30.2575732,-97.6938319,17z/data=!3m1!4b1!4m6!3m5!1s0x8644b7e8129d4669:0x6dbedbbfc1677c2b!8m2!3d30.2575732!4d-97.691257!16s%2Fg%2F11hzn4z258?entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          variant="ghost"
+          size="sm">Directions</Button>
+      </Fragment>
+    </ArticleAside>
   </div>
-</Layout>
-<style>
-body:global {
-  height: 100dvh;
-  width: 100dvh;
-}
-</style>
-<script>
-window.onload = function() {
-  window.scrollTo(0,99999);
-}
-</script>
+
+</DanceLayout>
